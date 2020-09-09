@@ -1,0 +1,134 @@
+<% layout(layout_directory+'/mainLayout') -%>
+
+<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+	<div class="kt-subheader__main">
+		<h3 class="kt-subheader__title"> <%= page_title %> </h3>
+		<span class="kt-subheader__separator kt-subheader__separator--v"></span>
+		<div class="kt-subheader__breadcrumbs">
+			<a href="<%= generateUrl('user.dashboard') %>" class="kt-subheader__breadcrumbs-home">Dashboard</a>
+			<span class="kt-subheader__breadcrumbs-separator"></span>
+			<span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active"><%= page_title %></span>
+		</div>
+	</div>
+</div>
+
+<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="kt-portlet">
+				<form class="kt-form kt-form--label-right" id="frmEditUser" action="<%= generateUrl('user.update') %>"
+					method="POST" enctype='multipart/form-data'>
+					<div class="kt-portlet__body">
+						<div class="form-group row">
+							<div class="col-lg-6">
+								<label for="full_name" class="control-label">First Name</label>
+								<div class="controls">
+									<input id="full_name" name="first_name" type="text" placeholder="First Name"
+										class="form-control required" required data-validation-required-message="This field is required"
+										value="<%=response.user_data.first_name %>" />
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<label for="username" class="control-label">Last Name</label>
+								<div class="controls">
+									<input id="username" name="last_name" type="text" placeholder="Last Name"
+										class="form-control required" required data-validation-required-message="This field is required"
+										value="<%=response.user_data.last_name %>" />
+								</div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-lg-6">
+								<label for="email" class="control-label">Email</label>
+								<div class="controls">
+									<input id="email" name="email" type="text" autocomplete="off" placeholder="Enter Email"
+										class="form-control required" required data-validation-required-message="This field is required"
+										value="<%= response.user_data.email %>"
+										data-validation-regex-regex="([A-Za-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})"
+										data-validation-regex-message="Enter Valid Email" aria-invalid="true" />
+								</div>
+							</div>
+
+							<!-- <div class="col-lg-6">
+								<label for="password" class="control-label">Password</label>
+								<div class="controls">
+									<input id="password" name="password" type="password" autocomplete="off" placeholder="Enter Password"
+										class="form-control required" value="" aria-invalid="true" />
+								</div>
+							</div> -->
+						</div>
+						<div class="form-group row">
+							<div class="col-lg-12">
+								<label for="about" class="control-label">Allowed Permissions</label>
+							</div>
+						</div>
+						<div class="form-group row">
+
+							<div class="col-lg-2">
+								<input type="checkbox" name="about" value="true" <%= (permission.about)?"Checked":"" %>>
+								<label for="about" class="control-label">About</label>
+							</div>
+							<div class="col-lg-2">
+								<input type="checkbox" name="contact" value="true" <%= (permission.contact)?"Checked":"" %>>
+								<label for="contact" class="control-label">Contact</label>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-lg-2">
+								<input type="checkbox" name="knowledge_center" value="true"
+									<%= (permission.knowledge_center)?"Checked":"" %>>
+								<label for="knowledge_center" class="control-label">Knowledge center</label>
+							</div>
+							<div class="col-lg-2">
+								<input type="checkbox" name="science_update" value="true"
+									<%= (permission.science_update)?"Checked":"" %>>
+								<label for="science_update" class="control-label">Science update</label>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-lg-2">
+								<input type="checkbox" name="product" <%= (permission.product)?"Checked":"" %>>
+								<label for="product" class="control-label" value="true">Product</label>
+							</div>
+							<div class="col-lg-2">
+								<input type="checkbox" name="support" <%= (permission.support)?"Checked":"" %>>
+								<label for="support" class="control-label" value="true">Support</label>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-lg-2">
+								<input type="checkbox" name="home_slider" <%= (permission.home_slider)?"Checked":"" %>>
+								<label for="home_slider" class="control-label" value="true">Home slider</label>
+							</div>
+							<div class="col-lg-2">
+								<input type="checkbox" name="setting" <%= (permission.setting)?"Checked":"" %>>
+								<label for="setting" class="control-label" value="true">Setting</label>
+							</div>
+
+						</div>
+						<div class="form-group row">
+
+							<div class="col-lg-2">
+								<input type="checkbox" name="probe_finder" <%= (permission.probe_finder)?"Checked":"" %>>
+								<label for="probe_finder" class="control-label" value="true">Probe Finder</label>
+							</div>
+
+						</div>
+
+					</div>
+					<div class="kt-portlet__foot">
+						<div class="kt-form__actions">
+							<div class="row">
+								<div class="col-lg-6">
+									<input type="hidden" name="uid" value="<%= response.user_data._id%>">
+									<button type="submit" class="btn btn-primary">Save</button>
+									<a href="<%= generateUrl('user.listing') %>" class="btn btn-secondary">Cancel</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

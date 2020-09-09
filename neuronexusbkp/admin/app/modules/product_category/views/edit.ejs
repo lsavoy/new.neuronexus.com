@@ -1,0 +1,235 @@
+<% layout(layout_directory+'/mainLayout') -%>
+<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+  <div class="kt-subheader__main">
+    <h3 class="kt-subheader__title"> <%= page_title %> </h3>
+    <span class="kt-subheader__separator kt-subheader__separator--v"></span>
+    <div class="kt-subheader__breadcrumbs">
+      <a href="<%= generateUrl('user.dashboard') %>" class="kt-subheader__breadcrumbs-home">Dashboard</a>
+      <span class="kt-subheader__breadcrumbs-separator"></span>
+      <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active"><%= page_title %></span>
+    </div>
+  </div>
+</div>
+
+<div class="kt-portlet">
+  <div class="kt-portlet__head">
+    <div class="kt-portlet__head-label">
+      <h3 class="kt-portlet__head-title"><%= page_title %></h3>
+    </div>
+  </div>
+  <div class="kt-portlet__body">
+    <form class="kt-form kt-form--label-right" id="frmEditProduct" action="<%= generateUrl('admin.product.update') %>"
+      method="POST" enctype='multipart/form-data'>
+      <div class="kt-portlet__body">
+        <div class="form-group row">
+          <div class="col-lg-6">
+            <label>Product Name</label>
+            <input type="text" name="name" id="title" class="form-control required" required
+              placeholder="Enter Product Name" value="<%= response.name %>">
+          </div>
+          <div class="col-lg-6">
+            <label>Status</label>
+            <select name="status" id="status" class="form-control">
+              <option value="Active" <%= (response.status =="Active")?"Selected":"" %>>Active</option>
+              <option value="Inactive" <%= (response.status =="Inactive")?"Selected":"" %>>Inactive</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-lg-12">
+            <label>Sort Content:</label>
+            <textarea class="form-control ckeditor" name="short_content" id="short_content"
+              rows="3"><%=response.short_content%></textarea>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-lg-12">
+            <label>Content:</label>
+            <textarea class="form-control ckeditor" name="content" id="exampleTextarea"
+              rows="3"><%=response.content%></textarea>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-lg-6">
+            <label>Image</label>
+            <div><img width="200" height="200" src="/uploads/product/<%=response.image %>"></div><br>
+            <input type="file" name="image" id="product_image" class="form-control"
+              data-validation-required-message="This field is required">
+          </div>
+          <div class="col-lg-6">
+            <label>Category</label>
+            <select name="category_id" class="form-control" placehplder="Select a category">
+              <option value="">Select a Category</option>
+              <%categoryMaster.map(data=>{%>
+              <option value="<%=data._id%>" <%=response.category_id==data._id.toString()?'Selected':''%>><%=data.name%>
+              </option>
+              <%})%>
+
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-lg-12">
+            <label>Section2 Content:</label>
+            <textarea class="form-control ckeditor" name="section2_content" id="exampleTextarea1"
+              rows="3"><%=response.section2_content%></textarea>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-lg-12">
+            <label>Section 2 Name:</label>
+
+            <input type="text" name="section2_name" id="title1" class="form-control"
+              placeholder="Enter Section 2 Name" value="<%=response.section2_name%>">
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-lg-12">
+            <label>Section 2 Location:</label>
+            <input type="text" name="section2_location" id="title1" class="form-control"
+              placeholder="Enter Section 2 Location" value="<%=response.section2_location%>">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-lg-12">
+            <label>Specification Title:</label>
+            <input type="text" name="specification_title" id="title1" class="form-control"
+              placeholder="Enter Specification Title" value="<%=response.specification_title%>">
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-lg-12">
+            <label>Specification Content:</label>
+            <textarea class="form-control ckeditor" name="specification_content" id="exampleTextarea"
+              rows="3"><%=response.specification_content%></textarea>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-lg-12">
+            <label>Ordering Information Title:</label>
+            <input type="text" name="ordering_information_title" id="title" class="form-control"
+              placeholder="Enter Ordering Information Title" value="<%=response.ordering_information_title%>">
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-lg-12">
+            <label>Ordering Information Content:</label>
+            <textarea class="form-control ckeditor" name="ordering_information_content" id="exampleTextarea"
+              rows="3"><%=response.ordering_information_content%></textarea>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-lg-12">
+            <label>Documentation Title:</label>
+            <input type="text" name="documentation_title" id="title" class="form-control"
+              placeholder="Enter Documentation Title" value="<%=response.documentation_title%>">
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-lg-12">
+            <label>Documentation Content:</label>
+            <textarea class="form-control ckeditor" name="documentation_content" id="exampleTextarea"
+              rows="3"><%=response.documentation_content%></textarea>
+          </div>
+        </div>
+
+        <%if(_.has(response.d_drive_nano) && (response.d_drive_nano.nano_title != undefined || response.d_drive_nano.nano_title != null || response.d_drive_nano.nano_title != '')){%>
+
+          <div class="form-group row">
+            <div class="col-lg-12">
+              <label>Ddrive Nano Title</label>
+              <input type="text" name="nano_title" id="title" class="form-control"
+                placeholder="Enter Ddrive Nano Title" value="<%= response.d_drive_nano.nano_title %>">
+            </div>
+          </div>
+          <div class="form-group row">
+              <div class="col-lg-6">
+                <label>Ddrive Nano Image</label>
+                <input type="file" name="nano_image" id="nano_image" class="form-control">
+              </div>
+              <div class="col-lg-6">
+                <img src="/uploads/product/dDrive/<%=response.d_drive_nano.nano_image%>" height="50px" alt="">
+              </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-lg-12">
+              <label>Ddrive Nano Description</label>
+              <textarea class="form-control ckeditor" name="nano_des" id="exampleTextarea"
+              rows="3"><%=response.d_drive_nano.nano_des%></textarea>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-lg-12">
+              <label>Ddrive M Title</label>
+              <input type="text" name="m_title" id="title" class="form-control"
+                placeholder="Enter Ddrive M Title" value="<%= response.d_drive_m.m_title %>">
+            </div>
+          </div>
+
+          <div class="form-group row">
+              <div class="col-lg-6">
+                <label>Ddrive M Image</label>
+                <input type="file" name="m_image" id="m_image" class="form-control">
+              </div>
+              <div class="col-lg-6">
+                <img src="/uploads/product/dDrive/<%=response.d_drive_m.m_image%>" height="50px" alt="">
+              </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-lg-12">
+              <label>Ddrive M Description</label>
+              <textarea class="form-control ckeditor" name="m_des" id="exampleTextarea"
+              rows="3"><%=response.d_drive_m.m_des%></textarea>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-lg-12">
+              <label>Ddrive XL Title</label>
+              <input type="text" name="xl_title" id="title" class="form-control"
+                placeholder="Enter Ddrive XL Title" value="<%= response.d_drive_xl.xl_title %>">
+            </div>
+          </div>
+
+          <div class="form-group row">
+              <div class="col-lg-6">
+                <label>Ddrive XL Image</label>
+                <input type="file" name="xl_image" id="xl_image" class="form-control">
+              </div>
+              <div class="col-lg-6">
+                <img src="/uploads/product/dDrive/<%=response.d_drive_xl.xl_image%>" height="50px" alt="">
+              </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-lg-12">
+              <label>Ddrive XL Description</label>
+              <textarea class="form-control ckeditor" name="xl_des" id="exampleTextarea"
+              rows="3"><%=response.d_drive_xl.xl_des%></textarea>
+            </div>
+          </div>
+          <%}%>
+
+      </div>
+
+      <div class="kt-portlet__foot">
+        <div class="kt-form__actions">
+          <div class="row">
+            <div class="col-lg-6">
+              <input type="hidden" name="id" value="<%= response._id%>">
+              <button type="submit" class="btn btn-primary">Save</button>
+              <a href="<%= generateUrl('admin.product.list') %>" class="btn btn-secondary">Cancel</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>

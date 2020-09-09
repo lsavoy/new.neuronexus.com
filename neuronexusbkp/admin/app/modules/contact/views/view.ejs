@@ -1,0 +1,56 @@
+<% layout(layout_directory+'/mainLayout') -%>
+
+<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+    <div class="kt-subheader__main">
+        <h3 class="kt-subheader__title"> <%= page_title %> </h3>
+        <span class="kt-subheader__separator kt-subheader__separator--v"></span>
+
+    </div>
+</div>
+
+<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="kt-portlet">
+
+                <div class="kt-portlet__body">
+                    <div class="form-group row">
+                        <div class="col-lg-6">
+                            <label>Name:</label>
+                            <div class="controls"><%= response.contact_data.name%></div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label>Subject:</label>
+                            <div class="controls"><%= response.contact_data.subject %></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-lg-6">
+                            <label>Email:</label>
+                            <div class="controls"><%= response.contact_data.email_id%></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <label>Message:</label>
+                            <div class="controls"><%= response.contact_data.message%></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kt-portlet__foot">
+                    <div class="kt-form__actions">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <a href="<%= generateUrl('contact.list') %>" class="btn btn-primary">Back</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

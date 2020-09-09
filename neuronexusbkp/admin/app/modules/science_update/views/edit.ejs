@@ -1,0 +1,111 @@
+<% layout(layout_directory+'/mainLayout') -%>
+<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+  <div class="kt-subheader__main">
+    <h3 class="kt-subheader__title"> <%= page_title %> </h3>
+    <span class="kt-subheader__separator kt-subheader__separator--v"></span>
+    <div class="kt-subheader__breadcrumbs">
+      <a href="<%= generateUrl('user.dashboard') %>" class="kt-subheader__breadcrumbs-home">Dashboard</a>
+      <span class="kt-subheader__breadcrumbs-separator"></span>
+      <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active"><%= page_title %></span>
+    </div>
+  </div>
+</div>
+
+<div class="kt-portlet">
+  <div class="kt-portlet__head">
+    <div class="kt-portlet__head-label">
+      <h3 class="kt-portlet__head-title"><%= page_title %></h3>
+    </div>
+  </div>
+  <div class="kt-portlet__body">
+    <form class="kt-form kt-form--label-right" id="frmEditScienceUpdate"
+      action="<%= generateUrl('admin.science_update.update') %>" method="POST" enctype='multipart/form-data'>
+      <div class="kt-portlet__body">
+
+        <div class="form-group row">
+          <div class="col-lg-12">
+            <label>Title</label>
+              <textarea class="form-control ckeditor" name="title" id="exampleTextarea" rows="3"><%=response.title%></textarea>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-lg-12">
+            <label>Content:</label>
+            <textarea class="form-control ckeditor" name="content" id="exampleTextarea"
+              rows="3"> <%= response.content %></textarea>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-lg-12">
+            <label>Image</label>
+            <div><img width="300" src="/uploads/science_update/<%=response.image %>"></div><br>
+            <input type="file" name="image" id="image" class="form-control"
+              data-validation-required-message="This field is required">
+          </div>
+        </div>
+
+        <div class="form-group row">
+
+          <div class="col-lg-6">
+            <label>Category Name</label>
+            <select name="category_id" id="category_id" class="form-control">
+              <option value="">Select a Category</option>
+              <% category.map(data=>{%>
+              <option value="<%=data._id%>" <%= (data._id==response.category_id.toString())?"Selected":"" %>>
+                <%=data.name%>
+              </option>
+              <%})%>
+
+            </select>
+
+          </div>
+
+          <div class="col-lg-6">
+            <label>Status</label>
+            <select name="status" id="status" class="form-control">
+              <option value="Active" <%= (response.status =="Active")?"Selected":"" %>>Active</option>
+              <option value="Inactive" <%= (response.status =="Inactive")?"Selected":"" %>>Inactive</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="form-group row">
+          <div class="col-lg-4">
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" <%= (response.show_author_image == true)?"checked":"" %>  name="show_author_image" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Show Profile Image</label>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" <%= (response.show_author_name == true)?"checked":"" %> name="show_author_name" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Show Name</label>
+            </div>
+            
+          </div>
+          <div class="col-lg-4">
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" <%= (response.show_post_date == true)?"checked":"" %> name="show_post_date" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Show Date</label>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="kt-portlet__foot">
+        <div class="kt-form__actions">
+          <div class="row">
+            <div class="col-lg-6">
+              <input type="hidden" name="id" value="<%= response._id%>">
+              <button type="submit" class="btn btn-primary">Update</button>
+              <a href="<%= generateUrl('admin.science_update.list') %>" class="btn btn-secondary">Cancel</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>

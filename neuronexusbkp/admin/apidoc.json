@@ -1,0 +1,9 @@
+{
+    "name": "Neuronexus",
+    "version": "1.0.0",
+    "description": "API Neuronexus",
+    "url": "http://104.211.219.149:1437/api",
+    "template": {
+        "forceLanguage": "en"
+    }
+}
