@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"neuronexususerdb.science_update_collaboration_tabs"}],"uuid":"46928660c37a4d0897d086a57a5a8531"}

@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"neuronexususerdb.experiments"}],"uuid":"870f05b923024923a7efc655345ade1c"}

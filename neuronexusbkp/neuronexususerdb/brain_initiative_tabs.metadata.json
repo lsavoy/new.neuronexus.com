@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"neuronexususerdb.brain_initiative_tabs"}],"uuid":"9915fdf406614bf8ba613f5a9d6ed957"}
