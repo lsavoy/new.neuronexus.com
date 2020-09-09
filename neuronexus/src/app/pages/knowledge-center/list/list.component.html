@@ -1,0 +1,76 @@
+
+<!-- <app-banner [banner]="banner"></app-banner> -->
+
+<div class="system_sec common_gap">
+    <div class="accrodion_sec" >
+      <div class="container">
+        <div class="knowledge_inner inner_container">
+          <div class="knowledge_box" >
+            <div class="knowledge_head">
+              <h3>Knowledge center search bar</h3>
+              <form #seacrhKnowledgeForm [formGroup]="knowledgeForm">
+                <div class="input-group" style="margin-top: 50px;">
+                  <input type="text" class="form-control" placeholder="Search for knowledge.." formControlName="knowledgeKeyword" required>
+                  <div class="input-group-append">
+                    <button style="cursor: pointer;" class="btn btn-secondary" type="submit"  (click)="searchForKnowledge()">
+                      <i class="fa fa-search"></i>
+                    </button>
+                    <button *ngIf="showClear" class="btn btn-secondary" type="submit"  (click)="clearSeacrch()" style="margin-left: 10px;">
+                      Clear
+                    </button>
+                  </div>
+                </div>
+                <div *ngIf="knowledgeForm.controls.knowledgeKeyword.touched && knowledgeForm.controls.knowledgeKeyword.hasError('required')"
+                class="error">
+                Seach Keyword is required
+              </div>
+              </form>
+              <h3>Knowledge Center</h3>
+            </div>
+
+            <div class="knowledge_container" >
+              <div class="knowledge_left">
+                <ng-container *ngIf="showKnowledgeCategory">
+                <h3>Knowledge Center Categories</h3>
+                <ul>
+                  <li *ngFor="let category of categoryList">
+                    <a style="cursor: pointer;" [routerLink]="['/knowledge-center/category-details', category?.slug, category?.category_name]" routerLinkActive="active">{{category?.category_name}}</a>
+                    <!-- [routerLink]="['/knowledge-center/category-details', category?.category_id, category?.category_name]" routerLinkActive="active" -->
+                  </li>
+                </ul>
+              </ng-container>
+              </div>
+              <div class="knowledge_right">
+                <ng-container *ngIf="knowledgeList !== undefined && knowledgeList?.length > 0">
+                  <div class="accordion" id="accordionExample">
+                    <div class="card" *ngFor="let knowledge of knowledgeList;let i = index;">
+                      <div class="card-header" id="headingTwo">
+                        <h2 class="mb-0">
+                          <button class="btn btn-link collapsed"  type="button" data-toggle="collapse" attr.data-target="#collapse{{knowledge?._id}}"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            <!--0{{i+1}}. -->{{knowledge?.title}}
+                            <span class="plus">
+                              <img src="assets/images/plus.svg" alt="">
+                            </span>
+                            <span class="minus">
+                              <img src="assets/images/minus.svg" alt="">
+                            </span>
+                          </button>
+                        </h2>
+                      </div>
+                      <div id="collapse{{knowledge?._id}}" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                          <section [innerHtml]="knowledge?.description"></section>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+                <div class="no-data-center" *ngIf="knowledgeList === undefined || knowledgeList?.length === 0">No data available!</div>
+              </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+::ng-deep .modalStyle{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+    background-color: #f5f5f5;
+    z-index: 9999;
+    min-width: 300px;
+    width: 100%;
+    max-width: 600px;
+    padding: 25px;
+    font-size: 16px;
+    .mat-dialog-actions {
+        padding: 18px 0;
+    }
+    h2 {
+        font-size: 50px !important;
+    }
+}
+
+::ng-deep .modalStyleImage{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+    background-color: #f5f5f5;
+    z-index: 9999;
+    min-width: 300px;
+    width: 100%;
+    max-width: 800px;
+    padding: 25px;
+    font-size: 16px;
+    .mat-dialog-content {
+        max-height: 80vh !important;
+    }
+    .mat-dialog-actions {
+        padding: 18px 0;
+    }
+}

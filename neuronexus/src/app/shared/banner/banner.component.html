@@ -1,0 +1,13 @@
+<ng-container >
+<div class="banner_sec">
+    <figure *ngIf="videoSource !== undefined">
+    <video id="bg-video" loop muted autoplay oncanplay="this.play()" onloadedmetadata="this.muted = true">
+      <source src="{{videoSource}}" type="video/ogg">
+    </video>
+    </figure>
+
+    <figure *ngIf="imageSource !== undefined">
+      <img src="{{imageSource}}" alt="">
+    </figure>
+  </div>
+</ng-container>

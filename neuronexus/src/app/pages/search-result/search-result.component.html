@@ -1,0 +1,44 @@
+<app-banner [banner]="banner"></app-banner>
+
+<div class="update_sec common_gap" id="particles-js2">
+    <div class="container">
+      <div class="update_inner">
+        <h3>Search Result for {{searchKeyWord}}</h3>
+        <ng-container *ngIf="finalSearchResult !== undefined && finalSearchResult?.length > 0">
+        <div class="row update_main_area_cont">
+          <ng-container *ngFor="let item of finalSearchResult;">
+          <div class="col-lg-4 col-md-6  update_main_area" style="margin-top: 30px;" *ngFor="let child of item.child;">
+            <div class="update_box">
+              <div class="update_cont">
+                <h4>
+                  <a style="color: #009ddc;cursor: pointer;" *ngIf="child?.title !== undefined" (click)="routeToThatPage(item?.key,child)">{{child?.title}}</a>
+                  <a style="color: #009ddc;cursor: pointer;" *ngIf="child?.name !== undefined" (click)="routeToThatPage(item?.key,child)">{{child?.name}}</a>
+                  <a style="color: #009ddc;cursor: pointer;" *ngIf="child?.title_h2 !== undefined" (click)="routeToThatPage(item?.key,child)">{{child?.title_h2}}</a>
+                  <a style="color: #009ddc;cursor: pointer;" *ngIf="child?.title_h3 !== undefined" (click)="routeToThatPage(item?.key,child)">{{child?.title_h3}}</a>
+                  <a style="color: #009ddc;cursor: pointer;" *ngIf="child?.section2_name !== undefined" (click)="routeToThatPage(item?.key,child)">{{child?.section2_name}}</a>
+                  <a style="color: #009ddc;cursor: pointer;" *ngIf="child?.section2_location !== undefined" (click)="routeToThatPage(item?.key,child)">{{child?.section2_location}}</a>
+                  <a style="color: #009ddc;cursor: pointer;" *ngIf="item?.key === 'brain'" (click)="routeToThatPage(item?.key,child)">Brain</a>
+                  <a style="color: #009ddc;cursor: pointer;" *ngIf="item?.key === 'careers_opening'" href="{{child?.position_link}}" target="_blank">{{child?.position}}</a>
+                  <a style="color: #009ddc;cursor: pointer;" *ngIf="child?.country !== undefined" (click)="routeToThatPage(item?.key,child)">{{child?.country}}</a><br>
+                  <a style="color: #009ddc;cursor: pointer;" *ngIf="item?.key === 'partners'"  href="{{child?.company_link}}" target="_blank">{{child?.company}}</a>
+                  <a style="color: #009ddc;cursor: pointer;" *ngIf="child?.sub_category_name !== undefined" (click)="routeToThatPage(item?.key,child)">{{child?.sub_category_name}}</a>
+                  <a style="color: #009ddc;cursor: pointer;" *ngIf="child?.category_name !== undefined" (click)="routeToThatPage(item?.key,child)">{{child?.category_name}}</a>
+                  <a style="color: #009ddc;cursor: pointer;" *ngIf="child?.author_frist_name !== undefined" (click)="routeToThatPage(item?.key,child)">{{child?.author_frist_name}}</a>
+                  <a style="color: #009ddc;cursor: pointer;" *ngIf="child?.author_last_name !== undefined" (click)="routeToThatPage(item?.key,child)">{{child?.author_last_name}}</a>
+                </h4>
+                <section style="height: 120px;" *ngIf="child?.content !== undefined">{{convertScienceUpdateDesc(child?.content)}}</section>
+                <section style="height: 120px;" *ngIf="child?.description !== undefined">{{convertScienceUpdateDesc(child?.description)}}</section>
+                <section style="height: 120px;" *ngIf="child?.company_info !== undefined">{{convertScienceUpdateDesc(child?.company_info)}}</section>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        </div>
+        <div class="update_btn">
+            <a class="redmore_btn" (click)="goBackToPreviousPage()">Back</a>
+        </div>
+        </ng-container>
+        <div class="no-data-center" *ngIf="finalSearchResult === undefined || finalSearchResult?.length === 0">No data available!</div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,29 @@
+<app-banner [banner]="banner"></app-banner>
+
+  <div class="product_sec common_gap">
+    <div class="container">
+      <div class="inner_product">
+        <div class="product_head" *ngIf="productStaticContent !== undefined">
+          <h3>{{productStaticContent?.title}}</h3>
+          <h4>{{productStaticContent?.sub_title}}</h4>
+          <section [innerHtml]="productStaticContent?.content"></section>
+        </div>
+        <div class="no-data-center" *ngIf="productStaticContent === undefined">No data available!</div>
+
+        <div class="row product_main_area"  *ngIf="productList !== undefined && productList?.length > 0">
+          <div class="col-lg-4 col-md-6 product_main_area_cont" *ngFor="let product of productList;">
+            <div class="product_box">
+              <figure *ngIf="product?.image">
+                <img src="{{BASE_IMAGE_URL}}product/{{product?.image}}" alt="">
+              </figure>
+              <div class="product_cont" >
+                <section class="inner" [innerHtml]="product?.short_content"></section>
+                <h4  style="cursor: pointer;" (click)="routeToDeatils(product?._id,product?.slug)"> <a>{{product?.name}}</a> </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="no-data-center" *ngIf="productList === undefined || productList?.length === 0">No data available!</div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,114 @@
+<app-banner [banner]="banner"></app-banner>
+
+  <div class="system_sec produced_sec common_gap">
+    <div class="container">
+      <div class="inner_system">
+        <div class="row system_main_area" *ngIf="probDetailsContent !== undefined">
+          <!-- <div class="col-lg-6 system_main_area_cont">
+            <h3>{{probDetailsContent?.name}}</h3>
+            <section [innerHtml]="probDetailsContent?.content"></section>
+          </div> -->
+          <div class="system_main_area_cont areaproductdetails">
+            <h3 style="margin-left: 10px;">{{probDetailsContent?.name}}</h3>
+            <figure class="imageStyle" *ngIf="probDetailsContent?.image" (click)="openImageModal(probDetailsContent?.image)">
+              <img src="{{BASE_IMAGE_URL}}probeFinder/{{probDetailsContent?.image}}" alt="">
+            </figure>
+          </div>
+        </div>
+        <div class="no-data-center" *ngIf="probDetailsContent === undefined">No data available!</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="update_btn" style="margin-bottom: 20px;" *ngIf="probDetailsContent !== undefined">
+    <a class="redmore_btn" [routerLink]="['/home']" routerLinkActive="active">Back</a>
+  </div>
+
+
+  <div class="knowledge_sec accrodion_sec">
+    <div class="container">
+      <div class="knowledge_inner" *ngIf="probDetailsContent !== undefined">
+        <div class="knowledge_box">
+          <div class="accordion" id="accordionExample">
+            <div class="card" *ngIf="probDetailsContent?.specification_content !== '' || undefined">
+              <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                    aria-expanded="true" aria-controls="collapseOne">
+                    {{probDetailsContent?.specification_title}}
+                    <span class="plus">
+                      <img src="assets/images/plus.svg" alt="">
+                    </span>
+                    <span class="minus">
+                      <img src="assets/images/minus.svg" alt="">
+                    </span>
+                  </button>
+                </h2>
+              </div>
+
+              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                 <section [innerHtml]="probDetailsContent?.specification_content"></section>
+                </div>
+              </div>
+
+            </div>
+            <div class="card" *ngIf="probDetailsContent?.ordering_information_content !== '' || undefined">
+              <div class="card-header" id="headingTwo" >
+                <h2 class="mb-0">
+                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="false" aria-controls="collapseTwo">
+                    {{probDetailsContent?.ordering_information_title}}
+                    <span class="plus">
+                      <img src="assets/images/plus.svg" alt="">
+                    </span>
+                    <span class="minus">
+                      <img src="assets/images/minus.svg" alt="">
+                    </span>
+                  </button>
+                </h2>
+              </div>
+              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div class="card-body">
+                  <section [innerHtml]="probDetailsContent?.ordering_information_content"></section>
+                </div>
+              </div>
+            </div>
+
+            <div class="card" *ngIf="probDetailsContent?.documentation_content !== '' || undefined">
+              <div class="card-header" id="heading3">
+                <h2 class="mb-0">
+                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse3"
+                    aria-expanded="false" aria-controls="collapse3">
+                    {{probDetailsContent?.documentation_title}}
+                    <span class="plus">
+                      <img src="assets/images/plus.svg" alt="">
+                    </span>
+                    <span class="minus">
+                      <img src="assets/images/minus.svg" alt="">
+                    </span>
+                  </button>
+                </h2>
+              </div>
+              <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordionExample">
+                <div class="card-body">
+                  <section [innerHtml]="probDetailsContent?.documentation_content"></section>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="no-data-center" *ngIf="probDetailsContent === undefined">No data available!</div>
+    </div>
+  </div>
+  <!-- <div style="margin-left: 80px;margin-top: 20px;">
+      <p>Windows download: (insert link)</p>
+      <p>{{probDetailsContent?.windows_link}}</p>
+      <p>Mac Download: (insert Link)</p>
+      <p>{{probDetailsContent?.mac_link}}</p>
+      <p>Linux download: (insert Link)</p>
+      <p>{{probDetailsContent?.linux_link}}</p>
+  </div> -->
+  

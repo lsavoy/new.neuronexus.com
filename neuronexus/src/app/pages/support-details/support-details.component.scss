@@ -1,0 +1,34 @@
+video{
+  max-width: 100%;
+}
+::ng-deep table{
+  margin: 0 0 20px;
+  padding: 0;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  background-color: #fff;
+  border-top: 1px solid #ececec;
+  border-left: 0px;
+
+  tr{
+    &:nth-child(2n+1) {
+      background-color: #fcfcfc;
+    } 
+  }
+  td{
+    border-color: #ececec;
+    border-left: none;
+    border-style: none solid solid none;
+    border-top: medium none;
+    border-width: medium 1px 1px medium;
+    font-size: 13px;
+    padding: 10px;
+    &:first-child {
+      border-left-style: solid;
+      border-left-width: 1px;
+      border-left-color: #ececec;
+    }
+  }
+}
+

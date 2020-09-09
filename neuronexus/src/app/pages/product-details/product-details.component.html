@@ -1,0 +1,119 @@
+<app-banner [banner]="banner"></app-banner>
+
+  <div class="system_sec produced_sec common_gap">
+    <div class="container">
+      <div class="inner_system">
+        <div class="row system_main_area" *ngIf="productDetailsContent !== undefined">
+          <div class="col-lg-6 system_main_area_cont">
+            <h3>{{productDetailsContent?.name}}</h3>
+            <section [innerHtml]="productDetailsContent?.content"></section>
+          </div>
+          <div class="col-lg-6 system_main_area_cont">
+            <figure *ngIf="productDetailsContent?.image">
+              <img src="{{BASE_IMAGE_URL}}product/{{productDetailsContent?.image}}" alt="">
+            </figure>
+          </div>
+        </div>
+        <div class="no-data-center" *ngIf="productDetailsContent === undefined">No data available!</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="update_btn" style="margin-bottom: 20px;" *ngIf="productDetailsContent !== undefined">
+    <a class="redmore_btn" [routerLink]="['/home']" routerLinkActive="active">Back</a>
+  </div>
+
+  <div class="university_sec">
+    <div class="container">
+      
+      <div class="inner_university" *ngIf="productDetailsContent !== undefined">
+        <ng-container *ngIf="productDetailsContent?.section2_content !== ''">
+         <section [innerHtml]="productDetailsContent?.section2_content"></section>
+        </ng-container>
+        <ng-container *ngIf="productDetailsContent?.section2_name !== '' && productDetailsContent?.section2_location !== ''">
+        <h4>{{productDetailsContent?.section2_name}} <span>{{productDetailsContent?.section2_location}}</span></h4>
+        </ng-container>
+      </div>
+      <div class="no-data-center" *ngIf="productDetailsContent === undefined">No data available!</div>
+    </div>
+  </div>
+
+  <div class="knowledge_sec accrodion_sec">
+    <div class="container">
+      <div class="knowledge_inner" *ngIf="productDetailsContent !== undefined">
+        <div class="knowledge_box">
+          <div class="accordion" id="accordionExample">
+            <div class="card" *ngIf="productDetailsContent?.specification_content !== '' || undefined">
+              <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                    aria-expanded="true" aria-controls="collapseOne">
+                    {{productDetailsContent?.specification_title}}
+                    <span class="plus">
+                      <img src="assets/images/plus.svg" alt="">
+                    </span>
+                    <span class="minus">
+                      <img src="assets/images/minus.svg" alt="">
+                    </span>
+                  </button>
+                </h2>
+              </div>
+
+              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                 <section [innerHtml]="productDetailsContent?.specification_content"></section>
+                </div>
+              </div>
+
+            </div>
+            <div class="card" *ngIf="productDetailsContent?.ordering_information_content !== '' || undefined">
+              <div class="card-header" id="headingTwo" >
+                <h2 class="mb-0">
+                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="false" aria-controls="collapseTwo">
+                    {{productDetailsContent?.ordering_information_title}}
+                    <span class="plus">
+                      <img src="assets/images/plus.svg" alt="">
+                    </span>
+                    <span class="minus">
+                      <img src="assets/images/minus.svg" alt="">
+                    </span>
+                  </button>
+                </h2>
+              </div>
+              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div class="card-body">
+                  <section [innerHtml]="productDetailsContent?.ordering_information_content"></section>
+                </div>
+              </div>
+            </div>
+
+            <div class="card" *ngIf="productDetailsContent?.documentation_content !== '' || undefined">
+              <div class="card-header" id="heading3">
+                <h2 class="mb-0">
+                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse3"
+                    aria-expanded="false" aria-controls="collapse3">
+                    {{productDetailsContent?.documentation_title}}
+                    <span class="plus">
+                      <img src="assets/images/plus.svg" alt="">
+                    </span>
+                    <span class="minus">
+                      <img src="assets/images/minus.svg" alt="">
+                    </span>
+                  </button>
+                </h2>
+              </div>
+              <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordionExample">
+                <div class="card-body">
+                  <section [innerHtml]="productDetailsContent?.documentation_content"></section>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="no-data-center" *ngIf="productDetailsContent === undefined">No data available!</div>
+    </div>
+  </div>
+  

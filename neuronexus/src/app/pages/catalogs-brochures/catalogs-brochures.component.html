@@ -1,0 +1,26 @@
+<app-banner [banner]="banner"></app-banner>
+
+  <div class="system_sec produced_sec common_gap">
+    <div class="container">
+      <div class="inner_system">
+        <div class="row system_main_area" *ngIf="catlogAndBrouchers !== undefined">
+          <div class="col-md-12 system_main_area_cont">
+            <h3>Catalogs + Brochures</h3>
+            <div class="table-responsive">
+                <table>
+                    <tbody>
+                    <tr>
+                    <td><a href="{{BASE_IMAGE_URL}}catalogs/{{catlogAndBrouchers?.catalog_file}}" target="_blank" style="cursor: pointer;"><strong>{{catlogAndBrouchers?.catalog_title}}</strong></a></td>
+                    </tr>
+                    <tr>
+                    <td width="30%"><a href="{{BASE_IMAGE_URL}}catalogs/{{catlogAndBrouchers?.brochures_file}}" target="_blank" style="cursor: pointer;"><strong>{{catlogAndBrouchers?.brochures_title}}</strong></a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+          </div>
+        </div>
+        <div class="no-data-center" *ngIf="catlogAndBrouchers === undefined">No data available!</div>
+      </div>
+    </div>
+  </div>

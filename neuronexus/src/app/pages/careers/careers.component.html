@@ -1,0 +1,33 @@
+<app-banner [banner]="banner"></app-banner>
+
+
+  <div class="meet_sec common_gap">
+    <div class="container">
+      <div class="meet_inner">
+        <div class="meet_top" *ngIf="careerStaticContent !== undefined">
+          <h3>{{careerStaticContent?.title}}</h3> 
+          <section [innerHtml]="careerStaticContent?.content"></section>
+        </div>
+        <div class="no-data-center" *ngIf="careerStaticContent === undefined">No data available!</div>
+      </div>
+
+      <ng-container *ngIf="careersOpeningList !== undefined && careersOpeningList?.length > 0">
+        <p><strong>{{careersOpeningList?.length}} opening{{careersOpeningList?.length > 1 ? '(s)' : ''}} at this time</strong></p>            
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Position</th>
+              <th>Date Posted</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let career of careersOpeningList;">
+              <td class="jobOpeningTitle" ><a style="cursor: pointer;color: #009ddc;" href="{{career?.position_link}}">{{career?.position}}</a></td>
+              <td>{{career?.createdAt | date:'mediumDate'}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </ng-container>
+      <div class="no-data-center" *ngIf="careersOpeningList === undefined || careersOpeningList?.length === 0">No data available!</div>
+    </div>
+  </div>

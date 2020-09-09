@@ -1,0 +1,25 @@
+<ng-container *ngIf="modalData?.type === '1'">
+  <div class="modalStyle">
+    <!-- <h4 mat-dialog-title></h4> -->
+    <mat-dialog-content class="mat-typography">
+      <div [innerHTML]="popUpContent"></div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="center">
+      <button mat-button mat-dialog-close>Close</button>
+    </mat-dialog-actions>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="modalData?.type === '2'">
+  <div class="modalStyleImage">
+    <mat-dialog-content class="mat-typography">
+      <figure>
+        <img src="{{BASE_IMAGE_URL}}probeFinder/{{modalData?.content}}" alt="">
+      </figure>
+    </mat-dialog-content>
+    <mat-dialog-actions align="center">
+      <button mat-button mat-dialog-close>Close</button>
+    </mat-dialog-actions>
+  </div>
+</ng-container>
+

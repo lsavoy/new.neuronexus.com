@@ -1,0 +1,16 @@
+.imageStyle{
+width: 80%;
+margin: 0 auto;
+}
+
+.system_main_area_cont figure:hover img {
+    transform: none !important;
+}
+
+.system_main_area_cont figure {
+    box-shadow: none !important;
+    transition:none !important;
+    overflow: hidden;
+  }
+
+

@@ -1,0 +1,38 @@
+<app-banner [banner]="banner"></app-banner>
+
+
+  <div class="meet_sec common_gap">
+    <div class="container">
+      <div class="meet_inner">
+        <div class="meet_top" *ngIf="distributorsStaticContent !== undefined">
+          <h3>{{distributorsStaticContent?.title}}</h3>
+          <h4>{{distributorsStaticContent?.subtitle}}</h4> 
+          <figure *ngIf="distributorsStaticContent?.image">
+            <img src="{{BASE_IMAGE_URL}}cms/{{distributorsStaticContent?.image}}" alt="">
+          </figure>
+          <section [innerHtml]="distributorsStaticContent?.content"></section>
+        </div>
+        <div class="no-data-center" *ngIf="distributorsStaticContent === undefined">No data available!</div>
+      </div>
+    </div>
+    <div class="container">
+      <ng-container *ngIf="distributorList !== undefined && distributorList?.length > 0">
+      <ul class="remove_style">
+        <li *ngFor="let partner of distributorList;">
+          <div class="partneLocation">
+            {{partner?.country}}
+          </div>
+          <div class="partnerTitle">
+            <a style="cursor: pointer;color: #009ddc;" href="{{partner?.company_link}}">{{partner?.company}}</a>
+          </div>
+          <div>
+            <section [innerHtml]="partner?.company_info"></section>
+          </div>
+        </li>
+      </ul>
+    </ng-container>
+    <div class="no-data-center" *ngIf="distributorList === undefined || distributorList?.length === 0">No data available!</div>
+    </div>
+  </div>
+
+

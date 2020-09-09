@@ -1,0 +1,288 @@
+<!-- Banner section -->
+<div class="banner_sec" *ngIf="video !== undefined">
+  <figure >
+    <video id="bg-video" loop muted autoplay oncanplay="this.play()" onloadedmetadata="this.muted = true" poster="assets/images/static_banner_img.jpg" playsinline >
+        <source src="{{video}}" type="video/mp4">
+    </video>
+  </figure>
+  <!--
+  <div class="banner_cont">
+    <div class="container">
+      <div class="inner_banner">
+        <div class="row bnr_main_area">
+          <div class="col-md-6 bnr_main_area_cont" *ngIf="slideList !== undefined && slideList?.length > 0">
+            <ngx-slick-carousel class="carousel"
+              #slickModal="slick-carousel"
+              [config]="homeSlideConfig" >
+              <div ngxSlickItem *ngFor="let slide of slideList" class="slide">
+                <h1>{{ slide.text_h1 }}</h1>
+                <h3>{{ slide.text_h3 }}</h3>
+                <h4>{{ slide.text_h4 }}</h4>
+              </div>
+            </ngx-slick-carousel>
+          </div>
+          <div class="col-md-6 bnr_main_area_cont">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  -->
+</div>
+
+<!-- Paticle Section -->
+<ng-container *ngIf="particleStyle !== undefined && particleParams !== undefined">
+  <particles [params]="particleParams" [style]="particleStyle" [width]="width" [height]="height"></particles>
+</ng-container>
+
+<div class="feature_sec common_gap">
+  <div class="container">
+    <div class="update_inner">
+      <ng-container *ngIf="featureList !== undefined && featureList?.length > 0">
+        <!-- <h3>Science Update</h3> -->
+        <div class="row update_main_area_cont">
+          <div class="col-lg-4 col-md-6  update_main_area" *ngFor="let feature of featureList">
+            <div>
+              <figure class="align-center" *ngIf="feature?.image">
+                <img class="feature-image" src="{{BASE_IMAGE_URL}}feature/{{feature?.image}}" alt="">
+              </figure>
+              <div class="update_cont">
+                <h3 class="feature-caption" [innerHTML]="feature?.caption"></h3>
+                <p class="feature-description">{{feature?.description}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="update_btn">
+          <a  class="redmore_btn" [routerLink]="['/science-update/science-update-list']" routerLinkActive="active">Read More</a>
+        </div>
+      </ng-container>
+      <div class="no-data-center" *ngIf="featureList === undefined || featureList?.length === 0">No data available!</div>
+    </div>
+  </div>
+</div>
+
+<div class="image_sec common_gap">
+  <div class="container">
+    <div class="update_inner">
+      <ng-container *ngIf="imageSlideList !== undefined && imageSlideList?.length > 0">
+        <div class="row">
+          <div class="col-lg-12 col-md-24">
+            <ngx-slick-carousel class="carousel"
+                                #slickModal="slick-carousel"
+                                [config]="imageSlideConfig">
+              <div ngxSlickItem *ngFor="let slide of imageSlideList" class="slide">
+                <a target="_blank" [href]="slide?.jumpUrl"><img class="carousel-img" src="{{BASE_IMAGE_URL}}imageCarousel/{{ slide.img }}" alt="" width="100%"></a>
+              </div>
+            </ngx-slick-carousel>
+          </div>
+        </div>
+      </ng-container>
+      <div class="no-data-center" *ngIf="imageSlideList === undefined || imageSlideList?.length === 0">No data available!</div>
+    </div>
+  </div>
+</div>
+
+<div class="post_sec common_gap">
+  <div class="container">
+    <div class="update_inner">
+      <ng-container *ngIf="postList !== undefined && postList?.length > 0">
+        <div class="row" *ngFor="let post of postList">
+          <div class="col-lg-6 col-md-12">
+            <div>
+              <figure class="align-center">
+                <img *ngIf="post?.resourceType == 'img' && post?.resource" class="post-image" src="{{BASE_IMAGE_URL}}post/{{post?.resource}}" alt="">
+                <video *ngIf="post?.resourceType == 'viedo' && post?.resource" muted controls="controls" onloadedmetadata="this.muted = true" playsinline>
+                  <source src="{{BASE_IMAGE_URL}}post/{{post?.resource}}" type="video/mp4">
+                </video>
+              </figure>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-12 post-content">
+            <p class="post-title" [innerHTML]="post?.title"></p>
+            <p class="post-summary" [innerHTML]="post?.summary"></p>
+            <p><a [href]="post?.jumpUrl">more</a></p>
+          </div>
+        </div>
+      </ng-container>
+      <div class="no-data-center" *ngIf="postList === undefined || postList?.length === 0">No data available!</div>
+    </div>
+  </div>
+</div>
+
+<div class="video_sec common_gap">
+  <div class="container">
+    <div class="update_inner">
+      <ng-container *ngIf="videoSlideList !== undefined && videoSlideList?.length > 0">
+        <div class="row">
+          <div class="col-lg-12 col-md-24">
+            <ngx-slick-carousel class="carousel"
+                                #slickModal="slick-carousel"
+                                [config]="videoSlideConfig">
+              <div ngxSlickItem *ngFor="let slide of videoSlideList" class="slide" style="text-align:center">
+                <iframe class="video-iframe" height="450" width="100%" [src]="slide?.videoUrl" frameborder="0" allowfullscreen></iframe>
+              </div>
+            </ngx-slick-carousel>
+          </div>
+        </div>
+      </ng-container>
+      <div class="no-data-center" *ngIf="videoSlideList === undefined || videoSlideList?.length === 0">No data available!</div>
+    </div>
+  </div>
+</div>
+
+<!-- Support Section -->
+<!--
+    <div class="support_sec">
+      <div id="particles-js" class="common_gap">
+        <div class="container">
+          <div class="inner_support">
+            <div class="row support_main_area">
+              <div class="col-lg-6 support_main_area_cont" *ngIf="supportStaticinfo !== undefined">
+                <h2>{{formatSupportTitle(supportStaticinfo?.title)[0]}}</h2>
+                <h3>{{formatSupportTitle(supportStaticinfo?.title)[1]}}</h3>
+                  <section [innerHtml]="supportStaticinfo?.content"></section>
+                  <a class="redmore_btn" [routerLink]="['/support']" routerLinkActive="active">Read More</a>
+              </div>
+              <div class="no-data-center" *ngIf="supportStaticinfo === undefined" >
+                No data available!
+              </div>
+
+              <ng-container *ngIf="supportList !== undefined && supportList?.length > 0" >
+                <div class="col-lg-6 support_main_area_cont right_img"> -->
+                  <!-- SupportList 1 -->
+                 <!-- <ul>
+                    <li *ngFor="let support of supportList1">
+                      <div class="support_box">
+                        <figure>
+                          <img src="{{BASE_IMAGE_URL}}support/{{support?.image}}" alt="">
+                        </figure>
+                        <div class="support_text">
+                          <h6><a [routerLink]="['/support-details', support?.slug]" routerLinkActive="active">{{support?.title}}</a></h6>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+-->
+                  <!-- SupportList 2 -->
+                <!--  <ul>
+                    <li *ngFor="let support of supportList2">
+                      <div class="support_box">
+                        <figure>
+                          <img src="{{BASE_IMAGE_URL}}support/{{support?.image}}" alt="">
+                        </figure>
+                        <div class="support_text">
+                          <h6><a [routerLink]="['/support-details', support?.slug]" routerLinkActive="active">{{support?.title}}</a></h6>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </ng-container>
+              <div class="no-data-center" *ngIf="supportList === undefined || supportList?.length === 0" >No data available!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+-->
+<!-- About Section -->
+<!--
+    <div class="about_sec">
+      <div class="container">
+        <div class="about_inner">
+          <div class="row about_main_area" *ngIf="aboutStaticContent !== undefined">
+            <div class="col-lg-6 about_main_area_cont about_left_img" *ngIf="aboutStaticContent?.image">
+              <img src="{{BASE_IMAGE_URL}}cms/{{aboutStaticContent?.image}}" alt="">
+            </div>
+            <div class="col-lg-6 about_main_area_cont ml-auto">
+              <div class="about_right">
+                <h3>{{aboutStaticContent?.title_h2}}</h3>
+                <h2>{{aboutStaticContent?.title_h3}}</h2>
+                <section [innerHtml]="aboutStaticContent?.content"></section>
+                <a  class="redmore_btn" [routerLink]="['/about']" routerLinkActive="active">Read More</a>
+              </div>
+            </div>
+          </div>
+          <div class="no-data-center" *ngIf="aboutStaticContent === undefined">No data available!</div> -->
+          <!-- <button mat-button (click)="openDialog()">Open dialog</button> -->
+      <!--  </div>
+      </div>
+    </div> -->
+
+<!-- Science Update Section-->
+    <div class="update_sec common_gap" id="particles-js2">
+      <div class="container">
+        <div class="update_inner">
+          <ng-container *ngIf="scienceUpdateList !== undefined && scienceUpdateList?.length > 0">
+          <h3>Science Update</h3>
+          <div class="row update_main_area_cont">
+            <div class="col-lg-4 col-md-6  update_main_area" *ngFor="let science of scienceUpdateList">
+              <div class="update_box">
+                <figure *ngIf="science?.image">
+                  <img src="{{BASE_IMAGE_URL}}science_update/{{science?.image}}" alt="">
+                </figure>
+                <div class="update_cont">
+                  <h4>
+                    <a>{{convertScienceUpdateTitle(science?.title)}}</a>
+                  </h4>
+                  <span>{{science?.createdAt | date:'mediumDate'}}</span>
+                  <section style="height: 120px;">{{convertScienceUpdateDesc(science?.content)}}</section>
+                  <a style="margin-top: 10px;cursor: pointer;" class="redmore_btn" [routerLink]="['/science-update/science-update-details', science?.slug]" routerLinkActive="active" >Read More</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="update_btn">
+            <a  class="redmore_btn" [routerLink]="['/science-update/science-update-list']" routerLinkActive="active">Read More</a>
+          </div>
+          </ng-container>
+          <div class="no-data-center" *ngIf="scienceUpdateList === undefined || scienceUpdateList?.length === 0">No data available!</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Knowledge Center Section-->
+<!--
+    <div class="knowledge_sec accrodion_sec">
+      <div class="container">
+        <div class="knowledge_inner">
+          <div class="knowledge_box">
+            <ng-container *ngIf="knowledgeCenterList !== undefined && knowledgeCenterList?.length > 0">
+            <div class="knowledge_head">
+              <h3>Knowledge Center</h3>
+            </div>
+            <div class="accordion" id="accordionExample">
+              <div class="card" *ngFor="let knowledge of knowledgeCenterList;let i = index;">
+                <div class="card-header" id="headingTwo">
+                  <h2 class="mb-0">
+                    <button class="btn btn-link collapsed"  type="button" data-toggle="collapse" attr.data-target="#collapse{{knowledge?._id}}"
+                      aria-expanded="false" aria-controls="collapseTwo">
+                      0{{i+1}}. {{knowledge?.title}}
+                      <span class="plus">
+                        <img src="assets/images/plus.svg" alt="">
+                      </span>
+                      <span class="minus">
+                        <img src="assets/images/minus.svg" alt="">
+                      </span>
+                    </button>
+                  </h2>
+                </div>
+                <div id="collapse{{knowledge?._id}}" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                  <div class="card-body">
+                    <section [innerHtml]="knowledge?.description"></section>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion_btn">
+              <a  class="redmore_btn" [routerLink]="['/knowledge-center']" routerLinkActive="active">Read More</a>
+            </div>
+          </ng-container>
+          <div class="no-data-center" *ngIf="knowledgeCenterList === undefined || knowledgeCenterList?.length === 0">No data available!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+-->
