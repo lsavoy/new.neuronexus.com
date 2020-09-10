@@ -71,22 +71,40 @@ export class TeamComponent implements OnInit {
 
     const data = [
       {
-        image: 'daryl-202x300.jpg',
+        image: 'daryl-691x1024.jpg',
         name: 'Daryl Kipke',
         qualification: 'PhD',
         designation: 'Chief Executive Officer & Managing Director of NeuroNexus & NEL Group, Inc.'
       },
       {
-        image: 'rio-204x300.jpeg',
+        image: 'rio-697x1024.jpeg',
         name: 'Rio Vetter',
         qualification: 'PhD',
         designation: 'Chief Technology Officer & VP of Research'
       },
       {
-        image: 'jamie-204x300.jpeg',
+        image: 'jamie-695x1024.jpeg',
         name: 'Jamille Hetke',
         qualification: 'MS',
         designation: 'VP of Engineering'
+      },
+      {
+        image: 'taegyun-689x1024.jpeg',
+        name: 'Taegyun Moon',
+        qualification: 'PhD',
+        designation: 'VP of Strategy & Business Development'
+      },
+      {
+        image: 'priyanka-691x1024.jpeg',
+        name: 'Priyanka Seghal',
+        qualification: 'MS',
+        designation: 'Director of Operations'
+      },
+      {
+        image: 'alexis-704x1024.jpg',
+        name: 'Alexis Paez',
+        qualification: 'PhD',
+        designation: 'Director of Science Outreach'
       }
     ];
     this.leadershipList = data;

@@ -63,7 +63,7 @@ ul li.blocks-gallery-item:before {
   display: none;
 }
 .blocks-gallery-grid.columns-3 img {
-  min-height: 500px;
+  max-height: 500px;
 }
 .blocks-gallery-grid.columns-5 img {
   max-height: 320px;

@@ -34,7 +34,7 @@ export class FooterComponent implements OnInit, AfterViewInit {
           e => e.setting_slug === 'site-fax'
         ).setting_value;
         this.settings.facebook = this.allSettings.find(
-          e => e.setting_slug === 'facebook'
+          e => e.setting_slug === 'twitter'
         ).setting_value;
         this.settings.youtube = this.allSettings.find(
           e => e.setting_slug === 'youtube'

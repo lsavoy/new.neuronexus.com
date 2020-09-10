@@ -315,7 +315,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       },
       {
         title: '<a href="https://neuronexus.com/2020/08/27/dr-rio-vetter-webinar-electrode-technology/"><strong>New Webinar in NeuroNexus Series</strong></a>',
-        summary: 'Dr. Vetter, a co-founder of NeuroNexus, leads our recent webinar discussing our microelectrode technology. During this exclusive walkthrough with Dr. Vetter, viewers will learn a historical overview of microelectrodes followed by a detailed description of our innovative MEMS-based electrode technology and product lines, finishing up with some unique and interesting applications that utilize this technology and its capabilities. Dr. Vetter will also discuss our leading-edge technologies that may be used for neurophysiological recording.',
+        summary: 'Dr. Vetter, a co-founder of NeuroNexus, leads our recent webinar discussing our microelectrode technology. During this exclusive walkthrough with Dr. Vetter, viewers will learn a historical overview of microelectrodes followed by a detailed description of our innovative MEMS-based electrode technology and product lines, finishing up with some unique and interesting applications that utilize this technology and its capabilities. ',
         resource: 'video3.mp4',
         resourceType: 'viedo',
         jumpUrl: 'https://neuronexus.com/2020/08/27/dr-rio-vetter-webinar-electrode-technology/'
@@ -351,16 +351,16 @@ export class HomeComponent implements OnInit, AfterViewInit {
     ];
     this.imageSlideList = imageSlideList;
   }
+  // https://player.youku.com/embed/XMzgzODEzMTQ0NA==
+  // https://player.youku.com/embed/XNDc2MTY0NTIzMg==
+  // https://player.youku.com/embed/XNDg0MDUyNjM2MA==
   getVideoSlideList() {
     const videoSlideList = [
       {
-        videoUrl: this.trustUrl('https://player.youku.com/embed/XMzgzODEzMTQ0NA==')
+        videoUrl: this.trustUrl('https://www.youtube.com/embed/Gkmcyr3E6sg?feature=oembed')
       },
       {
-        videoUrl: this.trustUrl('https://player.youku.com/embed/XNDc2MTY0NTIzMg==')
-      },
-      {
-        videoUrl: this.trustUrl('https://player.youku.com/embed/XNDg0MDUyNjM2MA==')
+        videoUrl: this.trustUrl('https://www.youtube.com/embed/GxY5PJyuJeU?feature=oembed')
       }
     ];
     this.videoSlideList = videoSlideList;
