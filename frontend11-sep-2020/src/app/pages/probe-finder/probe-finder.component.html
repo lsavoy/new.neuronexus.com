@@ -1,0 +1,99 @@
+<app-banner [banner]="banner"></app-banner>
+
+<div class="system_sec produced_sec common_gap">
+    <div class="container">
+      <div class="inner_system">
+        <div class="row system_main_area" *ngIf="probeFinderMaster !== undefined">
+          <div class="col-lg-6 system_main_area_cont">
+            <div class="inner_university" *ngIf="probeFinderMaster !== undefined">
+              <div style="margin-bottom: 15px;" class="inner_university_body">
+                <h4 style="margin-bottom: 5px;">EXPERIMENT</h4>
+                <select (change)="optionChange('experiment_id', $event.target.value)">
+                  <option selected value="">Choose experiment</option>
+                  <option *ngFor="let experiment of probeFinderMaster?.experiment" [value]="experiment?._id">{{experiment?.title}}</option>
+                </select>
+              </div>
+
+              <div style="margin-bottom: 15px;" class="inner_university_body">
+                <h4 style="margin-bottom: 5px;">NO. OF CHANNELS</h4>
+                <select (change)="optionChange('channel_id', $event.target.value)">
+                  <option selected value="">Choose channels</option>
+                  <option *ngFor="let channels of probeFinderMaster?.channels" [value]="channels?._id">{{channels?.title}}</option>
+                </select>
+              </div>
+
+              <div style="margin-bottom: 15px;" class="inner_university_body">
+                <h4 style="margin-bottom: 5px;">NO. OF SHANKS</h4>
+                <select (change)="optionChange('shanks_id', $event.target.value)">
+                  <option selected value="">Choose shank</option>
+                  <option *ngFor="let shank of probeFinderMaster?.shank" [value]="shank?._id">{{shank?.title}}</option>
+                </select>
+              </div>
+
+              <div style="margin-bottom: 15px;" class="inner_university_body">
+                <h4 style="margin-bottom: 5px;">SITE LAYOUT</h4>
+                <select (change)="optionChange('site_layout_id', $event.target.value)">
+                  <option selected value="">Choose site layout</option>
+                  <option *ngFor="let siteLayout of probeFinderMaster?.siteLayout" [value]="siteLayout?._id">{{siteLayout?.title}}</option>
+                </select>
+              </div>
+
+              <div style="margin-bottom: 15px;" class="inner_university_body">
+                <h4 style="margin-bottom: 5px;">SHANK LENGTH</h4>
+                <select (change)="optionChange('shank_length_id', $event.target.value)">
+                  <option selected value="">Choose shank length</option>
+                  <option *ngFor="let shankLength of probeFinderMaster?.shankLength" [value]="shankLength?._id">{{shankLength?.title}}</option>
+                </select>
+              </div>
+
+              <div style="margin-bottom: 15px;" class="inner_university_body">
+                <h4 style="margin-bottom: 5px;">SITE AREAS</h4>
+                <select (change)="optionChange('site_area_id', $event.target.value)">
+                  <option selected value="">Choose site areas</option>
+                  <option *ngFor="let siteArea of probeFinderMaster?.siteArea" [value]="siteArea?._id">{{siteArea?.title}}</option>
+                </select>
+              </div>
+
+            </div>
+          </div>
+          <div class="col-lg-6 system_main_area_cont">
+            <figure class="mt-0">
+              <img src="assets/images/sketch.png" alt="">
+            </figure>
+            <p>If a suitable design cannot be found with the Probe Finder, a <a style="color: #009ddc" href="https://neuronexus.com/products/custom-design/custom-probe-design/">Custom Design</a> can be manufactured to your desired specifications.</p>
+          </div>
+        </div>
+        <div class="update_btn" *ngIf="probeFinderMaster !== undefined">
+          <a class="redmore_btn" [routerLink]="['/home']" routerLinkActive="active">Back</a>
+        </div>
+        <div class="no-data-center" *ngIf="probeFinderMaster === undefined">No data available!</div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="update_sec common_gap" id="particles-js2">
+    <div class="container">
+      <div class="update_inner">
+      <ng-container *ngIf="probFinderList !== undefined && probFinderList?.length > 0">
+        <div class="row update_main_area_cont">
+          <div class="col-lg-4 col-md-6  update_main_area" style="margin-top: 30px;" *ngFor="let prob of probFinderList;">
+            <a [routerLink]="['/probe-details', prob?.slug ]" routerLinkActive="active">
+            <div class="update_box">
+              <figure *ngIf="prob?.image">
+                <img src="{{BASE_IMAGE_URL}}probeFinder/{{prob?.image}}" alt="">
+              </figure>
+            </div>
+            <div class="update_cont">
+                <h4>
+                  <a>{{prob?.name}}</a>
+                </h4>
+            </div>
+            </a>
+          </div>
+        </div>
+        </ng-container>
+        <div class="no-data-center" *ngIf="probFinderList === undefined || probFinderList?.length === 0">No data available!</div>
+      </div>
+    </div>
+  </div>

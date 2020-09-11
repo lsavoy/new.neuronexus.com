@@ -1,0 +1,32 @@
+<% layout(layout_directory+'/mainLayout') -%>
+<div class="kt-portlet">
+  <div class="kt-portlet__head">
+    <div class="kt-portlet__head-label">
+      <h3 class="kt-portlet__head-title"><%= page_title %></h3>
+    </div>
+  </div>
+    <div class="kt-portlet__body">
+       <form class="kt-form kt-form--label-right" id="frmEditService" action="<%= generateUrl('admin.shank-length.update') %>" method="POST" enctype='multipart/form-data'>
+        <div class="kt-portlet__body">
+          <div class="form-group row">
+            <div class="col-lg-12">
+              <label>Shank Length</label>
+              <input type="text" name="title" id="title" class="form-control required" required placeholder="Enter Shank Length" value="<%=response.title%>">
+            </div>
+          </div>
+        </div>
+        <div class="kt-portlet__foot">
+          <div class="kt-form__actions">
+            <div class="row">
+              <div class="col-lg-6">
+		            <input type="hidden" name="id" value="<%=response._id%>">
+                <button type="submit" class="btn btn-primary">Update</button>
+                <a href="<%= generateUrl('admin.shank-length.list') %>" class="btn btn-secondary">Cancel</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+
+    </div>
+</div>

@@ -1,0 +1,60 @@
+<!-- <app-banner [banner]="banner"></app-banner> -->
+
+<div class="system_sec common_gap">
+    <div class="accrodion_sec">
+      <div class="container">
+        <div class="knowledge_inner inner_container">
+          <div class="knowledge_box">
+            <div class="knowledge_head">
+              <h3>knowledge Center for {{categoryName}}</h3>
+            </div>
+
+            <div class="knowledge_container">
+                <div class="knowledge_left">
+                <h3>Subcategories for {{categoryName}}</h3>
+                <ul>
+                  <li *ngFor="let subCategory of categoryWiseSubCategoryList">
+                    <a style="cursor: pointer;" [routerLink]="['/knowledge-center/sub-category-details', subCategory?.slug, subCategory?.sub_category_name]" routerLinkActive="active" >{{subCategory?.sub_category_name}}</a>
+                  </li>
+                </ul>
+              </div>
+
+                <div class="knowledge_right">
+                  <ng-container *ngIf="categoryWiseKnowledgeList !== undefined && categoryWiseKnowledgeList?.length > 0">
+                  <div class="accordion" id="accordionExample">
+                    <div class="card" *ngFor="let knowledge of categoryWiseKnowledgeList;let i = index;">
+                      <div class="card-header" id="headingTwo">
+                        <h2 class="mb-0">
+                          <button class="btn btn-link collapsed"  type="button" data-toggle="collapse" attr.data-target="#collapse{{knowledge?._id}}"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            0{{i+1}}. {{knowledge?.title}}
+                            <span class="plus">
+                              <img src="assets/images/plus.svg" alt="">
+                            </span>
+                            <span class="minus">
+                              <img src="assets/images/minus.svg" alt="">
+                            </span>
+                          </button>
+                        </h2>
+                      </div>
+                      <div id="collapse{{knowledge?._id}}" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                          <section [innerHtml]="knowledge?.description"></section>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+                <div class="no-data-center" *ngIf="categoryWiseKnowledgeList === undefined || categoryWiseKnowledgeList?.length === 0">No data available!</div>
+            </div>
+
+
+          </div>
+          </div>
+        </div>
+        <div class="update_btn" style="margin-bottom: 20px;" *ngIf="categoryWiseSubCategoryList !== undefined">
+          <a class="redmore_btn" [routerLink]="['/home']" routerLinkActive="active">Back</a>
+        </div>
+      </div>
+    </div>
+  </div>

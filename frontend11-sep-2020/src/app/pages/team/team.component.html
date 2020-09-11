@@ -1,0 +1,37 @@
+<app-banner [banner]="banner"></app-banner>
+
+
+  <div class="meet_sec common_gap">
+    <div class="container">
+      <div class="meet_inner">
+        <div class="meet_top" *ngIf="teamStaticContent !== undefined">
+          <h3>{{teamStaticContent?.title_h2}}</h3>
+          <h2>{{teamStaticContent?.title_h3}}</h2>
+          <figure *ngIf="teamStaticContent?.image">
+            <img src="{{BASE_IMAGE_URL}}cms/{{teamStaticContent?.image}}" alt="">
+          </figure>
+            <section [innerHtml]="teamStaticContent?.content"></section>
+        </div>
+        <div class="no-data-center" *ngIf="teamStaticContent === undefined">No data available!</div>
+
+        <div class="leadership" *ngIf="leadershipList !== undefined && leadershipList?.length > 0">
+          <h3  >Leadership</h3>
+          <div class="leader_box" *ngFor="let member of leadershipList;">
+            <div class="row leader_main">
+              <div class="col-lg-4 leader_main_cont left_leader">
+                <figure *ngIf="member?.image">
+                  <img src="{{BASE_IMAGE_URL}}cms/{{member?.image}}" alt="">
+                </figure>
+              </div>
+              <div class="col-lg-8 leader_main_cont right_leader">
+                <h4>{{member?.name}}, {{member?.qualification}}</h4>
+                <span>{{member?.designation}}</span>
+               <section [innerHtml]="member?.description"></section>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="no-data-center" *ngIf="leadershipList === undefined || leadershipList?.length === 0">No data available!</div>
+      </div>
+    </div>
+  </div>

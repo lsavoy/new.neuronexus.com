@@ -1,0 +1,44 @@
+<footer class="fter" id="particles-js3">
+  <div class="container">
+    <div class="fter_inner">
+      <figure>
+        <a [routerLink]="['/home']" routerLinkActive="active">
+          <img src="assets/images/logo2.png" alt="">
+        </a>
+      </figure>
+
+      <div class="top_menu">
+        <ul>
+          <li><a [routerLink]="['/product']" routerLinkActive="active">Products</a></li>
+          <li><a [routerLink]="['/support']" routerLinkActive="active">Support</a></li>
+          <li><a [routerLink]="['/about']" routerLinkActive="active">About</a></li>
+          <li><a [routerLink]="['/contact']" routerLinkActive="active">Contact</a></li>
+          <li><a href="http://shopping.neuronexus.com/" target="_blank">Webstore</a></li>
+          <li><a href="https://nnxbrainhacker.com/" target="_blank">Brainhacker</a></li>
+        </ul>
+      </div>
+      <ng-container *ngIf="settings !== undefined">
+      <div class="fter_address">
+        <ul>
+          <li class="address">
+            <address class="location" [innerHtml]="settings?.address"></address>
+          </li>
+          <li class="phone1"><a class="call" href="tel:{{settings?.phone}}">{{settings?.phone}}</a></li>
+          <li class="phone2"><a class="fax" href="tel:{{settings?.fax}}">{{settings?.fax}}</a></li>
+        </ul>
+      </div>
+      <div class="socail_icon">
+        <ul>
+          <li><a href="{{settings?.facebook}}" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+          <li><a href="{{settings?.youtube}}" target="_blank"><i class="fab fa-youtube"></i></a></li>
+          <li><a href="{{settings?.instagram}}" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+        </ul>
+      </div>
+      </ng-container>
+      <div class="no-data-center" *ngIf="settings === undefined">No data available!</div>
+      <div class="copyright">
+        <p>&copy; 2020 <a [routerLink]="['/home']" routerLinkActive="active">NeuroNexus.</a> All Rights Reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>

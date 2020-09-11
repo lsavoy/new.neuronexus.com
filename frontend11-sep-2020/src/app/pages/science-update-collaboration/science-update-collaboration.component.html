@@ -1,0 +1,29 @@
+<app-banner [banner]="banner"></app-banner>
+
+
+  <div class="meet_sec common_gap">
+    <div class="container">
+      <div class="meet_inner">
+        <div class="meet_top" *ngIf="scienceUpdateCollaborationStaticinfo !== undefined">
+          <h3>{{scienceUpdateCollaborationStaticinfo?.title}}</h3> 
+          <section [innerHtml]="scienceUpdateCollaborationStaticinfo?.content"></section>
+        </div>
+        <div class="no-data-center" *ngIf="scienceUpdateCollaborationStaticinfo === undefined">No data available!</div>
+      </div>
+
+      <ng-container *ngIf="scienceUpdateCollaborationList !== undefined || scienceUpdateCollaborationList?.length > 0">
+        <mat-tab-group >
+          <ng-container *ngFor="let tab of scienceUpdateCollaborationList;">
+              <mat-tab label="{{tab?.title}}">
+                <ng-template matTabContent>
+                  <section style="margin-top: 10px;" [innerHtml]="tab?.content"></section>
+                </ng-template> 
+              </mat-tab>
+            </ng-container>
+        </mat-tab-group>
+      </ng-container>
+      <div class="no-data-center" *ngIf="scienceUpdateCollaborationList?.length === 0 || scienceUpdateCollaborationList === undefined">
+        No data available!
+      </div>
+    </div>
+  </div>

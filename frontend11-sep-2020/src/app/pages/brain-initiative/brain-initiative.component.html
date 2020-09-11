@@ -1,0 +1,34 @@
+<app-banner [banner]="banner"></app-banner>
+
+
+  <div class="common_gap">
+    <!-- meet_sec //background color -->
+    <div class="container">
+      <div class="meet_inner">
+        <div class="meet_top" *ngIf="brainInitiativeStaticContent !== undefined">
+          <figure *ngIf="brainInitiativeStaticContent?.image">
+            <img src="{{BASE_IMAGE_URL}}cms/{{brainInitiativeStaticContent?.image}}" alt="">
+          </figure>
+          <section [innerHtml]="brainInitiativeStaticContent?.content"></section>
+        </div>
+        <div class="no-data-center" *ngIf="brainInitiativeStaticContent === undefined">No data available!</div>
+      </div>
+
+    <ng-container *ngIf="brainInitiativeTabList !== undefined || brainInitiativeTabList?.length > 0">
+      <mat-tab-group >
+        <ng-container *ngFor="let tab of brainInitiativeTabList;">
+            <mat-tab label="{{tab?.title}}">
+              <ng-template matTabContent>
+                <section style="margin-top: 10px;" [innerHtml]="tab?.content"></section>
+              </ng-template> 
+            </mat-tab>
+          </ng-container>
+          <ng-container *ngIf="brainInitiativeTabList?.length === 0 || brainInitiativeTabList === undefined">
+            No data available!
+          </ng-container>
+      </mat-tab-group>
+    </ng-container>
+    <div class="no-data-center" *ngIf="brainInitiativeTabList === undefined || brainInitiativeTabList?.length === 0">No data available!</div>
+
+    </div>
+  </div>

@@ -1,0 +1,169 @@
+<% layout(layout_directory+'/mainLayout') -%>
+<div class="kt-portlet">
+  <div class="kt-portlet__head">
+    <div class="kt-portlet__head-label">
+      <h3 class="kt-portlet__head-title"><%= page_title %></h3>
+    </div>
+  </div>
+    <div class="kt-portlet__body">
+       <form class="kt-form kt-form--label-right" id="frmEditService" action="<%= generateUrl('admin.probe-finder.update') %>" method="POST" enctype='multipart/form-data'>
+        <div class="kt-portlet__body">
+          <div class="form-group row">
+            <div class="col-lg-4">
+              <label>Name</label>
+              <input type="text" name="name" id="title" class="form-control required" required placeholder="Enter probe finder name" value="<%=response.name%>">
+            </div>
+            <div class="col-lg-4">
+              <label>Image</label>
+              <input type="file" name="image" id="image" class="form-control" data-validation-required-message="This field is required">
+          </div>
+          <div class="col-lg-4">
+            <img src="/uploads/probeFinder/<%=response.image%>" height="100px" width="100px" alt="">
+        </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-lg-6">
+              <label>Experiment</label>
+              <select class="form-control" name="experiment_id" id="experiment_id">
+                <option value="">None</option>
+                <%if(experiment.length > 0){%>
+                  <%for(var x=0; x<experiment.length; x++){%>
+                    <option value="<%=experiment[x]._id%>" <%=response.experiment_id !=null && response.experiment_id.toString()==experiment[x]._id.toString()?'SELECTED':''%>><%=experiment[x].title%></option>
+                    <%}%>
+                <%}%>
+              </select>
+            </div>
+            <div class="col-lg-6">
+              <label>No. Of channels</label>
+              <select class="form-control" name="channel_id" id="channel_id">
+                <option value="">None</option>
+                <%if(channels.length > 0){%>
+                  <%for(var y=0; y<channels.length; y++){%>
+                    <option value="<%=channels[y]._id%>" <%=response.channel_id !=null && response.channel_id.toString()==channels[y]._id.toString()?'SELECTED':''%>><%=channels[y].title%></option>
+                    <%}%>
+                <%}%>
+              </select>
+          </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-lg-6">
+              <label>No. Of Shanks:</label>
+              <select class="form-control" name="shanks_id" id="shanks_id">
+                <option value="">None</option>
+                <%if(shanks.length > 0){%>
+                  <%for(var z=0; z<shanks.length; z++){%>
+                    <option value="<%=shanks[z]._id%>" <%=response.shanks_id !=null && response.shanks_id.toString()==shanks[z]._id.toString()?'SELECTED':''%>><%=shanks[z].title%></option>
+                    <%}%>
+                <%}%>
+              </select>
+            </div>
+            <div class="col-lg-6">
+              <label>Site Layout</label>
+              <select class="form-control" name="site_layout_id" id="site_layout_id">
+                <option value="">None</option>
+                <%if(siteLayout.length > 0){%>
+                  <%for(var a=0; a<siteLayout.length; a++){%>
+                    <option value="<%=siteLayout[a]._id%>" <%=response.site_layout_id !=null && response.site_layout_id.toString()==siteLayout[a]._id.toString()?'SELECTED':''%>><%=siteLayout[a].title%></option>
+                    <%}%>
+                <%}%>
+              </select>
+          </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-lg-6">
+              <label>Shank Length</label>
+              <select class="form-control" name="shank_length_id" id="shank_length_id">
+                <option value="">None</option>
+                <%if(shankLength.length > 0){%>
+                  <%for(var b=0; b<shankLength.length; b++){%>
+                    <option value="<%=shankLength[b]._id%>" <%=response.shank_length_id !=null && response.shank_length_id.toString()==shankLength[b]._id.toString()?'SELECTED':''%>><%=shankLength[b].title%></option>
+                    <%}%>
+                <%}%>
+              </select>
+            </div>
+            <div class="col-lg-6">
+              <label>Site Area</label>
+              <select class="form-control" name="site_area_id" id="site_area_id">
+                <option value="">None</option>
+                <%if(siteArea.length > 0){%>
+                  <%for(var c=0; c<siteArea.length; c++){%>
+                    <option value="<%=siteArea[c]._id%>" <%=response.site_area_id !=null && response.site_area_id.toString()==siteArea[c]._id.toString()?'SELECTED':''%>><%=siteArea[c].title%></option>
+                    <%}%>
+                <%}%>
+              </select>
+          </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-lg-12">
+              <label>Specification Title:</label>
+              <input type="text" name="specification_title" id="title" class="form-control required" required
+                placeholder="Enter Specification Title" value="<%=response.specification_title%>">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-lg-12">
+              <label>Specification Content:</label>
+              <textarea class="form-control ckeditor" name="specification_content" id="exampleTextarea"
+                rows="3"><%=response.specification_content%></textarea>
+            </div>
+          </div>
+  
+          <div class="form-group row">
+            <div class="col-lg-12">
+              <label>Ordering Information Title:</label>
+              <input type="text" name="ordering_information_title" id="title" class="form-control required" required
+                placeholder="Enter Ordering Information Title" value="<%=response.ordering_information_title%>">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-lg-12">
+              <label>Ordering Information Content:</label>
+              <textarea class="form-control ckeditor" name="ordering_information_content" id="exampleTextarea"
+                rows="3"><%=response.ordering_information_content%></textarea>
+            </div>
+          </div>
+  
+          <div class="form-group row">
+            <div class="col-lg-12">
+              <label>Documentation Title:</label>
+              <input type="text" name="documentation_title" id="title" class="form-control required" required
+                placeholder="Enter Documentation Title" value="<%=response.documentation_title%>">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-lg-12">
+              <label>Documentation Content:</label>
+              <textarea class="form-control ckeditor" name="documentation_content" id="exampleTextarea"
+                rows="3"><%=response.documentation_content%></textarea>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-lg-4">
+              <label>Windows Link</label>
+              <input type="text" name="windows_link" id="windows_link" class="form-control "  placeholder="Enter windows link" value="<%=response.windows_link%>">
+            </div>
+            <div class="col-lg-4">
+              <label>Mac Link</label>
+              <input type="text" name="mac_link" id="mac_link" class="form-control " placeholder="Enter mac link" value="<%=response.windows_link%>">
+            </div>
+            <div class="col-lg-4">
+              <label>Linux Link</label>
+              <input type="text" name="linux_link" id="linux_link" class="form-control" placeholder="Enter linux link" value="<%=response.windows_link%>">
+            </div>
+          </div>
+        </div>
+        <div class="kt-portlet__foot">
+          <div class="kt-form__actions">
+            <div class="row">
+              <div class="col-lg-6">
+		            <input type="hidden" name="id" value="<%=response._id%>">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a href="<%= generateUrl('admin.probe-finder.list') %>" class="btn btn-secondary">Cancel</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+
+    </div>
+</div>

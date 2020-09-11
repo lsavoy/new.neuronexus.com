@@ -1,0 +1,55 @@
+<div class="banner_sec pt-5">
+  <div class="position-relative d-flex align-items-center bg-secondary pt-sm-5">
+    <div class="banner_cont bg-transparent w-100">
+      <div class="container">
+        <div class="inner_banner">
+          <div class="bnr_main_area py-md-5" style="justify-content: center;">
+            <div class="bnr_main_area_cont" *ngIf="scienceItemDetails !== undefined">
+              <div class="text-white h1 text-center mb-4 font-weight-normal ">
+                <div class="pb-2 px-3 d-inline-block" style="border-bottom: 2px solid #eee;">
+                  <section [innerHtml]="scienceItemDetails?.title"></section>
+                </div>
+              </div>
+              <div class="d-flex align-items-center justify-content-center">
+                <div class="col-auto" *ngIf="scienceItemDetails?.show_author_image">
+                  <img src="assets/images/avatar.png" alt="" style="max-width: 100px; max-height: 100px;" class="rounded shadow">
+                </div>
+                <div class="col-auto">
+                  <div style="font-weight: bold;color: #fff;" *ngIf="scienceItemDetails?.show_author_name">
+                    {{scienceItemDetails?.author_frist_name | titlecase}}
+                    {{scienceItemDetails?.author_last_name | titlecase}}
+                  </div>
+                  <div style="font-style: italic;color: #fff;" *ngIf="scienceItemDetails?.show_post_date">
+                    {{scienceItemDetails?.createdAt | date:'mediumDate'}}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="no-data-center text-white" *ngIf="scienceItemDetails === undefined">No data available!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="meet_sec common_gap">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <figure *ngIf="scienceItemDetails?.image">
+          <img src="{{BASE_IMAGE_URL}}science_update/{{scienceItemDetails?.image}}" alt="">
+        </figure>
+      </div>
+      <div class="col-md-8">
+        <section [innerHtml]="scienceItemDetails?.content"></section>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="update_btn" style="margin-bottom: 20px;" *ngIf="scienceItemDetails !== undefined">
+  <a class="redmore_btn" [routerLink]="['/home']" routerLinkActive="active">Back</a>
+</div>

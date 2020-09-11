@@ -1,0 +1,64 @@
+<% layout(layout_directory+'/mainLayout') -%>
+<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+    <div class="kt-subheader__main">
+        <h3 class="kt-subheader__title"> <%= page_title %> </h3>
+        <span class="kt-subheader__separator kt-subheader__separator--v"></span>
+        <div class="kt-subheader__breadcrumbs">
+            <a href="<%= generateUrl('user.dashboard') %>" class="kt-subheader__breadcrumbs-home">Dashboard</a>
+            <span class="kt-subheader__breadcrumbs-separator"></span>
+            <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active"><%= page_title %></span>
+        </div>
+    </div>
+</div>
+
+<div class="kt-portlet">
+    <div class="kt-portlet__head">
+        <div class="kt-portlet__head-label">
+            <h3 class="kt-portlet__head-title"><%= page_title %></h3>
+        </div>
+    </div>
+    <div class="kt-portlet__body">
+        <form class="kt-form kt-form--label-right" id="editscience_update_collaborationFrm"
+            action="<%= generateUrl('admin.about.update_science_update_collaboration') %>" method="POST"
+            enctype='multipart/form-data'>
+            <div class="tab-content">
+
+                <div class="form-group row">
+                    <div class="col-lg-12">
+                        <label>Title:</label>
+                        <input type="text" class="form-control" name="title" id="title"
+                            value="<%=response.cms_data.title%>">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-lg-12">
+                        <label>Content:</label>
+                        <textarea class="form-control ckeditor" name="content" id="exampleTextarea"
+                            rows="3"><%=response.cms_data.content%></textarea>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+    </div>
+    <!-- hidden user id -->
+    <input type="hidden" name="id" value="<%=response.cms_data._id%>">
+
+    <div class="kt-portlet__foot">
+        <div class="kt-form__actions">
+            <div class="row">
+                <div class="col-lg-6">
+                    <a href="<%= generateUrl('admin.about.edit_science_update_collaboration') %>"
+                        class="btn btn-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-primary">Update</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+
+</div>
+</div>

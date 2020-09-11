@@ -1,0 +1,23 @@
+<app-banner [banner]="banner"></app-banner>
+
+  <div class="system_sec common_gap">
+    <div class="container">
+      <div class="inner_system">
+        <div class="row system_main_area" *ngIf="aboutStaticContent !== undefined">
+          <div class="col-lg-6 system_main_area_cont" >
+            <h3>{{aboutStaticContent?.title_h2}}</h3>
+            <h2>{{aboutStaticContent?.title_h3}}</h2>
+            <section [innerHtml]="aboutStaticContent?.content"></section>
+          </div>
+          <div class="col-lg-6 system_main_area_cont">
+            <figure *ngIf="aboutStaticContent?.image">
+              <img src="{{BASE_IMAGE_URL}}cms/{{aboutStaticContent?.image}}" alt="">
+            </figure>
+          </div>
+        </div>
+        <div class="no-data-center" *ngIf="aboutStaticContent === undefined" >
+          No data available!
+        </div>
+      </div>
+    </div>
+  </div>

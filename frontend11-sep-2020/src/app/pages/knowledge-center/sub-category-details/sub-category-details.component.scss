@@ -1,0 +1,18 @@
+
+.inner_container{
+  .knowledge_head {
+    h3 {
+      color: #000;
+      margin-top: 60px;
+      text-transform: capitalize;
+    }
+  }
+  .knowledge_container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    .knowledge_right {
+      width: 100%;
+    }
+  }
+}
