@@ -243,7 +243,10 @@ const categoryRepository = {
                         foreignField: 'category_id',
                         as: 'productsList'
                     }
-                }
+                },
+                {
+                    $match: params
+                },
             ]);
             if (!products) {
                 return null;

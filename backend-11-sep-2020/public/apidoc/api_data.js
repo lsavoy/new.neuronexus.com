@@ -699,6 +699,68 @@ define({ "api": [
   },
   {
     "type": "get",
+    "url": "/science_testimonials/:id",
+    "title": "Science Update Detail",
+    "version": "1.0.0",
+    "group": "ScienceUpdate",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Science Update Id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success",
+          "content": "{\n    \"status\": 200,\n    \"data\": {\n        \"title\": \"       Small Animal Matrix Array\",\n        \"image\": \"image_1590675043151_testimonials_img.jpg\",\n        \"content\": \"<p>The new <a href=\\\"/products/neural-probes/matrix-small-animal/\\\">Small Animal Matrix Array</a> can be configured for acute or chronic experiments, interfacing with large populations of neurons in 3D space up to 10 mm deep.</p>\\r\\n\\r\\n<p><a href=\\\"/contact/\\\">Contact us</a> for more information, or to place an order.</p>\\r\\n\",\n        \"slug\": \"small-animal-matrix-array-040b1\",\n        \"admin_id\": \"5ecfc4055139bb07ecec9d3f\",\n        \"category_id\": \"5ecf871a0b33232a88c934ab\",\n        \"isDeleted\": false,\n        \"status\": \"Active\",\n        \"_id\": \"5ecfc6630168e6a7c21040b1\",\n        \"createdAt\": \"2020-05-28T14:10:43.400Z\",\n        \"testimonialsdAt\": \"2020-07-20T14:12:01.806Z\",\n        \"__v\": 0\n    },\n    \"message\": \"Record fetched Successfully\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/api/science_testimonials.routes.js",
+    "groupTitle": "ScienceUpdate",
+    "name": "GetScience_testimonialsId"
+  },
+  {
+    "type": "get",
+    "url": "/science_testimonials/list?title=searchvalue",
+    "title": "Science Update List",
+    "version": "1.0.0",
+    "group": "ScienceUpdate",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "optional": false,
+            "field": "title",
+            "description": "<p>For search query</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success",
+          "content": "{\n    \"status\": 200,\n    \"data\": [\n        {\n            \"title\": \"test\",\n            \"content\": \"<p>test test</p>\\r\\n\",\n            \"video\": \"\",\n            \"slug\": \"test-c9b52\",\n            \"isDeleted\": false,\n            \"status\": \"Active\",\n            \"_id\": \"5f5b6457ec1d3927f85c9b52\",\n            \"createdAt\": \"2020-09-11T11:49:43.524Z\",\n            \"updatedAt\": \"2020-09-14T09:20:37.722Z\",\n            \"__v\": 0\n        }\n    ],\n    \"message\": \"Record fetched Successfully\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/api/science_testimonials.routes.js",
+    "groupTitle": "ScienceUpdate",
+    "name": "GetScience_testimonialsListTitleSearchvalue"
+  },
+  {
+    "type": "get",
     "url": "/science_update/category/:category_id",
     "title": "Science Update List by category_id",
     "version": "1.0.0",
