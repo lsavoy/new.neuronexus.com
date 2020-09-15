@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const ProbeFinder = require('probe_finder/models/probe_finder.model');
+const CategoryName = require('probe_finder/models/probe_finder_category.model');
 const perPage = config.PAGINATION_PERPAGE;
 
 const probeFinderRepository = {
@@ -36,30 +37,30 @@ const probeFinderRepository = {
                 sortOperator["$sort"]['_id'] = -1;
             }
 
-            var aggregate =  ProbeFinder.aggregate([
+            var aggregate = ProbeFinder.aggregate([
                 { $match: conditions },
                 {
-                     $group : {
+                    $group: {
                         "_id": "$_id",
-                        "image": {$first: "$image"},
-                        "name": {$first: "$name"},
-                        "isDeleted": {$first: "$isDeleted"},
-                        "status": {$first: "$status"},
+                        "image": { $first: "$image" },
+                        "name": { $first: "$name" },
+                        "isDeleted": { $first: "$isDeleted" },
+                        "status": { $first: "$status" },
                     }
                 },
                 sortOperator
-            ]);  
-                   
+            ]);
+
             var options = { page: req.body.pagination.page, limit: req.body.pagination.perpage };
             let allProbeFinder = await ProbeFinder.aggregatePaginate(aggregate, options);
-            
+
             return allProbeFinder;
         } catch (e) {
             throw (e);
         }
     },
-    
-	
+
+
 
     getById: async (id) => {
         try {
@@ -87,9 +88,9 @@ const probeFinderRepository = {
         }
     },
 
-    getAllByField: async (params) => {
+    getCategoryNameByField: async (params) => {
         try {
-            let probeFinder = await ProbeFinder.find(params).sort({'createdAt':-1}).exec();
+            let probeFinder = await CategoryName.findOne(params).exec();
             if (!probeFinder) {
                 return null;
             }
@@ -100,27 +101,52 @@ const probeFinderRepository = {
         }
     },
 
-    
-
-    save: async (data)=>{
-        try{
-            let save = await ProbeFinder.create(data);
-            if(!save){
+    updateCategoryNameById: async (id, data) => {
+        try {
+            let probeFinder = await CategoryName.findByIdAndUpdate(id, data, { new: true });
+            if (!probeFinder) {
                 return null;
             }
-            return save;
-        }catch(e){
+            return probeFinder;
+        } catch (e) {
             return e;
         }
     },
 
-    
+    getAllByField: async (params) => {
+        try {
+            let probeFinder = await ProbeFinder.find(params).sort({ 'createdAt': -1 }).exec();
+            if (!probeFinder) {
+                return null;
+            }
+            return probeFinder;
+
+        } catch (e) {
+            return e;
+        }
+    },
+
+
+
+    save: async (data) => {
+        try {
+            let save = await ProbeFinder.create(data);
+            if (!save) {
+                return null;
+            }
+            return save;
+        } catch (e) {
+            return e;
+        }
+    },
+
+
     delete: async (id) => {
         try {
             let probeFinder = await ProbeFinder.findById(id);
             if (probeFinder) {
                 //let ProbeFinderDelete = await Service.deleteOne({ _id: id }).exec();
-                let probeFinderDelete = await ProbeFinder.findByIdAndUpdate(id, {isDeleted: true}, { new: true });
+                let probeFinderDelete = await ProbeFinder.findByIdAndUpdate(id, { isDeleted: true }, { new: true });
                 if (!probeFinderDelete) {
                     return null;
                 }

@@ -36,7 +36,6 @@ export class CareersComponent implements OnInit {
       } else if (res.status === 201) {
       }
     }, (e) => {
-      console.log(e);
     });
   }
   getStaticContent() {
@@ -51,7 +50,6 @@ export class CareersComponent implements OnInit {
         this.careerStaticContent = undefined;
       }
     }, (e) => {
-      console.log(e);
     });
   }
   getCareersOpeningList() {
@@ -62,7 +60,6 @@ export class CareersComponent implements OnInit {
         this.careersOpeningList = undefined;
       }
     }, (e) => {
-      console.log(e);
     });
   }
 

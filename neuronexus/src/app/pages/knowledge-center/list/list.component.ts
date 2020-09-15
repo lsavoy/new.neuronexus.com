@@ -79,7 +79,6 @@ export class ListComponent implements OnInit {
           this.knowledgeList = undefined;
         }
       }, (e) => {
-        console.log(e);
       });
     } else {
       Object.keys(this.knowledgeForm.controls).forEach((key) => {

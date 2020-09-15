@@ -37,7 +37,6 @@ export class SupportComponent implements OnInit {
         this.supportStaticinfo = undefined;
       }
     }, (e) => {
-      console.log(e);
     });
   }
 

@@ -1,0 +1,50 @@
+<% layout(layout_directory+'/mainLayout') -%>
+<div class="kt-portlet">
+  <div class="kt-portlet__head">
+    <div class="kt-portlet__head-label">
+      <h3 class="kt-portlet__head-title"><%= page_title %></h3>
+    </div>
+  </div>
+  <div class="kt-portlet__body">
+    <form class="kt-form kt-form--label-right" id="frmAddCategoryKnowledge"
+      action="<%= generateUrl('admin.science_testimonials.insert') %>" method="POST" enctype='multipart/form-data'>
+      <div class="kt-portlet__body">
+        <div class="form-group row">
+          <div class="col-lg-6">
+            <label>Title</label>
+            <input type="text" name="title" id="title" class="form-control required" required placeholder="Enter Title">
+          </div>
+          <div class="col-lg-6">
+            <label>Status</label>
+            <select name="status" id="status" class="form-control">
+              <option value="Active">Active</option>
+              <option value="Inactive">Inactive</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-lg-12">
+            <label>Content</label>
+            <textarea name="content" id="content" class="form-control ckeditor" rows="10"></textarea>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-lg-6">
+            <label>Upload Video:</label>
+            <input type="file" name="video" id="video" class="form-control imagepicker" accept="video/*">
+          </div>
+        </div>
+      </div>
+      <div class="kt-portlet__foot">
+        <div class="kt-form__actions">
+          <div class="row">
+            <div class="col-lg-6">
+              <button type="submit" class="btn btn-primary">Save</button>
+              <a href="<%= generateUrl('admin.science_testimonials.list') %>" class="btn btn-secondary">Cancel</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -36,7 +36,6 @@ export class AboutComponent implements OnInit {
         this.aboutStaticContent = undefined;
       }
     }, (e) => {
-      console.log(e);
     });
   }
 

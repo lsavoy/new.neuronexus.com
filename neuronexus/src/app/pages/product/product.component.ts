@@ -42,7 +42,6 @@ export class ProductComponent implements OnInit {
         this.productStaticContent = undefined;
       }
     }, (e) => {
-      console.log(e);
     });
   }
   getProductList() {
@@ -53,7 +52,6 @@ export class ProductComponent implements OnInit {
         this.productList = undefined;
       }
     }, (e) => {
-      console.log(e);
     });
   }
   routeToDeatils(productId: any, productSlug: any) {

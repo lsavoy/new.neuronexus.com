@@ -38,7 +38,6 @@ export class DistributionComponent implements OnInit {
       } else if (res.status === 201) {
       }
     }, (e) => {
-      console.log(e);
     });
   }
   getStaticContent() {
@@ -53,7 +52,6 @@ export class DistributionComponent implements OnInit {
         this.distributorsStaticContent = undefined;
       }
     }, (e) => {
-      console.log(e);
     });
   }
   getDistributorList() {
@@ -64,7 +62,6 @@ export class DistributionComponent implements OnInit {
         this.distributorList = undefined;
       }
     }, (e) => {
-      console.log(e);
     });
   }
 

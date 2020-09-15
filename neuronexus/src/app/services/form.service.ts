@@ -33,7 +33,6 @@ export class FormService {
             form.get(iterator.getAttribute('formcontrolname')).setValue('');
           }
         });
-        // console.log(form.get(iterator.getAttribute('formcontrolname')));
         // const pattern = iterator.getAttribute('pattern');
         // const minLength = iterator.getAttribute('minLength');
         // const maxLength = iterator.getAttribute('maxLength');

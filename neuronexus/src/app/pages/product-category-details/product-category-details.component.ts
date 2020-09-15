@@ -45,7 +45,6 @@ export class ProductCategoryDetailsComponent implements OnInit {
       } else if (res.status === 201) {
       }
     }, (e) => {
-      console.log(e);
     });
   }
   getCategoryDeatils(productSlug: any) {
@@ -60,7 +59,6 @@ export class ProductCategoryDetailsComponent implements OnInit {
         this.categoryDeatils = undefined;
       }
     }, (e) => {
-      console.log(e);
     });
   }
   routeToDeatils(productSlug: any) {

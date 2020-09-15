@@ -1,0 +1,14 @@
+<app-banner [banner]="banner"></app-banner>
+
+
+  <div class="meet_sec common_gap">
+    <div class="container">
+      <div class="meet_inner">
+        <div class="meet_top" *ngIf="technologyStaticinfo !== undefined">
+          <h3>{{technologyStaticinfo?.title}}</h3> 
+          <section [innerHtml]="technologyStaticinfo?.content"></section>
+        </div>
+        <div class="no-data-center" *ngIf="technologyStaticinfo === undefined">No data available!</div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,18 @@
+<app-banner [banner]="banner"></app-banner>
+
+
+  <div class="meet_sec common_gap">
+    <div class="container">
+      <div class="meet_inner">
+        <div class="meet_top" *ngIf="technologyDetailsContent !== undefined">
+          <h3>{{technologyDetailsContent?.title}}</h3> 
+          <div [innerHtml]="safeData"></div>
+        </div>
+        <div *ngIf="technologyDetailsContent === undefined">No data available!</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="update_btn" style="margin-bottom: 20px;" *ngIf="technologyDetailsContent !== undefined">
+    <a class="redmore_btn" [routerLink]="['/home']" routerLinkActive="active">Back</a>
+  </div>

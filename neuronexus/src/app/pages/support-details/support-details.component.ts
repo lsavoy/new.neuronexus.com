@@ -49,7 +49,6 @@ export class SupportDetailsComponent implements OnInit {
 
       }
     }, (e) => {
-      console.log(e);
     });
   }
   getSupportDeatils(supportId: any) {
@@ -61,7 +60,6 @@ export class SupportDetailsComponent implements OnInit {
         this.supportDetailsContent = undefined;
       }
     }, (e) => {
-      console.log(e);
     });
   }
   getSanitizedData(data: any) {

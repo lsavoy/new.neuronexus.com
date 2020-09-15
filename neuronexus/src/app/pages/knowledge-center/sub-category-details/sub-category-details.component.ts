@@ -37,7 +37,6 @@ export class SubCategoryDetailsComponent implements OnInit {
         this.subCategoryWiseKnowledgeList = undefined;
       }
     }, (e) => {
-      console.log(e);
     });
   }
 

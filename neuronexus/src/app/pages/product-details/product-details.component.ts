@@ -46,7 +46,6 @@ export class ProductDetailsComponent implements OnInit {
       } else if (res.status === 201) {
       }
     }, (e) => {
-      console.log(e);
     });
   }
   getProductDeatils(productSlug: any) {
@@ -57,7 +56,6 @@ export class ProductDetailsComponent implements OnInit {
         this.productDetailsContent = undefined;
       }
     }, (e) => {
-      console.log(e);
     });
   }
 

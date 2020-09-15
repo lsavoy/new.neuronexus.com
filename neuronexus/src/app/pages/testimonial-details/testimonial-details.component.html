@@ -1,0 +1,46 @@
+<div class="banner_sec pt-5">
+    <div class="position-relative d-flex align-items-center bg-secondary pt-sm-5">
+      <div class="banner_cont bg-transparent w-100">
+        <div class="container">
+          <div class="inner_banner">
+            <div class="bnr_main_area py-md-5" style="justify-content: center;">
+              <div class="bnr_main_area_cont" *ngIf="testimonial !== undefined">
+                <div class="text-white h1 text-center mb-4 font-weight-normal ">
+                  <div class="pb-2 px-3 d-inline-block" style="border-bottom: 2px solid #eee;">
+                    <section [innerHtml]="testimonial?.title"></section>
+                  </div>
+                </div>
+              </div>
+              <div class="no-data-center text-white" *ngIf="testimonial === undefined">No data available!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+  
+  
+  <div class="meet_sec common_gap" *ngIf="testimonial">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <figure *ngIf="testimonial?.video">
+            <video controls>
+                <source src="{{BASE_IMAGE_URL}}testimonials/{{testimonial?.video}}" type='video/mp4' />
+                <source src="{{BASE_IMAGE_URL}}testimonials/{{testimonial?.video}}" type='video/webm' />
+                Your browser does not support the video tag.
+            </video>
+          </figure>
+        </div>
+        <div class="col-md-8">
+          <section [innerHtml]="testimonial?.content"></section>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="update_btn" style="margin-bottom: 20px;" *ngIf="testimonial !== undefined">
+    <a class="redmore_btn" [routerLink]="['/testimonials']" routerLinkActive="active">Back</a>
+  </div>
+  

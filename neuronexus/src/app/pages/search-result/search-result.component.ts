@@ -60,7 +60,6 @@ export class SearchResultComponent implements OnInit {
         this.searchResult = undefined;
       }
     }, (e) => {
-      console.log(e);
     });
   }
   getScienceUpdateStaticContent() {

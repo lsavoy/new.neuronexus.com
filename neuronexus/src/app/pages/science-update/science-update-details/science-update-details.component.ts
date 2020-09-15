@@ -41,7 +41,6 @@ export class ScienceUpdateDetailsComponent implements OnInit {
         this.scienceItemDetails = undefined;
       }
     }, (e) => {
-      console.log(e);
     });
   }
 

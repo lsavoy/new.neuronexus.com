@@ -6,8 +6,8 @@ import * as htmlToText from 'html-to-text';
 import * as _ from 'underscore';
 import { MatDialog } from '@angular/material/dialog';
 import { DefaultComponent } from 'src/app/modal';
+import { DomSanitizer } from '@angular/platform-browser';
 
-import {DomSanitizer} from '@angular/platform-browser';
 
 
 
@@ -88,25 +88,46 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.homeSlideConfig = this.eventService.homeSlideConfig;
     this.cdr.detectChanges();
 
+    // this.getAllSettingsForOfferModal().then(() => {
+    //   this.getVideo().then(() => {
+    //     this.getSlide().then(() => {
+    //       this.getSupportStaticContent().then(() => {
+    //         this.getSupportList().then(() => {
+    //           this.getScienceUpdateList().then(() => {
+    //             this.getKnowledgeCenterList().then(() => {
+    //               this.getFeatureInfo().then(() => {
+    //                 this.getPostList().then(() => {
+    //                   this.getImageSlideList().then(()=> {
+    //                     this.getVideoSlideList().then(()=> {
+    //                     })
+    //                   })
+    //                 })
+    //               })
+    //             });
+    //           });
+    //         });
+    //       });
+    //     });
+    //   });
+    // });
+
     this.getAllSettingsForOfferModal().then(() => {
       this.getVideo().then(() => {
-        this.getSlide().then(() => {
-          this.getSupportStaticContent().then(() => {
-            this.getSupportList().then(() => {
-              this.getScienceUpdateList().then(() => {
-                this.getKnowledgeCenterList().then(() => {
-                });
-              });
-            });
-          });
-        });
-      });
-    });
+        this.getFeatureInfo().then(() => {
+          this.getPostList().then(() => {
+            this.getImageSlideList().then(()=> {
+              this.getVideoSlideList().then(()=> {
+                this.getScienceUpdateList().then(() => {
+                  this.getKnowledgeCenterList().then(() => {
 
-    this.getFeatureInfo();
-    this.getPostList();
-    this.getImageSlideList();
-    this.getVideoSlideList();
+                  })
+                })
+              })
+            })
+          })
+        })
+      })
+    })
   }
 
   ngOnInit(): void {
@@ -280,91 +301,110 @@ export class HomeComponent implements OnInit, AfterViewInit {
       data: { type: modalType, content : Offercontent }
     });
   }
+
   getFeatureInfo() {
-    const data = {
-      jumpUrl: 'https://www.baidu.com',
-      featureList: [
-        {
-          image: 'test_feature_01.jpeg',
-          caption: 'unprecedented <br/> and time expansion',
-          description: 'In this unprecedented and challenging time, NeuroNexus would like to extend our well-wishes to you and your team, as well as your families and loved ones'
-        },
-        {
-          image: 'test_feature_02.png',
-          caption: 'In addition to the great personal',
-          description: 'In addition to the great personal harm the COVID-19 outbreak is causing to so many, we understand that it is also disrupting many research programs'
-        },
-        {
-          image: 'test_feature_03.jpeg',
-          caption: 'While most of our administrative',
-          description: 'While most of our administrative and technical advisement staff will be working from home like so many of yourselves, we are all maintaining our normal'
-        }
-      ]
-    };
-    this.featureInfo = data;
-    this.featureList = data.featureList;
+    const promise = new Promise((resolve, reject)=>{
+      const data = {
+        jumpUrl: 'https://www.baidu.com',
+        featureList: [
+          {
+            image: 'test_feature_01.jpeg',
+            caption: 'unprecedented <br/> and time expansion',
+            description: 'In this unprecedented and challenging time, NeuroNexus would like to extend our well-wishes to you and your team, as well as your families and loved ones'
+          },
+          {
+            image: 'test_feature_02.png',
+            caption: 'In addition to the great personal',
+            description: 'In addition to the great personal harm the COVID-19 outbreak is causing to so many, we understand that it is also disrupting many research programs'
+          },
+          {
+            image: 'test_feature_03.jpeg',
+            caption: 'While most of our administrative',
+            description: 'While most of our administrative and technical advisement staff will be working from home like so many of yourselves, we are all maintaining our normal'
+          }
+        ]
+      };
+      this.featureInfo = data;
+      this.featureList = data.featureList;
+      resolve();
+    })
+
+    return promise;
   }
   getPostList() {
-    const data = [
-      {
-        title: '<a href="https://neuronexus.com/2020/08/13/neuronexus-stories-with-dr-gyorgy-buzsaki/"><strong>NeuroNexus Stories with Dr. György Buzsáki</strong></a>',
-        summary: 'Dr. Buzsáki’s interview is part of our ongoing series,&nbsp;<a href="https://www.youtube.com/playlist?list=PLW7Scgg9PhRazK78U5mwXLhYxq6r-Qpov">NeuroNexus Stories</a>, which features prominent scientists whose work is invaluable to the neuroscience community and us here at NeuroNexus. These exclusive interviews with the brilliant minds in our network show the collaboration in play as we develop the future of neurotechnology together. Find the NeuroNexus Stories playlist&nbsp;<a href="https://www.youtube.com/playlist?list=PLW7Scgg9PhRazK78U5mwXLhYxq6r-Qpov">here</a>&nbsp;to watch our past videos.',
-        resource: 'test_post_01.jpg',
-        resourceType: 'img',
-        jumpUrl: 'https://neuronexus.com/2020/08/27/dr-rio-vetter-webinar-electrode-technology/'
-      },
-      {
-        title: '<a href="https://neuronexus.com/2020/08/27/dr-rio-vetter-webinar-electrode-technology/"><strong>New Webinar in NeuroNexus Series</strong></a>',
-        summary: 'Dr. Vetter, a co-founder of NeuroNexus, leads our recent webinar discussing our microelectrode technology. During this exclusive walkthrough with Dr. Vetter, viewers will learn a historical overview of microelectrodes followed by a detailed description of our innovative MEMS-based electrode technology and product lines, finishing up with some unique and interesting applications that utilize this technology and its capabilities. ',
-        resource: 'video3.mp4',
-        resourceType: 'viedo',
-        jumpUrl: 'https://neuronexus.com/2020/08/27/dr-rio-vetter-webinar-electrode-technology/'
-      },
-      {
-        title: '<strong>Science Update: <a href="https://advances.sciencemag.org/content/6/24/eaba1430">GABAergic interneurons excite neonatal hippocampus in vivo</a></strong>',
-        summary: 'Murata and Colonnese (Science Advances, 2020)&nbsp;used several 32-channel NeuroNexus probe designs with close, intermediate, and sparse electrode site layouts to record depth EEG and multiunit activity in neonatal mouse hippocampus and visual cortex. They present definitive <em>in vivo</em> results that GABAergic interneurons in hippocampus are excitatory at P3, but become inhibitory by P7.',
-        resource: 'space_cover.jpg',
-        resourceType: 'img',
-        jumpUrl: 'https://advances.sciencemag.org/content/6/24/eaba1430'
-      }
-    ]
-    this.postList = data;
+    const promise = new Promise((resolve, reject)=> {
+      const data = [
+        {
+          title: '<a href="https://neuronexus.com/2020/08/13/neuronexus-stories-with-dr-gyorgy-buzsaki/"><strong>NeuroNexus Stories with Dr. György Buzsáki</strong></a>',
+          summary: 'Dr. Buzsáki’s interview is part of our ongoing series,&nbsp;<a href="https://www.youtube.com/playlist?list=PLW7Scgg9PhRazK78U5mwXLhYxq6r-Qpov">NeuroNexus Stories</a>, which features prominent scientists whose work is invaluable to the neuroscience community and us here at NeuroNexus. These exclusive interviews with the brilliant minds in our network show the collaboration in play as we develop the future of neurotechnology together. Find the NeuroNexus Stories playlist&nbsp;<a href="https://www.youtube.com/playlist?list=PLW7Scgg9PhRazK78U5mwXLhYxq6r-Qpov">here</a>&nbsp;to watch our past videos.',
+          resource: 'test_post_01.jpg',
+          resourceType: 'img',
+          jumpUrl: 'https://neuronexus.com/2020/08/27/dr-rio-vetter-webinar-electrode-technology/'
+        },
+        {
+          title: '<a href="https://neuronexus.com/2020/08/27/dr-rio-vetter-webinar-electrode-technology/"><strong>New Webinar in NeuroNexus Series</strong></a>',
+          summary: 'Dr. Vetter, a co-founder of NeuroNexus, leads our recent webinar discussing our microelectrode technology. During this exclusive walkthrough with Dr. Vetter, viewers will learn a historical overview of microelectrodes followed by a detailed description of our innovative MEMS-based electrode technology and product lines, finishing up with some unique and interesting applications that utilize this technology and its capabilities. ',
+          resource: 'video3.mp4',
+          resourceType: 'viedo',
+          jumpUrl: 'https://neuronexus.com/2020/08/27/dr-rio-vetter-webinar-electrode-technology/'
+        },
+        {
+          title: '<strong>Science Update: <a href="https://advances.sciencemag.org/content/6/24/eaba1430">GABAergic interneurons excite neonatal hippocampus in vivo</a></strong>',
+          summary: 'Murata and Colonnese (Science Advances, 2020)&nbsp;used several 32-channel NeuroNexus probe designs with close, intermediate, and sparse electrode site layouts to record depth EEG and multiunit activity in neonatal mouse hippocampus and visual cortex. They present definitive <em>in vivo</em> results that GABAergic interneurons in hippocampus are excitatory at P3, but become inhibitory by P7.',
+          resource: 'space_cover.jpg',
+          resourceType: 'img',
+          jumpUrl: 'https://advances.sciencemag.org/content/6/24/eaba1430'
+        }
+      ]
+      this.postList = data;
+      resolve();
+    });
+    return promise;
   }
   getImageSlideList() {
-    const imageSlideList = [
-      {
-        img: 'test_image_01.jpg',
-        jumpUrl: 'https://www.baidu.com'
-      },
-      {
-        img: 'test_image_02.jpeg',
-        jumpUrl: 'https://www.jd.com'
-      },
-      {
-        img: 'test_image_03.jpg',
-        jumpUrl: 'https://www.taobao.com'
-      },
-      {
-        img: 'test_image_04.jpeg',
-        jumpUrl: 'https://news.163.com'
-      }
-    ];
-    this.imageSlideList = imageSlideList;
+    const promise = new Promise((resolve, reject)=> {
+      const imageSlideList = [
+        {
+          img: 'test_image_01.jpg',
+          jumpUrl: 'https://www.baidu.com'
+        },
+        {
+          img: 'test_image_02.jpeg',
+          jumpUrl: 'https://www.jd.com'
+        },
+        {
+          img: 'test_image_03.jpg',
+          jumpUrl: 'https://www.taobao.com'
+        },
+        {
+          img: 'test_image_04.jpeg',
+          jumpUrl: 'https://news.163.com'
+        }
+      ];
+      this.imageSlideList = imageSlideList;
+      resolve();
+    });
+    return promise;
   }
   // https://player.youku.com/embed/XMzgzODEzMTQ0NA==
   // https://player.youku.com/embed/XNDc2MTY0NTIzMg==
   // https://player.youku.com/embed/XNDg0MDUyNjM2MA==
   getVideoSlideList() {
-    const videoSlideList = [
-      {
-        videoUrl: this.trustUrl('https://www.youtube.com/embed/Gkmcyr3E6sg?feature=oembed')
-      },
-      {
-        videoUrl: this.trustUrl('https://www.youtube.com/embed/GxY5PJyuJeU?feature=oembed')
-      }
-    ];
-    this.videoSlideList = videoSlideList;
+    const promise = new Promise((resolve, reject) => {
+      const videoSlideList = [
+        {
+          videoUrl: this.trustUrl('https://www.youtube.com/embed/Gkmcyr3E6sg?feature=oembed')
+        },
+        {
+          videoUrl: this.trustUrl('https://www.youtube.com/embed/GxY5PJyuJeU?feature=oembed')
+        }
+      ];
+      this.videoSlideList = videoSlideList;
+      resolve();
+    });
+    return promise;
   }
+
   trustUrl(url: string) {
     if (url) {
       return this.sanitizer.bypassSecurityTrustResourceUrl(url);

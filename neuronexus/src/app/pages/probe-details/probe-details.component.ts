@@ -46,7 +46,6 @@ export class ProbeDetailsComponent implements OnInit {
       } else if (res.status === 201) {
       }
     }, (e) => {
-      console.log(e);
     });
   }
   getProbDeatils(probeSlug: any) {
@@ -57,7 +56,6 @@ export class ProbeDetailsComponent implements OnInit {
         this.probDetailsContent = undefined;
       }
     }, (e) => {
-      console.log(e);
     });
   }
   openImageModal(image: any) {

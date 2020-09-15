@@ -47,7 +47,6 @@ export class ContactComponent implements OnInit {
         this.contactStaticContent = undefined;
       }
     }, (e) => {
-      console.log(e);
     });
   }
   getAllSettings() {
@@ -80,7 +79,6 @@ export class ContactComponent implements OnInit {
         this.allSettings = undefined;
       }
     }, (e) => {
-      console.log(e);
     });
   }
 

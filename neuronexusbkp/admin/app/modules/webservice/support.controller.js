@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const supportRepo = require('support/repositories/support.repository');
-
+const supportBlogRepo = require('support/repositories/blog.repository');
 
 /* 
 // @Method: getAllsupportcategory
@@ -27,6 +27,23 @@ exports.getAllsupportcategory = async req => {
     }
 };
 
+
+exports.getAllsupportblog = async req => {
+    try {
+        var searchQuery = {
+            "isDeleted": false,
+            "status": "Active",
+        };
+
+        if (req.params.slug) {
+            Object.assign(searchQuery, { "slug": req.params.slug });
+        }
+        var support = await supportBlogRepo.getAllByField(searchQuery);
+        return { status: 200, data: support, message: 'Record fetched Successfully' };
+    } catch (error) {
+        return { "status": 500, data: {}, "message": error.message }
+    }
+};
 
 /* 
 // @Method: getsupportstatic

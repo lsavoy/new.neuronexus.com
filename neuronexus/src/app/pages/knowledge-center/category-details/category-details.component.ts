@@ -45,7 +45,6 @@ export class CategoryDetailsComponent implements OnInit {
         this.categoryWiseKnowledgeList = undefined;
       }
     }, (e) => {
-      console.log(e);
     });
   }
   createCategoryWiseSubcategoryList(knowledgeList: any, categorySlug: any) {

@@ -39,7 +39,6 @@ export class ProbeFinderComponent implements OnInit {
       } else if (res.status === 201) {
       }
     }, (e) => {
-      console.log(e);
     });
   }
 
@@ -50,7 +49,6 @@ export class ProbeFinderComponent implements OnInit {
       } else if (res.status === 201) {
       }
     }, (e) => {
-      console.log(e);
     });
   }
   optionChange(key: any, value: any) {
@@ -64,7 +62,6 @@ export class ProbeFinderComponent implements OnInit {
       } else if (res.status === 201) {
       }
     }, (e) => {
-      console.log(e);
     });
   }
 

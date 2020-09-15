@@ -39,7 +39,6 @@ export class TeamComponent implements OnInit {
       } else if (res.status === 201) {
       }
     }, (e) => {
-      console.log(e);
     });
   }
 
@@ -55,7 +54,6 @@ export class TeamComponent implements OnInit {
         this.teamStaticContent = undefined;
       }
     }, (e) => {
-      console.log(e);
     });
   }
   getLeadershipList() {
@@ -63,10 +61,9 @@ export class TeamComponent implements OnInit {
     //   if (res.status === 200) {
     //     this.leadershipList = res.data;
     //   } else if (res.status === 201) {
-    //
+
     //   }
     // }, (e) => {
-    //   console.log(e);
     // });
 
     const data = [
@@ -109,6 +106,7 @@ export class TeamComponent implements OnInit {
     ];
     this.leadershipList = data;
   }
+
   getSalesList() {
     const data = [
       {

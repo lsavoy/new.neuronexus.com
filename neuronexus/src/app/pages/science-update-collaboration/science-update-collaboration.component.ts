@@ -40,7 +40,6 @@ export class ScienceUpdateCollaborationComponent implements OnInit {
       } else if (res.status === 201) {
       }
     }, (e) => {
-      console.log(e);
     });
   }
   getStaticContent() {
@@ -55,7 +54,6 @@ export class ScienceUpdateCollaborationComponent implements OnInit {
         this.scienceUpdateCollaborationStaticinfo = undefined;
       }
     }, (e) => {
-      console.log(e);
     });
   }
   getScienceUpdateCollaborationLst() {
@@ -66,7 +64,6 @@ export class ScienceUpdateCollaborationComponent implements OnInit {
         this.scienceUpdateCollaborationList = undefined;
       }
     }, (e) => {
-      console.log(e);
     });
   }
 

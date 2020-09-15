@@ -38,7 +38,6 @@ export class BrainInitiativeComponent implements OnInit {
       } else if (res.status === 201) {
       }
     }, (e) => {
-      console.log(e);
     });
   }
   getStaticContent() {
@@ -53,7 +52,6 @@ export class BrainInitiativeComponent implements OnInit {
         this.brainInitiativeStaticContent = undefined;
       }
     }, (e) => {
-      console.log(e);
     });
   }
   getBrainInitiativeTabList() {
@@ -64,7 +62,6 @@ export class BrainInitiativeComponent implements OnInit {
         this.brainInitiativeTabList = undefined;
       }
     }, (e) => {
-      console.log(e);
     });
   }
 

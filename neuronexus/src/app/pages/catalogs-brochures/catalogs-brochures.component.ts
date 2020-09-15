@@ -35,7 +35,6 @@ export class CatalogsBrochuresComponent implements OnInit {
       } else if (res.status === 201) {
       }
     }, (e) => {
-      console.log(e);
     });
   }
   getCatlogAndBrochursData() {
@@ -46,7 +45,6 @@ export class CatalogsBrochuresComponent implements OnInit {
         this.catlogAndBrouchers = undefined;
       }
     }, (e) => {
-      console.log(e);
     });
   }
 

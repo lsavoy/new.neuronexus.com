@@ -1,0 +1,41 @@
+<app-banner [banner]="banner"></app-banner>
+
+<div class="update_sec common_gap" id="particles-js2">
+    <div class="container">
+      <div class="update_inner">
+      <ng-container *ngIf="testimonials !== undefined && testimonials?.length > 0">
+        <h3>Testimonials List</h3>
+        <div class="row update_main_area_cont">
+          <div class="col-lg-4 col-md-6  update_main_area" style="margin-top: 30px;" *ngFor="let ele of testimonials | paginate: { itemsPerPage: 9, currentPage: p }">
+            <div class="update_box">
+              <figure *ngIf="ele?.video" class="testimonial-vdo">
+                <!-- <img src="{{BASE_IMAGE_URL}}testimonials/{{ele?.video}}" alt=""> -->
+                <video [id]="'video'+ele?._id">
+                    <source src="{{BASE_IMAGE_URL}}testimonials/{{ele?.video}}" type='video/mp4' />
+                    <source src="{{BASE_IMAGE_URL}}testimonials/{{ele?.video}}" type='video/webm' />
+                    Your browser does not support the video tag.
+                </video>
+                <p class="video-controls" (click)="playPause(ele?._id)">
+                    <i class="fa fa-play" aria-hidden="true" *ngIf="!ele?.play"></i>
+                    <i class="fa fa-pause" aria-hidden="true" *ngIf="ele?.play"></i>
+                </p>
+              </figure>
+              <div class="update_cont">
+                <h4>
+                  <a>{{convertTestimonialTitle(ele?.title)}}</a>
+                </h4>
+                <span>{{ele?.createdAt | date:'mediumDate'}}</span>
+                <section style="height: 120px;">{{convertTestimonialDesc(ele?.content)}}</section>
+                <a style="margin-top: 10px;cursor: pointer;" class="redmore_btn" [routerLink]="['/testimonial-detail', ele?.slug]" routerLinkActive="active">See More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 20px;text-align: center;" >
+          <pagination-controls *ngIf="testimonials?.length > 9" (pageChange)="changePage($event)"></pagination-controls>
+        </div>
+        </ng-container>
+        <div class="no-data-center" *ngIf="testimonials === undefined || testimonials?.length === 0">No data available!</div>
+      </div>
+    </div>
+  </div>

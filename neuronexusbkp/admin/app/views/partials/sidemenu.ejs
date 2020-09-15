@@ -36,13 +36,7 @@
                     </a>
                 </li>
 
-                <li class="kt-menu__item " aria-haspopup="true">
-                    <a href="<%= generateUrl('admin.category.list') %>"
-                        class="kt-menu__link <%=(page_name == 'category-management') ? 'active' : ''%>">
-                        <i class="fas fa-tachometer-alt"></i>
-                        <span class="kt-menu__link-text">Categroy</span>
-                    </a>
-                </li>
+
 
                 <% if(user.role.role == 'admin'){ %>
                 <li class="kt-menu__item " aria-haspopup="true">
@@ -72,11 +66,11 @@
 
                 <!--  -->
                 <!-- <%=(page_name == 'about-management') ? 'kt-menu__item--open' : ''%> -->
-                <li class="kt-menu__item  kt-menu__item--submenu <%=(page_name == 'product-management' || page_name == 'product-static-management') ? 'kt-menu__item--open' : ''%>"
+                <li class="kt-menu__item  kt-menu__item--submenu <%=(page_name == 'probeFinder-menu-management' || page_name == 'category-management' || page_name == 'product-management' || page_name == 'product-static-management' || page_name == 'probeFinder-management' || page_name == 'channels-management' || page_name == 'experiment-management' || page_name == 'shankLength-management' || page_name == 'shanks-management' || page_name == 'siteArea-management' || page_name == 'siteLayout-management') ? 'kt-menu__item--open' : ''%>"
                     aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
                     <!-- <%=(page_name == 'about-management' || page_name == 'provider-management') ? 'active' : ''%> -->
                     <a href="javascript:void(0);"
-                        class="kt-menu__link kt-menu__toggle <%=(page_name == 'product-management' || page_name == 'product-static-management') ? 'active' : ''%>">
+                        class="kt-menu__link kt-menu__toggle <%=(page_name == 'probeFinder-menu-management' || page_name == 'category-management' || page_name == 'product-management' || page_name == 'product-static-management' || page_name == 'probeFinder-management' || page_name == 'channels-management' || page_name == 'experiment-management' || page_name == 'shankLength-management' || page_name == 'shanks-management' || page_name == 'siteArea-management' || page_name == 'siteLayout-management') ? 'active' : ''%>">
                         <i class="fas fa-university"></i>
                         <span class="kt-menu__link-text">Product</span>
                         <i class="kt-menu__ver-arrow la la-angle-right"></i>
@@ -91,6 +85,13 @@
                                 </a>
                             </li>
                             <li class="kt-menu__item " aria-haspopup="true">
+                                <a href="<%= generateUrl('admin.category.list') %>"
+                                    class="kt-menu__link <%=(page_name == 'category-management') ? 'active' : ''%>">
+                                    <!-- <i class="fas fa-tachometer-alt"></i> -->
+                                    <span class="kt-menu__link-text">Category</span>
+                                </a>
+                            </li>
+                            <li class="kt-menu__item " aria-haspopup="true">
                                 <a href="<%= generateUrl('admin.product.list') %>"
                                     class="kt-menu__link <%=(page_name == 'product-management') ? 'active' : ''%>">
                                     <span class="kt-menu__link-text">Product List</span>
@@ -102,6 +103,120 @@
                                     <span class="kt-menu__link-text">Catelogs And Brochures</span>
                                 </a>
                             </li>
+
+                            <!-- probefinder -->
+                            <!-- --------------------------------------------- -->
+                            <!--  -->
+
+                            <li class="kt-menu__item  kt-menu__item--submenu <%=(page_name == 'probeFinder-menu-management' || page_name == 'probeFinder-management' || page_name == 'channels-management' || page_name == 'experiment-management' || page_name == 'shankLength-management' || page_name == 'shanks-management' || page_name == 'siteArea-management' || page_name == 'siteLayout-management' ) ? 'kt-menu__item--open' : ''%>"
+                                aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+                                <!-- <%=(page_name == 'about-management' || page_name == 'provider-management') ? 'active' : ''%> -->
+                                <a href="javascript:void(0);"
+                                    class="kt-menu__link kt-menu__toggle <%=(page_name == 'probeFinder-menu-management' || page_name == 'probeFinder-management' || page_name == 'channels-management' || page_name == 'experiment-management' || page_name == 'shankLength-management' || page_name == 'shanks-management' || page_name == 'siteArea-management' || page_name == 'siteLayout-management'  ) ? 'active' : ''%>">
+                                    <!-- <i class="fas fa-tachometer-alt"></i> -->
+                                    <span class="kt-menu__link-text">Probe Finder</span>
+                                    <i class="kt-menu__ver-arrow la la-angle-right"></i>
+                                </a>
+                                <div class="kt-menu__submenu ">
+                                    <span class="kt-menu__arrow"></span>
+                                    <ul class="kt-menu__subnav">
+                                        <li class="kt-menu__item" aria-haspopup="true">
+                                            <!-- <%=(page_name == 'customer-management') ? 'active' : ''%> -->
+                                            <a href="<%= generateUrl('admin.probe-finder.editcategory') %>"
+                                                class="kt-menu__link <%=( page_name == 'probeFinder-menu-management'  ) ? 'active' : ''%>">
+                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                                    <span></span>
+                                                </i>
+                                                <span class="kt-menu__link-text">Menu Category</span>
+                                            </a>
+
+                                        </li>
+                                        <li class="kt-menu__item" aria-haspopup="true">
+                                            <!-- <%=(page_name == 'customer-management') ? 'active' : ''%> -->
+                                            <a href="<%= generateUrl('admin.probe-finder.list') %>"
+                                                class="kt-menu__link <%=( page_name == 'probeFinder-management'  ) ? 'active' : ''%>">
+                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                                    <span></span>
+                                                </i>
+                                                <span class="kt-menu__link-text">Products</span>
+                                            </a>
+
+                                        </li>
+
+                                        <li class="kt-menu__item" aria-haspopup="true">
+                                            <!-- <%=(page_name == 'customer-management') ? 'active' : ''%> -->
+                                            <a href="<%= generateUrl('admin.channels.list') %>"
+                                                class="kt-menu__link <%= ( page_name == 'channels-management' ) ? 'active' : ''%>">
+                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                                    <span></span>
+                                                </i>
+                                                <span class="kt-menu__link-text">Channels</span>
+                                            </a>
+
+                                        </li>
+
+                                        <li class="kt-menu__item" aria-haspopup="true">
+                                            <!-- <%=(page_name == 'customer-management') ? 'active' : ''%> -->
+                                            <a href="<%= generateUrl('admin.experiment.list') %>"
+                                                class="kt-menu__link <%= ( page_name == 'experiment-management' ) ? 'active' : ''%>">
+                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                                    <span></span>
+                                                </i>
+                                                <span class="kt-menu__link-text">Experiment</span>
+                                            </a>
+
+                                        </li>
+                                        <li class="kt-menu__item" aria-haspopup="true">
+                                            <!-- <%=(page_name == 'customer-management') ? 'active' : ''%> -->
+                                            <a href="<%= generateUrl('admin.shank-length.list') %>"
+                                                class="kt-menu__link <%= ( page_name == 'shankLength-management' ) ? 'active' : ''%>">
+                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                                    <span></span>
+                                                </i>
+                                                <span class="kt-menu__link-text">Shank Length</span>
+                                            </a>
+
+                                        </li>
+                                        <li class="kt-menu__item" aria-haspopup="true">
+                                            <!-- <%=(page_name == 'customer-management') ? 'active' : ''%> -->
+                                            <a href="<%= generateUrl('admin.shanks.list') %>"
+                                                class="kt-menu__link <%= ( page_name == 'shanks-management' ) ? 'active' : ''%>">
+                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                                    <span></span>
+                                                </i>
+                                                <span class="kt-menu__link-text">Shanks</span>
+                                            </a>
+
+                                        </li>
+                                        <li class="kt-menu__item" aria-haspopup="true">
+                                            <!-- <%=(page_name == 'customer-management') ? 'active' : ''%> -->
+                                            <a href="<%= generateUrl('admin.site-area.list') %>"
+                                                class="kt-menu__link <%= ( page_name == 'siteArea-management' ) ? 'active' : ''%>">
+                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                                    <span></span>
+                                                </i>
+                                                <span class="kt-menu__link-text">Site Area</span>
+                                            </a>
+
+                                        </li>
+                                        <li class="kt-menu__item" aria-haspopup="true">
+                                            <!-- <%=(page_name == 'customer-management') ? 'active' : ''%> -->
+                                            <a href="<%= generateUrl('admin.site-layout.list') %>"
+                                                class="kt-menu__link <%= ( page_name == 'siteLayout-management' ) ? 'active' : ''%>">
+                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                                    <span></span>
+                                                </i>
+                                                <span class="kt-menu__link-text">Site Layout</span>
+                                            </a>
+
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </li>
+                            <!-- ------------------------------------------------ -->
+
+                            <!-- probefinder -->
 
                         </ul>
                     </div>
@@ -118,7 +233,7 @@
                     <a href="javascript:void(0);"
                         class="kt-menu__link kt-menu__toggle <%=(page_name == 'meet_the_team-management' || page_name == 'leadership-management' || page_name == 'brain-initiative-management' || page_name == 'brain-initiative-tab-management' || page_name == 'aboutus-management' || page_name == 'science-update-collaboration-management' || page_name == 'science-update-collaboration-tab-management' || page_name == 'careers-opening-management' || page_name == 'careers-management' || page_name == 'distributors-management' || page_name == 'partners-management') ? 'active' : ''%>">
                         <i class="fas flaticon2-expand"></i>
-                        <span class="kt-menu__link-text">About</span>
+                        <span class="kt-menu__link-text">Company</span>
                         <i class="kt-menu__ver-arrow la la-angle-right"></i>
                     </a>
                     <div class="kt-menu__submenu ">
@@ -223,7 +338,7 @@
                                 <a href="javascript:void(0);"
                                     class="kt-menu__link kt-menu__toggle <%=(page_name == 'science-update-collaboration-management' || page_name == 'science-update-collaboration-tab-management') ? 'active' : ''%>">
 
-                                    <span class="kt-menu__link-text">Science Update Collaboration</span>
+                                    <span class="kt-menu__link-text">Science Collaboration</span>
                                     <i class="kt-menu__ver-arrow la la-angle-right"></i>
                                 </a>
                                 <div class="kt-menu__submenu ">
@@ -356,7 +471,7 @@
                     <a href="javascript:void(0);"
                         class="kt-menu__link kt-menu__toggle <%=(page_name == 'contact-management' || page_name == 'contactstatic-management') ? 'active' : ''%>">
                         <i class="fas fa-envelope-open-text"></i>
-                        <span class="kt-menu__link-text">Contact</span>
+                        <span class="kt-menu__link-text">Request A Quote</span>
                         <i class="kt-menu__ver-arrow la la-angle-right"></i>
                     </a>
                     <div class="kt-menu__submenu ">
@@ -380,7 +495,7 @@
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
                                         <span></span>
                                     </i>
-                                    <span class="kt-menu__link-text">Contact Data List</span>
+                                    <span class="kt-menu__link-text">Request A Quote Data List</span>
                                 </a>
 
                             </li>
@@ -453,13 +568,13 @@
                 <!-- Science Update Center -->
 
                 <!--  -->
-                <li class="kt-menu__item  kt-menu__item--submenu <%=(page_name == 'science-category-management' || page_name == 'science-management' || page_name == 'science-static-management') ? 'kt-menu__item--open' : ''%>"
+                <li class="kt-menu__item  kt-menu__item--submenu <%=(page_name == 'science-testimonials-management' || page_name == 'science-menu-management' || page_name == 'science-category-management' || page_name == 'science-management' || page_name == 'science-static-management') ? 'kt-menu__item--open' : ''%>"
                     aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
                     <!-- <%=(page_name == 'about-management' || page_name == 'provider-management') ? 'active' : ''%> -->
                     <a href="javascript:void(0);"
-                        class="kt-menu__link kt-menu__toggle <%=(page_name == 'science-category-management' || page_name == 'science-management' || page_name == 'science-static-management' ) ? 'active' : ''%>">
+                        class="kt-menu__link kt-menu__toggle <%=(page_name == 'science-testimonials-management' || page_name == 'science-menu-management' || page_name == 'science-category-management' || page_name == 'science-management' || page_name == 'science-static-management' ) ? 'active' : ''%>">
                         <i class="fas fa-brain"></i>
-                        <span class="kt-menu__link-text">Science Update</span>
+                        <span class="kt-menu__link-text">Science</span>
                         <i class="kt-menu__ver-arrow la la-angle-right"></i>
                     </a>
                     <div class="kt-menu__submenu ">
@@ -487,6 +602,17 @@
                                 </a>
 
                             </li>
+                            <li class="kt-menu__item" aria-haspopup="true">
+                                <!-- <%=(page_name == 'customer-management') ? 'active' : ''%> -->
+                                <a href="<%= generateUrl('admin.science_menu.list') %>"
+                                    class="kt-menu__link <%= ( page_name == 'science-menu-management' ) ? 'active' : ''%>">
+                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                        <span></span>
+                                    </i>
+                                    <span class="kt-menu__link-text">Menu</span>
+                                </a>
+
+                            </li>
 
                             <li class="kt-menu__item" aria-haspopup="true">
                                 <!-- <%=(page_name == 'customer-management') ? 'active' : ''%> -->
@@ -496,6 +622,17 @@
                                         <span></span>
                                     </i>
                                     <span class="kt-menu__link-text">Blogs</span>
+                                </a>
+
+                            </li>
+                            <li class="kt-menu__item" aria-haspopup="true">
+                                <!-- <%=(page_name == 'customer-management') ? 'active' : ''%> -->
+                                <a href="<%= generateUrl('admin.science_testimonials.list') %>"
+                                    class="kt-menu__link <%= (page_name == 'science-testimonials-management') ? 'active' : ''%>">
+                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                        <span></span>
+                                    </i>
+                                    <span class="kt-menu__link-text">Testimonials</span>
                                 </a>
 
                             </li>
@@ -511,11 +648,11 @@
                 <!-- Support -->
 
                 <!--  -->
-                <li class="kt-menu__item  kt-menu__item--submenu <%=(page_name == 'support-static-management' || page_name == 'support-category-management' ) ? 'kt-menu__item--open' : ''%>"
+                <li class="kt-menu__item  kt-menu__item--submenu <%=(page_name == 'support-blog-management' || page_name == 'support-static-management' || page_name == 'support-category-management' ) ? 'kt-menu__item--open' : ''%>"
                     aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
                     <!-- <%=(page_name == 'about-management' || page_name == 'provider-management') ? 'active' : ''%> -->
                     <a href="javascript:void(0);"
-                        class="kt-menu__link kt-menu__toggle <%=(page_name == 'support-static-management' || page_name == 'support-category-management'  ) ? 'active' : ''%>">
+                        class="kt-menu__link kt-menu__toggle <%=(page_name == 'support-blog-management' || page_name == 'support-static-management' || page_name == 'support-category-management'  ) ? 'active' : ''%>">
                         <i class="fas fa-clipboard-check"></i>
                         <span class="kt-menu__link-text">Support</span>
                         <i class="kt-menu__ver-arrow la la-angle-right"></i>
@@ -543,6 +680,78 @@
                                         <span></span>
                                     </i>
                                     <span class="kt-menu__link-text">Support Category</span>
+                                </a>
+
+                            </li>
+
+                            <li class="kt-menu__item" aria-haspopup="true">
+                                <!-- <%=(page_name == 'customer-management') ? 'active' : ''%> -->
+                                <a href="<%= generateUrl('admin.support_blog.list') %>"
+                                    class="kt-menu__link <%= (page_name == 'support-blog-management') ? 'active' : ''%>">
+                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                        <span></span>
+                                    </i>
+                                    <span class="kt-menu__link-text">Blogs</span>
+                                </a>
+
+                            </li>
+
+                        </ul>
+                    </div>
+                </li>
+
+
+                <!--  -->
+                <!--  -->
+                <% } %>
+                <% if(user.role.role == 'admin' || permission.technology){ %>
+                <!-- technology -->
+
+                <!--  -->
+                <li class="kt-menu__item  kt-menu__item--submenu <%=(page_name == 'technology-static-management' || page_name == 'technology-category-management' ) ? 'kt-menu__item--open' : ''%>"
+                    aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+                    <!-- <%=(page_name == 'about-management' || page_name == 'provider-management') ? 'active' : ''%> -->
+                    <a href="javascript:void(0);"
+                        class="kt-menu__link kt-menu__toggle <%=(page_name == 'technology-static-management' || page_name == 'technology-category-management'  ) ? 'active' : ''%>">
+                        <i class="fas fa-clipboard-check"></i>
+                        <span class="kt-menu__link-text">Technology</span>
+                        <i class="kt-menu__ver-arrow la la-angle-right"></i>
+                    </a>
+                    <div class="kt-menu__submenu ">
+                        <span class="kt-menu__arrow"></span>
+                        <ul class="kt-menu__subnav">
+                            <li class="kt-menu__item" aria-haspopup="true">
+                                <!-- <%=(page_name == 'customer-management') ? 'active' : ''%> -->
+                                <a href="<%= generateUrl('admin.technology_static.edit') %>"
+                                    class="kt-menu__link <%=( page_name == 'technology-static-management'  ) ? 'active' : ''%>">
+                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                        <span></span>
+                                    </i>
+                                    <span class="kt-menu__link-text">Static Contents</span>
+                                </a>
+
+                            </li>
+
+                            <li class="kt-menu__item" aria-haspopup="true">
+                                <!-- <%=(page_name == 'customer-management') ? 'active' : ''%> -->
+                                <a href="<%= generateUrl('admin.technology_category.list') %>"
+                                    class="kt-menu__link <%= ( page_name == 'technology-category-management' ) ? 'active' : ''%>">
+                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                        <span></span>
+                                    </i>
+                                    <span class="kt-menu__link-text">Technology Category</span>
+                                </a>
+
+                            </li>
+
+                            <li class="kt-menu__item" aria-haspopup="true">
+                                <!-- <%=(page_name == 'customer-management') ? 'active' : ''%> -->
+                                <a href="<%= generateUrl('admin.technology_electrode_arrays.list') %>"
+                                    class="kt-menu__link <%= (page_name == 'technology-electrode_arrays-management') ? 'active' : ''%>">
+                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                        <span></span>
+                                    </i>
+                                    <span class="kt-menu__link-text">Thin-flim Electrode Arrays</span>
                                 </a>
 
                             </li>
@@ -602,106 +811,7 @@
                 <% } %>
                 <!--  -->
 
-                <!-- --------------------------------------------- -->
-                <!--  -->
-                <% if(user.role.role == 'admin' || permission.probe_finder){ %>
-                <li class="kt-menu__item  kt-menu__item--submenu <%=(page_name == 'probeFinder-management' || page_name == 'channels-management' || page_name == 'experiment-management' || page_name == 'shankLength-management' || page_name == 'shanks-management' || page_name == 'siteArea-management' || page_name == 'siteLayout-management' ) ? 'kt-menu__item--open' : ''%>"
-                    aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
-                    <!-- <%=(page_name == 'about-management' || page_name == 'provider-management') ? 'active' : ''%> -->
-                    <a href="javascript:void(0);"
-                        class="kt-menu__link kt-menu__toggle <%=(page_name == 'probeFinder-management' || page_name == 'channels-management' || page_name == 'experiment-management' || page_name == 'shankLength-management' || page_name == 'shanks-management' || page_name == 'siteArea-management' || page_name == 'siteLayout-management'  ) ? 'active' : ''%>">
-                        <i class="fas fa-tachometer-alt"></i>
-                        <span class="kt-menu__link-text">Probe Finder</span>
-                        <i class="kt-menu__ver-arrow la la-angle-right"></i>
-                    </a>
-                    <div class="kt-menu__submenu ">
-                        <span class="kt-menu__arrow"></span>
-                        <ul class="kt-menu__subnav">
-                            <li class="kt-menu__item" aria-haspopup="true">
-                                <!-- <%=(page_name == 'customer-management') ? 'active' : ''%> -->
-                                <a href="<%= generateUrl('admin.probe-finder.list') %>"
-                                    class="kt-menu__link <%=( page_name == 'probeFinder-management'  ) ? 'active' : ''%>">
-                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
-                                        <span></span>
-                                    </i>
-                                    <span class="kt-menu__link-text">Products</span>
-                                </a>
 
-                            </li>
-
-                            <li class="kt-menu__item" aria-haspopup="true">
-                                <!-- <%=(page_name == 'customer-management') ? 'active' : ''%> -->
-                                <a href="<%= generateUrl('admin.channels.list') %>"
-                                    class="kt-menu__link <%= ( page_name == 'channels-management' ) ? 'active' : ''%>">
-                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
-                                        <span></span>
-                                    </i>
-                                    <span class="kt-menu__link-text">Channels</span>
-                                </a>
-
-                            </li>
-
-                            <li class="kt-menu__item" aria-haspopup="true">
-                                <!-- <%=(page_name == 'customer-management') ? 'active' : ''%> -->
-                                <a href="<%= generateUrl('admin.experiment.list') %>"
-                                    class="kt-menu__link <%= ( page_name == 'experiment-management' ) ? 'active' : ''%>">
-                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
-                                        <span></span>
-                                    </i>
-                                    <span class="kt-menu__link-text">Experiment</span>
-                                </a>
-
-                            </li>
-                            <li class="kt-menu__item" aria-haspopup="true">
-                                <!-- <%=(page_name == 'customer-management') ? 'active' : ''%> -->
-                                <a href="<%= generateUrl('admin.shank-length.list') %>"
-                                    class="kt-menu__link <%= ( page_name == 'shankLength-management' ) ? 'active' : ''%>">
-                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
-                                        <span></span>
-                                    </i>
-                                    <span class="kt-menu__link-text">Shank Length</span>
-                                </a>
-
-                            </li>
-                            <li class="kt-menu__item" aria-haspopup="true">
-                                <!-- <%=(page_name == 'customer-management') ? 'active' : ''%> -->
-                                <a href="<%= generateUrl('admin.shanks.list') %>"
-                                    class="kt-menu__link <%= ( page_name == 'shanks-management' ) ? 'active' : ''%>">
-                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
-                                        <span></span>
-                                    </i>
-                                    <span class="kt-menu__link-text">Shanks</span>
-                                </a>
-
-                            </li>
-                            <li class="kt-menu__item" aria-haspopup="true">
-                                <!-- <%=(page_name == 'customer-management') ? 'active' : ''%> -->
-                                <a href="<%= generateUrl('admin.site-area.list') %>"
-                                    class="kt-menu__link <%= ( page_name == 'siteArea-management' ) ? 'active' : ''%>">
-                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
-                                        <span></span>
-                                    </i>
-                                    <span class="kt-menu__link-text">Site Area</span>
-                                </a>
-
-                            </li>
-                            <li class="kt-menu__item" aria-haspopup="true">
-                                <!-- <%=(page_name == 'customer-management') ? 'active' : ''%> -->
-                                <a href="<%= generateUrl('admin.site-layout.list') %>"
-                                    class="kt-menu__link <%= ( page_name == 'siteLayout-management' ) ? 'active' : ''%>">
-                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
-                                        <span></span>
-                                    </i>
-                                    <span class="kt-menu__link-text">Site Layout</span>
-                                </a>
-
-                            </li>
-
-                        </ul>
-                    </div>
-                </li>
-                <!-- ------------------------------------------------ -->
-                <% } %>
 
 
             </ul>

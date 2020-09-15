@@ -15,10 +15,13 @@ export class HeaderComponent implements OnInit {
   @ViewChild('allOverSiteSeacrhForm', { static: true }) public allOverSiteSeacrhForm: any;
   seacrhForm: FormGroup;
   supportList: any;
+  scienceList: any;
+  technologyList: any;
   productListWithCategory: any;
   catlogAndBrouchers: any;
   BASE_IMAGE_URL = environment.BASE_IMAGE_URL;
   isToggle = false;
+  
   constructor(
     private api: ApiService,
     private formService: FormService,
@@ -27,6 +30,8 @@ export class HeaderComponent implements OnInit {
     this.supportList = undefined;
     this.productListWithCategory = undefined;
     this.catlogAndBrouchers = undefined;
+    this.scienceList = undefined;
+    this.technologyList = undefined;
   }
 
   ngOnInit(): void {
@@ -50,8 +55,11 @@ export class HeaderComponent implements OnInit {
     }
     this.getProductList();
     this.getSupportList();
+    this.getScienceList();
     this.getCatlogAndBrochursData();
+    this.getTechnologyList();
   }
+
   getProductList() {
     this.api.get(`product/list/category`).subscribe((res: any) => {
       if (res.status === 200) {
@@ -65,9 +73,9 @@ export class HeaderComponent implements OnInit {
         this.productListWithCategory = undefined;
       }
     }, (e) => {
-      console.log(e);
     });
   }
+
   getSupportList() {
     this.api.get(`support/list`).subscribe((res: any) => {
       if (res.status === 200) {
@@ -86,9 +94,51 @@ export class HeaderComponent implements OnInit {
         this.supportList = undefined;
       }
     }, (e) => {
-      console.log(e);
     });
   }
+
+  getScienceList() {
+    this.api.get(`science/list`).subscribe((res: any) => {
+      if (res.status === 200) {
+        this.scienceList = res.data;
+        this.scienceList.map((parent: any) => {
+          if (parent.parent_id === null) {
+            this.scienceList.map((child: any) => {
+              if (parent._id === child.parent_id) {
+                parent.hasChild = true;
+              }
+            });
+            this.scienceList = _.sortBy(this.scienceList, 'order_sort');
+          }
+        });
+      } else if (res.status === 201) {
+        this.scienceList = undefined;
+      }
+    }, (e) => {
+    });
+  }
+
+  getTechnologyList() {
+    this.api.get(`technology/list`).subscribe((res: any) => {
+      if (res.status === 200) {
+        this.technologyList = res.data;
+        this.technologyList.map((parent: any) => {
+          if (parent.parent_id === null) {
+            this.technologyList.map((child: any) => {
+              if (parent._id === child.parent_id) {
+                parent.hasChild = true;
+              }
+            });
+            this.technologyList = _.sortBy(this.technologyList, 'order_sort');
+          }
+        });
+      } else if (res.status === 201) {
+        this.technologyList = undefined;
+      }
+    }, (e) => {
+    });
+  }
+
   getCatlogAndBrochursData() {
     this.api.get(`catalogs/list`).subscribe((res: any) => {
       if (res.status === 200) {
@@ -97,9 +147,9 @@ export class HeaderComponent implements OnInit {
         this.catlogAndBrouchers = undefined;
       }
     }, (e) => {
-      console.log(e);
     });
   }
+
   checkHasSubmenu(item: any) {
     if (item.hasChild) {
       return true;
@@ -107,6 +157,7 @@ export class HeaderComponent implements OnInit {
       return false;
     }
   }
+
   searchAgainstKeyword() {
     if (this.seacrhForm.valid) {
       $('.search').removeClass('active');
@@ -119,6 +170,7 @@ export class HeaderComponent implements OnInit {
       this.api.alert('Search-keyword is required', 'error');
     }
   }
+
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
     if (event.target.innerWidth <= 1024) {

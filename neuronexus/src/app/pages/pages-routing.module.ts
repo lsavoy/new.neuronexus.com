@@ -18,6 +18,11 @@ import { ProductCategoryDetailsComponent } from './product-category-details/prod
 import { ProbeFinderComponent } from './probe-finder/probe-finder.component';
 import { ProbeDetailsComponent } from './probe-details/probe-details.component';
 import { CatalogsBrochuresComponent } from './catalogs-brochures/catalogs-brochures.component';
+import { ScienceDetailsComponent } from './science-details/science-details.component';
+import { TechnologyDetailsComponent } from './technology-details/technology-details.component';
+import { TechnologyComponent } from './technology/technology.component';
+import { TestimonialsComponent } from './testimonials/testimonials.component';
+import { TestimonialDetailsComponent } from './testimonial-details/testimonial-details.component';
 
 
 const routes: Routes = [
@@ -85,6 +90,26 @@ const routes: Routes = [
   {
     path: 'support-details/:supportSlug',
     component: SupportDetailsComponent
+  },
+  {
+    path: 'science-details/:scienceSlug',
+    component: ScienceDetailsComponent
+  },
+  {
+    path: 'technology',
+    component: TechnologyComponent
+  },
+  {
+    path: 'technology-details/:technologySlug',
+    component: TechnologyDetailsComponent
+  },
+  {
+    path: 'testimonials',
+    component: TestimonialsComponent
+  },
+  {
+    path: 'testimonial-detail/:slug',
+    component: TestimonialDetailsComponent
   },
   {
     path: 'search-result/:searchKeyWord',

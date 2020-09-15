@@ -168,6 +168,76 @@ namedRouter.get("api.support", '/support/:category_id', async (req, res) => {
 
 
 
+////////////////
+
+/**
+ * @api {get} /support_blog/list Support Blog List
+ * @apiVersion 1.0.0
+ * @apiGroup Support
+ * @apiSuccessExample {json} Success
+ * {
+    "status": 200,
+    "data": [
+        {
+            "title": "test",
+            "short_description": "<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industrys.</p>\r\n",
+            "content": "<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\r\n",
+            "image": "image_1599830930635_1598025405936_profileimage_1580380248488_0i1xbvjul86e_csyf.jpg.jpg",
+            "slug": "test-453eb",
+            "isDeleted": false,
+            "status": "Active",
+            "_id": "5f5b745819c37a1e0ca453eb",
+            "createdAt": "2020-09-11T12:58:01.020Z",
+            "updatedAt": "2020-09-15T10:14:06.888Z",
+            "__v": 0
+        }
+    ],
+    "message": "Record fetched Successfully"
+}
+*/
+namedRouter.get("api.support_blog.list", '/support_blog/list', async (req, res) => {
+  try {
+    const success = await supportController.getAllsupportblog(req);
+    res.status(success.status).send(success);
+  } catch (error) {
+    res.status(error.status).send(error.message);
+  }
+});
+
+/**
+ * @api {get} /support_blog/details/:slug Support Blog Detail by slug
+ * @apiVersion 1.0.0
+ * @apiGroup Support
+ * @apiparam id Support Id
+ * @apiSuccessExample {json} Success
+ * {
+    "status": 200,
+    "data": [
+        {
+            "title": "test",
+            "short_description": "<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industrys.</p>\r\n",
+            "content": "<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\r\n",
+            "image": "image_1599830930635_1598025405936_profileimage_1580380248488_0i1xbvjul86e_csyf.jpg.jpg",
+            "slug": "test-453eb",
+            "isDeleted": false,
+            "status": "Active",
+            "_id": "5f5b745819c37a1e0ca453eb",
+            "createdAt": "2020-09-11T12:58:01.020Z",
+            "updatedAt": "2020-09-15T10:14:06.888Z",
+            "__v": 0
+        }
+    ],
+    "message": "Record fetched Successfully"
+}
+*/
+namedRouter.get("api.support_blog.detail", '/support_blog/details/:slug', async (req, res) => {
+  try {
+    const success = await supportController.getAllsupportblog(req);
+    res.status(success.status).send(success);
+  } catch (error) {
+    res.status(error.status).send(error.message);
+  }
+});
 
 
 

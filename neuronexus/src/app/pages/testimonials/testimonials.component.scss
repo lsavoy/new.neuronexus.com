@@ -1,0 +1,20 @@
+.testimonial-vdo{
+    position: relative;
+}
+.video-controls{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    cursor: pointer;
+    color: #009ddc;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 100px;
+    background: transparent;
+}
+
+.video-controls:hover{
+    background-color: #212529;
+    opacity: 0.8;
+}

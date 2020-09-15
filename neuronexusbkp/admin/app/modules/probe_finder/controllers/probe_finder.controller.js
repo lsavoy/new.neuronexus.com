@@ -5,7 +5,7 @@ const router = express.Router();
 const namedRouter = routeLabel(router);
 const querystring = require("querystring");
 const probeFinderRepo = require("probe_finder/repositories/probe_finder.repository");
-
+const categoryMasterRepo = require("category/repositories/category.repository");
 const channelsRepo = require("channels/repositories/channels.repository");
 const experimentRepo = require("experiment/repositories/experiment.repository");
 const shankLengthRepo = require("shank_length/repositories/shank_length.repository");
@@ -209,6 +209,48 @@ class probeFinderController {
       throw e;
     }
   }
+
+  async editcategoryname(req, res) {
+    try {
+      let selectedcategory = await probeFinderRepo.getCategoryNameByField({ 'status': 'Active', 'isDeleted': false });
+      let categoryMaster = await categoryMasterRepo.getAllByField({ isDeleted: false, status: 'Active' }, { name: 1 });
+
+      if (!_.isEmpty(selectedcategory)) {
+        res.render("probe_finder/views/edit_menu_name.ejs", {
+          page_name: "probeFinder-menu-management",
+          page_title: "probe Finder Edit",
+          user: req.user,
+          response: selectedcategory,
+          categoryMaster: categoryMaster,
+          permission: req.permission,
+        });
+      } else {
+        req.flash("error", "Sorry, record not found!");
+        res.redirect(namedRouter.urlFor("admin.probe-finder.editcategory"));
+      }
+    } catch (e) {
+      return res.status(500).send({ message: e.message });
+    }
+  }
+  async updatecategoryname(req, res) {
+    try {
+      console.log(req.body)
+      let menunameUpdate = await probeFinderRepo.updateCategoryNameById(req.body.id, req.body)
+      console.log(menunameUpdate)
+      if (menunameUpdate) {
+        req.flash('success', "Menu name updated successfully");
+        res.redirect(namedRouter.urlFor('admin.probe-finder.editcategory'));
+      }
+
+    } catch (e) {
+
+      req.flash("error", e.message);
+      res.redirect(
+        namedRouter.urlFor("admin.probe-finder.editcategory")
+      );
+    }
+  }
+
 
   async edit(req, res) {
     try {

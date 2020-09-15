@@ -27,6 +27,12 @@ import { ProductCategoryDetailsComponent } from './product-category-details/prod
 import { ProbeFinderComponent } from './probe-finder/probe-finder.component';
 import { ProbeDetailsComponent } from './probe-details/probe-details.component';
 import { CatalogsBrochuresComponent } from './catalogs-brochures/catalogs-brochures.component';
+import { ScienceDetailsComponent } from './science-details/science-details.component';
+import { TechnologyDetailsComponent } from './technology-details/technology-details.component';
+import { TechnologyComponent } from './technology/technology.component';
+import { TestimonialsComponent } from './testimonials/testimonials.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { TestimonialDetailsComponent } from './testimonial-details/testimonial-details.component';
 
 
 
@@ -50,7 +56,12 @@ import { CatalogsBrochuresComponent } from './catalogs-brochures/catalogs-brochu
     ProductCategoryDetailsComponent,
     ProbeFinderComponent,
     ProbeDetailsComponent,
-    CatalogsBrochuresComponent],
+    CatalogsBrochuresComponent,
+    ScienceDetailsComponent,
+    TechnologyDetailsComponent,
+    TechnologyComponent,
+    TestimonialsComponent,
+    TestimonialDetailsComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
@@ -60,7 +71,8 @@ import { CatalogsBrochuresComponent } from './catalogs-brochures/catalogs-brochu
     ParticlesModule,
     SharedModule,
     SlickCarouselModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [
   ]
