@@ -210,6 +210,68 @@ define({ "api": [
   },
   {
     "type": "get",
+    "url": "/accessoriesvideos/list?title=searchvalue",
+    "title": "Accessoriesvideos List",
+    "version": "1.0.0",
+    "group": "Accessoriesvideos",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "optional": false,
+            "field": "title",
+            "description": "<p>For search query</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success",
+          "content": "{\n    \"status\": 200,\n    \"data\": [\n        {\n            \"title\": \"Test\",\n            \"content\": \"<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\\r\\n\",\n            \"type\": \"image\",\n            \"media\": \"media_1600261049059_1598025405936_profileimage_1580380248488_0i1xbvjul86e_csyf.jpg.jpg\",\n            \"slug\": \"test-78e2a\",\n            \"isDeleted\": false,\n            \"status\": \"Active\",\n            \"_id\": \"5f620bb918458d259c478e2a\",\n            \"createdAt\": \"2020-09-16T12:57:29.067Z\",\n            \"updatedAt\": \"2020-09-16T12:57:29.367Z\",\n            \"__v\": 0\n        }\n    ],\n    \"message\": \"Record fetched Successfully\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/api/accessoriesvideos.routes.js",
+    "groupTitle": "Accessoriesvideos",
+    "name": "GetAccessoriesvideosListTitleSearchvalue"
+  },
+  {
+    "type": "get",
+    "url": "/accessoriesvideos/:slug",
+    "title": "Accessoriesvideos Detail",
+    "version": "1.0.0",
+    "group": "Accessoriesvideos",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Accessoriesvideos Id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success",
+          "content": "{\n    \"status\": 200,\n    \"data\": {\n        \"title\": \"Test\",\n        \"content\": \"<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\\r\\n\",\n        \"type\": \"image\",\n        \"media\": \"media_1600261049059_1598025405936_profileimage_1580380248488_0i1xbvjul86e_csyf.jpg.jpg\",\n        \"slug\": \"test-78e2a\",\n        \"isDeleted\": false,\n        \"status\": \"Active\",\n        \"_id\": \"5f620bb918458d259c478e2a\",\n        \"createdAt\": \"2020-09-16T12:57:29.067Z\",\n        \"updatedAt\": \"2020-09-16T12:57:29.367Z\",\n        \"__v\": 0\n    },\n    \"message\": \"Record fetched Successfully\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/api/accessoriesvideos.routes.js",
+    "groupTitle": "Accessoriesvideos",
+    "name": "GetAccessoriesvideosSlug"
+  },
+  {
+    "type": "get",
     "url": "/contact/staticinfo",
     "title": "Contact Static Contents",
     "version": "1.0.0",
@@ -279,6 +341,149 @@ define({ "api": [
     "filename": "app/routes/api/contactus.routes.js",
     "groupTitle": "ContactUs",
     "name": "PostContactusFormSave"
+  },
+  {
+    "type": "get",
+    "url": "/electrodevideos/list?title=searchvalue",
+    "title": "Electrodevideos List",
+    "version": "1.0.0",
+    "group": "Electrodevideos",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "optional": false,
+            "field": "title",
+            "description": "<p>For search query</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success",
+          "content": "{\n    \"status\": 200,\n    \"data\": [\n        {\n            \"title\": \"test\",\n            \"content\": \"<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\\r\\n\",\n            \"type\": \"image\",\n            \"media\": \"media_1600257783814_1598025405936_profileimage_1580380248488_0i1xbvjul86e_csyf.jpg.jpg\",\n            \"slug\": \"test-e9328\",\n            \"isDeleted\": false,\n            \"status\": \"Active\",\n            \"_id\": \"5f61fef78e53e114343e9328\",\n            \"createdAt\": \"2020-09-16T12:03:03.867Z\",\n            \"updatedAt\": \"2020-09-16T12:03:04.438Z\",\n            \"__v\": 0\n        },\n        {\n            \"title\": \"test 2\",\n            \"content\": \"<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\\r\\n\",\n            \"type\": \"video\",\n            \"media\": \"media_1600258026190_file_example_MP4_480_1_5MG.mp4\",\n            \"slug\": \"test-2-e9329\",\n            \"isDeleted\": false,\n            \"status\": \"Active\",\n            \"_id\": \"5f61ffea8e53e114343e9329\",\n            \"createdAt\": \"2020-09-16T12:07:06.289Z\",\n            \"updatedAt\": \"2020-09-16T12:08:08.405Z\",\n            \"__v\": 0\n        }\n    ],\n    \"message\": \"Record fetched Successfully\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/api/electrodevideos.routes.js",
+    "groupTitle": "Electrodevideos",
+    "name": "GetElectrodevideosListTitleSearchvalue"
+  },
+  {
+    "type": "get",
+    "url": "/electrodevideos/:slug",
+    "title": "Electrodevideos Detail",
+    "version": "1.0.0",
+    "group": "Electrodevideos",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Electrodevideos Id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success",
+          "content": "{\n    \"status\": 200,\n    \"data\": {\n        \"title\": \"test 2\",\n        \"content\": \"<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\\r\\n\",\n        \"type\": \"video\",\n        \"media\": \"media_1600258026190_file_example_MP4_480_1_5MG.mp4\",\n        \"slug\": \"test-2-e9329\",\n        \"isDeleted\": false,\n        \"status\": \"Active\",\n        \"_id\": \"5f61ffea8e53e114343e9329\",\n        \"createdAt\": \"2020-09-16T12:07:06.289Z\",\n        \"updatedAt\": \"2020-09-16T12:08:08.405Z\",\n        \"__v\": 0\n    },\n    \"message\": \"Record fetched Successfully\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/api/electrodevideos.routes.js",
+    "groupTitle": "Electrodevideos",
+    "name": "GetElectrodevideosSlug"
+  },
+  {
+    "type": "get",
+    "url": "/events/list?title=searchvalue",
+    "title": "Events List",
+    "version": "1.0.0",
+    "group": "Events",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "optional": false,
+            "field": "title",
+            "description": "<p>For search query</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success",
+          "content": "{\n    \"status\": 200,\n    \"data\": [\n        {\n            \"title\": \"Event 1\",\n            \"content\": \"<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\\r\\n\",\n            \"date\": \"2020-09-17 15:25\",\n            \"slug\": \"event-1-18d35\",\n            \"isDeleted\": false,\n            \"status\": \"Active\",\n            \"_id\": \"5f61df34a972ad0cccc18d35\",\n            \"createdAt\": \"2020-09-16T09:47:32.251Z\",\n            \"updatedAt\": \"2020-09-16T09:47:32.588Z\",\n            \"__v\": 0\n        },\n        {\n            \"title\": \"Event 2\",\n            \"content\": \"<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\\r\\n\",\n            \"date\": \"2020-09-25 15:40\",\n            \"slug\": \"event-2-18d36\",\n            \"isDeleted\": false,\n            \"status\": \"Active\",\n            \"_id\": \"5f61df67a972ad0cccc18d36\",\n            \"createdAt\": \"2020-09-16T09:48:23.243Z\",\n            \"updatedAt\": \"2020-09-16T09:48:23.574Z\",\n            \"__v\": 0\n        }\n    ],\n    \"message\": \"Record fetched Successfully\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/api/events.routes.js",
+    "groupTitle": "Events",
+    "name": "GetEventsListTitleSearchvalue"
+  },
+  {
+    "type": "get",
+    "url": "/events/:slug",
+    "title": "Events Detail",
+    "version": "1.0.0",
+    "group": "Events",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Events Id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success",
+          "content": "{\n    \"status\": 200,\n    \"data\": {\n        \"title\": \"Event 1\",\n        \"content\": \"<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\\r\\n\",\n        \"date\": \"2020-09-17 15:25\",\n        \"slug\": \"event-1-18d35\",\n        \"isDeleted\": false,\n        \"status\": \"Active\",\n        \"_id\": \"5f61df34a972ad0cccc18d35\",\n        \"createdAt\": \"2020-09-16T09:47:32.251Z\",\n        \"updatedAt\": \"2020-09-16T09:47:32.588Z\",\n        \"__v\": 0\n    },\n    \"message\": \"Record fetched Successfully\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/api/events.routes.js",
+    "groupTitle": "Events",
+    "name": "GetEventsSlug"
+  },
+  {
+    "type": "get",
+    "url": "/events/static",
+    "title": "Events Static Contents",
+    "version": "1.0.0",
+    "group": "Events",
+    "success": {
+      "examples": [
+        {
+          "title": "Success",
+          "content": "{\n    \"status\": 200,\n    \"data\": {\n        \"header_banner_image\": \"header_banner_image_1600250059709_header_banner_image_1590834134912_about_bnr.jpg\",\n        \"isDeleted\": false,\n        \"status\": \"Active\",\n        \"_id\": \"5f61da14f394c2500b904d3e\",\n        \"updatedAt\": \"2020-09-16T09:54:20.236Z\"\n    },\n    \"message\": \"Record fetched Successfully\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/api/events.routes.js",
+    "groupTitle": "Events",
+    "name": "GetEventsStatic"
   },
   {
     "type": "get",
@@ -618,6 +823,149 @@ define({ "api": [
   },
   {
     "type": "get",
+    "url": "/science/:category_id",
+    "title": "Science Detail by Category Id",
+    "version": "1.0.0",
+    "group": "Science",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "optional": false,
+            "field": "category_id",
+            "description": "<p>Science Category Id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success",
+          "content": "{\n    \"status\": 200,\n    \"data\": [\n        {\n            \"title\": \"NeuroNexus in Action\",\n            \"slug\": \"neuronexus-in-action-3150d\",\n            \"content\": \"<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\\r\\n\",\n            \"parent_id\": null,\n            \"isDeleted\": false,\n            \"isHome\": false,\n            \"order_sort\": \"\",\n            \"image\": \"\",\n            \"status\": \"Active\",\n            \"_id\": \"5f579d03c72fcb241053150d\",\n            \"createdAt\": \"2020-09-08T15:02:27.020Z\",\n            \"updatedAt\": \"2020-09-08T15:02:27.121Z\",\n            \"__v\": 0\n        }\n    ],\n    \"message\": \"Record fetched Successfully\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/api/science.routes.js",
+    "groupTitle": "Science",
+    "name": "GetScienceCategory_id"
+  },
+  {
+    "type": "get",
+    "url": "/science/details/:slug",
+    "title": "Science Detail by Id",
+    "version": "1.0.0",
+    "group": "Science",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Science Id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success",
+          "content": "{\n    \"status\": 200,\n    \"data\": [\n        {\n            \"title\": \"NeuroNexus in Action\",\n            \"slug\": \"neuronexus-in-action-3150d\",\n            \"content\": \"<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\\r\\n\",\n            \"parent_id\": null,\n            \"isDeleted\": false,\n            \"isHome\": false,\n            \"order_sort\": \"\",\n            \"image\": \"\",\n            \"status\": \"Active\",\n            \"_id\": \"5f579d03c72fcb241053150d\",\n            \"createdAt\": \"2020-09-08T15:02:27.020Z\",\n            \"updatedAt\": \"2020-09-08T15:02:27.121Z\",\n            \"__v\": 0\n        }\n    ],\n    \"message\": \"Record fetched Successfully\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/api/science.routes.js",
+    "groupTitle": "Science",
+    "name": "GetScienceDetailsSlug"
+  },
+  {
+    "type": "get",
+    "url": "/science/list",
+    "title": "Science List",
+    "version": "1.0.0",
+    "group": "Science",
+    "success": {
+      "examples": [
+        {
+          "title": "Success",
+          "content": "{\n    \"status\": 200,\n    \"data\": [\n        {\n            \"title\": \"NeuroNexus in Action\",\n            \"slug\": \"neuronexus-in-action-3150d\",\n            \"content\": \"<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\\r\\n\",\n            \"parent_id\": null,\n            \"isDeleted\": false,\n            \"isHome\": false,\n            \"order_sort\": \"\",\n            \"image\": \"\",\n            \"status\": \"Active\",\n            \"_id\": \"5f579d03c72fcb241053150d\",\n            \"createdAt\": \"2020-09-08T15:02:27.020Z\",\n            \"updatedAt\": \"2020-09-08T15:02:27.121Z\",\n            \"__v\": 0\n        },\n        {\n            \"title\": \"Newsfeed\",\n            \"slug\": \"newsfeed-31511\",\n            \"content\": \"<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\\r\\n\",\n            \"parent_id\": null,\n            \"isDeleted\": false,\n            \"isHome\": false,\n            \"order_sort\": \"\",\n            \"image\": \"\",\n            \"status\": \"Active\",\n            \"_id\": \"5f579d8cc72fcb2410531511\",\n            \"createdAt\": \"2020-09-08T15:04:44.781Z\",\n            \"updatedAt\": \"2020-09-08T15:04:44.894Z\",\n            \"__v\": 0\n        }\n    ],\n    \"message\": \"Record fetched Successfully\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/api/science.routes.js",
+    "groupTitle": "Science",
+    "name": "GetScienceList"
+  },
+  {
+    "type": "get",
+    "url": "/science_testimonials/:id",
+    "title": "Science Update Detail",
+    "version": "1.0.0",
+    "group": "ScienceUpdate",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Science Update Id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success",
+          "content": "{\n    \"status\": 200,\n    \"data\": {\n        \"title\": \"       Small Animal Matrix Array\",\n        \"image\": \"image_1590675043151_testimonials_img.jpg\",\n        \"content\": \"<p>The new <a href=\\\"/products/neural-probes/matrix-small-animal/\\\">Small Animal Matrix Array</a> can be configured for acute or chronic experiments, interfacing with large populations of neurons in 3D space up to 10 mm deep.</p>\\r\\n\\r\\n<p><a href=\\\"/contact/\\\">Contact us</a> for more information, or to place an order.</p>\\r\\n\",\n        \"slug\": \"small-animal-matrix-array-040b1\",\n        \"admin_id\": \"5ecfc4055139bb07ecec9d3f\",\n        \"category_id\": \"5ecf871a0b33232a88c934ab\",\n        \"isDeleted\": false,\n        \"status\": \"Active\",\n        \"_id\": \"5ecfc6630168e6a7c21040b1\",\n        \"createdAt\": \"2020-05-28T14:10:43.400Z\",\n        \"testimonialsdAt\": \"2020-07-20T14:12:01.806Z\",\n        \"__v\": 0\n    },\n    \"message\": \"Record fetched Successfully\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/api/science_testimonials.routes.js",
+    "groupTitle": "ScienceUpdate",
+    "name": "GetScience_testimonialsId"
+  },
+  {
+    "type": "get",
+    "url": "/science_testimonials/list?title=searchvalue",
+    "title": "Science Update List",
+    "version": "1.0.0",
+    "group": "ScienceUpdate",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "optional": false,
+            "field": "title",
+            "description": "<p>For search query</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success",
+          "content": "{\n    \"status\": 200,\n    \"data\": [\n        {\n            \"title\": \"test\",\n            \"content\": \"<p>test test</p>\\r\\n\",\n            \"video\": \"\",\n            \"slug\": \"test-c9b52\",\n            \"isDeleted\": false,\n            \"status\": \"Active\",\n            \"_id\": \"5f5b6457ec1d3927f85c9b52\",\n            \"createdAt\": \"2020-09-11T11:49:43.524Z\",\n            \"updatedAt\": \"2020-09-14T09:20:37.722Z\",\n            \"__v\": 0\n        }\n    ],\n    \"message\": \"Record fetched Successfully\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/api/science_testimonials.routes.js",
+    "groupTitle": "ScienceUpdate",
+    "name": "GetScience_testimonialsListTitleSearchvalue"
+  },
+  {
+    "type": "get",
     "url": "/science_update/category/:category_id",
     "title": "Science Update List by category_id",
     "version": "1.0.0",
@@ -843,6 +1191,68 @@ define({ "api": [
   },
   {
     "type": "get",
+    "url": "/softwarevideos/list?title=searchvalue",
+    "title": "Softwarevideos List",
+    "version": "1.0.0",
+    "group": "Softwarevideos",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "optional": false,
+            "field": "title",
+            "description": "<p>For search query</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success",
+          "content": "{\n    \"status\": 200,\n    \"data\": [\n        {\n            \"title\": \"Test\",\n            \"content\": \"<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\\r\\n\",\n            \"type\": \"image\",\n            \"media\": \"media_1600261015141_1598025405936_profileimage_1580380248488_0i1xbvjul86e_csyf.jpg.jpg\",\n            \"slug\": \"test-78e29\",\n            \"isDeleted\": false,\n            \"status\": \"Active\",\n            \"_id\": \"5f620b9718458d259c478e29\",\n            \"createdAt\": \"2020-09-16T12:56:55.195Z\",\n            \"updatedAt\": \"2020-09-16T12:56:55.775Z\",\n            \"__v\": 0\n        }\n    ],\n    \"message\": \"Record fetched Successfully\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/api/softwarevideos.routes.js",
+    "groupTitle": "Softwarevideos",
+    "name": "GetSoftwarevideosListTitleSearchvalue"
+  },
+  {
+    "type": "get",
+    "url": "/softwarevideos/:slug",
+    "title": "Softwarevideos Detail",
+    "version": "1.0.0",
+    "group": "Softwarevideos",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Softwarevideos Id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success",
+          "content": "{\n    \"status\": 200,\n    \"data\": {\n        \"title\": \"Test\",\n        \"content\": \"<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\\r\\n\",\n        \"type\": \"image\",\n        \"media\": \"media_1600261015141_1598025405936_profileimage_1580380248488_0i1xbvjul86e_csyf.jpg.jpg\",\n        \"slug\": \"test-78e29\",\n        \"isDeleted\": false,\n        \"status\": \"Active\",\n        \"_id\": \"5f620b9718458d259c478e29\",\n        \"createdAt\": \"2020-09-16T12:56:55.195Z\",\n        \"updatedAt\": \"2020-09-16T12:56:55.775Z\",\n        \"__v\": 0\n    },\n    \"message\": \"Record fetched Successfully\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/api/softwarevideos.routes.js",
+    "groupTitle": "Softwarevideos",
+    "name": "GetSoftwarevideosSlug"
+  },
+  {
+    "type": "get",
     "url": "/support/:category_id",
     "title": "Support Detail by Category Id",
     "version": "1.0.0",
@@ -940,5 +1350,255 @@ define({ "api": [
     "filename": "app/routes/api/support.routes.js",
     "groupTitle": "Support",
     "name": "GetSupportStatic"
+  },
+  {
+    "type": "get",
+    "url": "/support_blog/details/:slug",
+    "title": "Support Blog Detail by slug",
+    "version": "1.0.0",
+    "group": "Support",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Support Id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success",
+          "content": "{\n    \"status\": 200,\n    \"data\": [\n        {\n            \"title\": \"test\",\n            \"short_description\": \"<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industrys.</p>\\r\\n\",\n            \"content\": \"<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\\r\\n\",\n            \"image\": \"image_1599830930635_1598025405936_profileimage_1580380248488_0i1xbvjul86e_csyf.jpg.jpg\",\n            \"slug\": \"test-453eb\",\n            \"isDeleted\": false,\n            \"status\": \"Active\",\n            \"_id\": \"5f5b745819c37a1e0ca453eb\",\n            \"createdAt\": \"2020-09-11T12:58:01.020Z\",\n            \"updatedAt\": \"2020-09-15T10:14:06.888Z\",\n            \"__v\": 0\n        }\n    ],\n    \"message\": \"Record fetched Successfully\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/api/support.routes.js",
+    "groupTitle": "Support",
+    "name": "GetSupport_blogDetailsSlug"
+  },
+  {
+    "type": "get",
+    "url": "/support_blog/list",
+    "title": "Support Blog List",
+    "version": "1.0.0",
+    "group": "Support",
+    "success": {
+      "examples": [
+        {
+          "title": "Success",
+          "content": "{\n    \"status\": 200,\n    \"data\": [\n        {\n            \"title\": \"test\",\n            \"short_description\": \"<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industrys.</p>\\r\\n\",\n            \"content\": \"<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\\r\\n\",\n            \"image\": \"image_1599830930635_1598025405936_profileimage_1580380248488_0i1xbvjul86e_csyf.jpg.jpg\",\n            \"slug\": \"test-453eb\",\n            \"isDeleted\": false,\n            \"status\": \"Active\",\n            \"_id\": \"5f5b745819c37a1e0ca453eb\",\n            \"createdAt\": \"2020-09-11T12:58:01.020Z\",\n            \"updatedAt\": \"2020-09-15T10:14:06.888Z\",\n            \"__v\": 0\n        }\n    ],\n    \"message\": \"Record fetched Successfully\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/api/support.routes.js",
+    "groupTitle": "Support",
+    "name": "GetSupport_blogList"
+  },
+  {
+    "type": "get",
+    "url": "/technology/:category_id",
+    "title": "Technology Detail by Category Id",
+    "version": "1.0.0",
+    "group": "Technology",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "optional": false,
+            "field": "category_id",
+            "description": "<p>Technology Category Id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success",
+          "content": "{\n    \"status\": 200,\n    \"data\": [\n        {\n            \"title\": \"Systems\",\n            \"slug\": \"systems-350a9\",\n            \"content\": \"<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\\r\\n\",\n            \"parent_id\": null,\n            \"isDeleted\": false,\n            \"isHome\": false,\n            \"order_sort\": \"\",\n            \"image\": \"\",\n            \"status\": \"Active\",\n            \"_id\": \"5f57a24f05b3eb18189350a9\",\n            \"createdAt\": \"2020-09-08T15:25:03.295Z\",\n            \"updatedAt\": \"2020-09-08T15:25:03.420Z\",\n            \"__v\": 0\n        }\n    ],\n    \"message\": \"Record fetched Successfully\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/api/technology.routes.js",
+    "groupTitle": "Technology",
+    "name": "GetTechnologyCategory_id"
+  },
+  {
+    "type": "get",
+    "url": "/technology/details/:slug",
+    "title": "Technology Detail by Id",
+    "version": "1.0.0",
+    "group": "Technology",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Technology Id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success",
+          "content": "{\n    \"status\": 200,\n    \"data\": [\n        {\n            \"title\": \"Systems\",\n            \"slug\": \"systems-350a9\",\n            \"content\": \"<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\\r\\n\",\n            \"parent_id\": null,\n            \"isDeleted\": false,\n            \"isHome\": false,\n            \"order_sort\": \"\",\n            \"image\": \"\",\n            \"status\": \"Active\",\n            \"_id\": \"5f57a24f05b3eb18189350a9\",\n            \"createdAt\": \"2020-09-08T15:25:03.295Z\",\n            \"updatedAt\": \"2020-09-08T15:25:03.420Z\",\n            \"__v\": 0\n        }\n    ],\n    \"message\": \"Record fetched Successfully\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/api/technology.routes.js",
+    "groupTitle": "Technology",
+    "name": "GetTechnologyDetailsSlug"
+  },
+  {
+    "type": "get",
+    "url": "/technology/list",
+    "title": "Technology List",
+    "version": "1.0.0",
+    "group": "Technology",
+    "success": {
+      "examples": [
+        {
+          "title": "Success",
+          "content": "{\n    \"status\": 200,\n    \"data\": [\n        {\n            \"title\": \"Analytics\",\n            \"slug\": \"analytics-350aa\",\n            \"content\": \"<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\\r\\n\",\n            \"parent_id\": null,\n            \"isDeleted\": false,\n            \"isHome\": false,\n            \"order_sort\": \"\",\n            \"image\": \"\",\n            \"status\": \"Active\",\n            \"_id\": \"5f57a26805b3eb18189350aa\",\n            \"createdAt\": \"2020-09-08T15:25:28.324Z\",\n            \"updatedAt\": \"2020-09-08T15:25:28.451Z\",\n            \"__v\": 0\n        },\n        {\n            \"title\": \"Systems\",\n            \"slug\": \"systems-350a9\",\n            \"content\": \"<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\\r\\n\",\n            \"parent_id\": null,\n            \"isDeleted\": false,\n            \"isHome\": false,\n            \"order_sort\": \"\",\n            \"image\": \"\",\n            \"status\": \"Active\",\n            \"_id\": \"5f57a24f05b3eb18189350a9\",\n            \"createdAt\": \"2020-09-08T15:25:03.295Z\",\n            \"updatedAt\": \"2020-09-08T15:25:03.420Z\",\n            \"__v\": 0\n        }\n    ],\n    \"message\": \"Record fetched Successfully\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/api/technology.routes.js",
+    "groupTitle": "Technology",
+    "name": "GetTechnologyList"
+  },
+  {
+    "type": "get",
+    "url": "/technology/static",
+    "title": "Technology Static Contents",
+    "version": "1.0.0",
+    "group": "Technology",
+    "success": {
+      "examples": [
+        {
+          "title": "Success",
+          "content": "{\n    \"status\": 200,\n    \"data\": {\n        \"title\": \"Technology\",\n        \"content\": \"<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\\r\\n\",\n        \"header_banner_image\": \"\",\n        \"isDeleted\": false,\n        \"status\": \"Active\",\n        \"_id\": \"5f57a1bad29cd33b676e3b7b\",\n        \"updatedAt\": \"2020-05-30T10:22:15.357Z\"\n    },\n    \"message\": \"Record fetched Successfully\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/api/technology.routes.js",
+    "groupTitle": "Technology",
+    "name": "GetTechnologyStatic"
+  },
+  {
+    "type": "get",
+    "url": "/technology_electrode_arrays/details/:slug",
+    "title": "Technology Product Detail by slug",
+    "version": "1.0.0",
+    "group": "Technology",
+    "success": {
+      "examples": [
+        {
+          "title": "Success",
+          "content": "{\n    \"status\": 200,\n    \"data\": [\n        {\n            \"title\": \"test2\",\n            \"content\": \"<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\\r\\n\",\n            \"image\": \"\",\n            \"slug\": \"test2-27698\",\n            \"isDeleted\": false,\n            \"status\": \"Active\",\n            \"_id\": \"5f60a8b3e789ef02fcc27698\",\n            \"createdAt\": \"2020-09-15T11:42:43.995Z\",\n            \"updatedAt\": \"2020-09-15T11:42:44.361Z\",\n            \"__v\": 0\n        }\n    ],\n    \"message\": \"Record fetched Successfully\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/api/technology.routes.js",
+    "groupTitle": "Technology",
+    "name": "GetTechnology_electrode_arraysDetailsSlug"
+  },
+  {
+    "type": "get",
+    "url": "/technology_electrode_arrays/list",
+    "title": "Technology Product List",
+    "version": "1.0.0",
+    "group": "Technology",
+    "success": {
+      "examples": [
+        {
+          "title": "Success",
+          "content": "{\n    \"status\": 200,\n    \"data\": [\n        {\n            \"title\": \"test\",\n            \"content\": \"<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\\r\\n\",\n            \"image\": \"\",\n            \"slug\": \"test-27697\",\n            \"isDeleted\": false,\n            \"status\": \"Active\",\n            \"_id\": \"5f60a875e789ef02fcc27697\",\n            \"createdAt\": \"2020-09-15T11:41:41.638Z\",\n            \"updatedAt\": \"2020-09-15T11:41:43.159Z\",\n            \"__v\": 0\n        },\n        {\n            \"title\": \"test2\",\n            \"content\": \"<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\\r\\n\",\n            \"image\": \"\",\n            \"slug\": \"test2-27698\",\n            \"isDeleted\": false,\n            \"status\": \"Active\",\n            \"_id\": \"5f60a8b3e789ef02fcc27698\",\n            \"createdAt\": \"2020-09-15T11:42:43.995Z\",\n            \"updatedAt\": \"2020-09-15T11:42:44.361Z\",\n            \"__v\": 0\n        }\n    ],\n    \"message\": \"Record fetched Successfully\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/api/technology.routes.js",
+    "groupTitle": "Technology",
+    "name": "GetTechnology_electrode_arraysList"
+  },
+  {
+    "type": "get",
+    "url": "/trainingvideos/list?title=searchvalue",
+    "title": "Trainingvideos List",
+    "version": "1.0.0",
+    "group": "Trainingvideos",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "optional": false,
+            "field": "title",
+            "description": "<p>For search query</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success",
+          "content": "{\n    \"status\": 200,\n    \"data\": [\n        {\n            \"title\": \"Test\",\n            \"content\": \"<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\\r\\n\",\n            \"type\": \"image\",\n            \"media\": \"media_1600261140024_1598025405936_profileimage_1580380248488_0i1xbvjul86e_csyf.jpg.jpg\",\n            \"slug\": \"test-78e2b\",\n            \"isDeleted\": false,\n            \"status\": \"Active\",\n            \"_id\": \"5f620c1418458d259c478e2b\",\n            \"createdAt\": \"2020-09-16T12:59:00.032Z\",\n            \"updatedAt\": \"2020-09-16T12:59:00.564Z\",\n            \"__v\": 0\n        }\n    ],\n    \"message\": \"Record fetched Successfully\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/api/trainingvideos.routes.js",
+    "groupTitle": "Trainingvideos",
+    "name": "GetTrainingvideosListTitleSearchvalue"
+  },
+  {
+    "type": "get",
+    "url": "/trainingvideos/:slug",
+    "title": "Trainingvideos Detail",
+    "version": "1.0.0",
+    "group": "Trainingvideos",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Trainingvideos Id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success",
+          "content": "{\n    \"status\": 200,\n    \"data\": {\n        \"title\": \"Test\",\n        \"content\": \"<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\\r\\n\",\n        \"type\": \"image\",\n        \"media\": \"media_1600261140024_1598025405936_profileimage_1580380248488_0i1xbvjul86e_csyf.jpg.jpg\",\n        \"slug\": \"test-78e2b\",\n        \"isDeleted\": false,\n        \"status\": \"Active\",\n        \"_id\": \"5f620c1418458d259c478e2b\",\n        \"createdAt\": \"2020-09-16T12:59:00.032Z\",\n        \"updatedAt\": \"2020-09-16T12:59:00.564Z\",\n        \"__v\": 0\n    },\n    \"message\": \"Record fetched Successfully\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/api/trainingvideos.routes.js",
+    "groupTitle": "Trainingvideos",
+    "name": "GetTrainingvideosSlug"
   }
 ] });

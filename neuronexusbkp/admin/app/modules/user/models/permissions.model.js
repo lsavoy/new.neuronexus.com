@@ -13,10 +13,11 @@ var PermissionSchema = new Schema({
   knowledge_center: { type: Boolean, default: false, enum: [true, false] },
   science_update: { type: Boolean, default: false, enum: [true, false] },
   product: { type: Boolean, default: false, enum: [true, false] },
+  technology: { type: Boolean, default: false, enum: [true, false] },
   support: { type: Boolean, default: false, enum: [true, false] },
   home_slider: { type: Boolean, default: false, enum: [true, false] },
   setting: { type: Boolean, default: false, enum: [true, false] },
-  probe_finder: { type: Boolean, default: false, enum: [true, false] },
+  //probe_finder: { type: Boolean, default: false, enum: [true, false] },
   isDeleted: { type: Boolean, default: false, enum: deleted },
   isActive: { type: Boolean, default: true, enum: [true, false] },
 }, { timestamps: true, versionKey: false });

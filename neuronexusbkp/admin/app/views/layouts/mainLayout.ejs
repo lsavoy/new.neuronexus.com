@@ -222,6 +222,25 @@
 			}
 		} 
 		%>
+
+	<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+	<script src="/js/datetimepicker-master/build/jquery.datetimepicker.full.min.js"></script>
+	<script>
+
+		$('#datetimepicker_mask').datetimepicker({
+			mask: '9999/19/39 29:59',
+
+		});
+		$('#datetimepicker1a').datetimepicker({
+			format: "Y-m-d H:i",
+			step: 5,
+			autoclose: true,
+			onSelectTime: function () {
+				$('#datetimepicker1a').trigger('blur');
+			},
+			minDate: 0
+		});
+	</script>
 </body>
 
 <!-- end::Body -->

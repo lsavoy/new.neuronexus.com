@@ -1,6 +1,6 @@
 "use strict";
 // Class definition
-var KTDatatabletestimonials = function () {
+var KTDatatableelectrodevideos = function () {
     // Private functions
     var options = {
         // datasource definition
@@ -8,7 +8,7 @@ var KTDatatabletestimonials = function () {
             type: 'remote',
             source: {
                 read: {
-                    url: `${window.location.protocol}//${window.location.host}/science_testimonials/getall`,
+                    url: `${window.location.protocol}//${window.location.host}/electrodevideos/getall`,
                 },
             },
             pageSize: 10,
@@ -72,7 +72,7 @@ var KTDatatabletestimonials = function () {
                 autoHide: false,
                 template: function (row) {
                     return '\
-                    \<a href="' + window.location.protocol + '//' + window.location.host + '/science_testimonials/edit/' + row._id + '" class="btn btn-sm btn-clean btn-icon btn-icon-sm" title="Edit">\
+                    \<a href="' + window.location.protocol + '//' + window.location.host + '/electrodevideos/edit/' + row._id + '" class="btn btn-sm btn-clean btn-icon btn-icon-sm" title="Edit">\
                         <i class="flaticon-edit"></i>\
                     </a>\
                     \<a id="del-' + row._id + '" href="javascript:;" class="btn btn-sm btn-clean btn-icon btn-icon-sm ktDelete" title="Delete">\
@@ -85,12 +85,12 @@ var KTDatatabletestimonials = function () {
     };
 
     // basic demo
-    var testimonialsSelector = function () {
+    var electrodevideosSelector = function () {
         options.search = {
             input: $('#generalSearch'),
         };
 
-        var datatable = $('#testimonialsSelection').KTDatatable(options);
+        var datatable = $('#electrodevideosSelection').KTDatatable(options);
 
         $('#kt_form_status').on('change', function () {
             datatable.search($(this).val(), 'Status');
@@ -146,7 +146,7 @@ var KTDatatabletestimonials = function () {
                 reverseButtons: true
             }).then(function (result) {
                 if (result.value) {
-                    window.location.href = `${window.location.protocol}//${window.location.host}/science_testimonials/status-change/${elemID}`;
+                    window.location.href = `${window.location.protocol}//${window.location.host}/electrodevideos/status-change/${elemID}`;
                 }
             });
         })
@@ -163,7 +163,7 @@ var KTDatatabletestimonials = function () {
                 reverseButtons: true
             }).then(function (result) {
                 if (result.value) {
-                    window.location.href = `${window.location.protocol}//${window.location.host}/science_testimonials/delete/${elemID}`;
+                    window.location.href = `${window.location.protocol}//${window.location.host}/electrodevideos/delete/${elemID}`;
                 }
             });
         });
@@ -171,11 +171,11 @@ var KTDatatabletestimonials = function () {
 
     return {
         init: function () {
-            testimonialsSelector();
+            electrodevideosSelector();
         },
     };
 }();
 
 jQuery(document).ready(function () {
-    KTDatatabletestimonials.init();
+    KTDatatableelectrodevideos.init();
 });

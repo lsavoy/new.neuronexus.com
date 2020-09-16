@@ -51,26 +51,21 @@ module.exports = () => {
                             userRepo.getPermissionByField({ user_id: user._id })
                                 .then(function (result) {
                                     req.permission = result;
-                                    if ((result.about && req.path.indexOf("/about") >= 0) ||
+                                    if ((result.about && (req.path.indexOf("/events") >= 0 || req.path.indexOf("/events_update") >= 0 || req.path.indexOf("/about") >= 0)) ||
                                         (result.contact && req.path.indexOf("/contact") >= 0) ||
                                         (result.knowledge_center && (req.path.indexOf("/knowledge-center") >= 0 || req.path.indexOf("/knowledge_category") >= 0 || req.path.indexOf("/knowledge_subcategory") >= 0)) ||
-                                        (result.science_update && (req.path.indexOf("/science_update") >= 0 || req.path.indexOf("/science_category") >= 0)) ||
-                                        (result.product && req.path.indexOf("/product") >= 0) ||
-                                        (result.support && (req.path.indexOf('/support_category') >= 0 || req.path.indexOf('/support_static') >= 0)) ||
+                                        (result.science_update && (req.path.indexOf("/science_menu") >= 0 || req.path.indexOf("/science_testimonials") >= 0 || req.path.indexOf("/science_update") >= 0 || req.path.indexOf("/science_category") >= 0)) ||
+                                        (result.product && (req.path.indexOf("/accessoriesvideos") >= 0 || req.path.indexOf("/softwarevideos") >= 0 || req.path.indexOf("/electrodevideos") >= 0 || req.path.indexOf("/category") >= 0 || req.path.indexOf('/site-layout') >= 0 || req.path.indexOf('/site-area') >= 0 || req.path.indexOf('/shanks') >= 0 || req.path.indexOf('/shank-length') >= 0 || req.path.indexOf('/experiment') >= 0 || req.path.indexOf('/channels') >= 0 || req.path.indexOf('/probe-finder') >= 0 || req.path.indexOf("/product") >= 0)) ||
+                                        (result.support && (req.path.indexOf('/support_blog') >= 0 || req.path.indexOf('/trainingvideos') >= 0 || req.path.indexOf('/support_category') >= 0 || req.path.indexOf('/support_static') >= 0)) ||
                                         (result.home_slider && req.path.indexOf('/slider') >= 0) ||
                                         (result.setting && req.path.indexOf('/setting') >= 0) ||
-                                        (result.probe_finder && req.path.indexOf('/probe-finder') >= 0) ||
-                                        (result.probe_finder && req.path.indexOf('/channels') >= 0) ||
-                                        (result.probe_finder && req.path.indexOf('/experiment') >= 0) ||
-                                        (result.probe_finder && req.path.indexOf('/shank-length') >= 0) ||
-                                        (result.probe_finder && req.path.indexOf('/shanks') >= 0) ||
-                                        (result.probe_finder && req.path.indexOf('/site-area') >= 0) ||
-                                        (result.probe_finder && req.path.indexOf('/site-layout') >= 0) ||
+                                        (result.technology && (req.path.indexOf('/technology_electrode_arrays') >= 0 || req.path.indexOf('/technology_static') >= 0 || req.path.indexOf('/technology_category') >= 0)) ||
+
 
                                         (req.path.indexOf("/profile") >= 0) ||
                                         (req.path.indexOf("/change") >= 0) ||
                                         (req.path.indexOf("/update") >= 0) ||
-                                        (req.path.indexOf("/category") >= 0) ||
+
                                         (req.path.indexOf("/dashboard") >= 0) ||
                                         (req.path.indexOf("/uploads") >= 0)) {
                                         return next();
