@@ -144,7 +144,7 @@ const categoryRepository = {
 
     getAllByField: async (params) => {
         try {
-            let cuisine = await Category.find(params).sort({'createdAt': 1}).limit(6).exec();
+            let cuisine = await Category.find(params).sort({ 'createdAt': 1 }).limit(6).exec();
             if (!cuisine) {
                 return null;
             }
@@ -237,17 +237,18 @@ const categoryRepository = {
             let conditions = {};
             let and_clauses = [];
             and_clauses.push(params);
+
             conditions['$and'] = and_clauses;
 
             let products = await MasterCategory.aggregate([
                 {
                     $lookup:
-                      {
-                        from:'products',
-                        localField:'_id',
-                        foreignField:'category_id',
-                        as:'productsList'
-                      }
+                    {
+                        from: 'products',
+                        localField: '_id',
+                        foreignField: 'category_id',
+                        as: 'productsList'
+                    }
                 },
                 {
                     $match: conditions
@@ -255,6 +256,12 @@ const categoryRepository = {
             ]);
             if (!products) {
                 return null;
+            }
+
+            for (var i = 0; i < products.length; i++) {
+
+                products[i].productsList = products[i].productsList.filter(function (item) { return item.status == "Active" })
+
             }
             return products;
 

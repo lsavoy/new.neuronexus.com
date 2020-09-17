@@ -1,0 +1,32 @@
+<app-banner [banner]="banner"></app-banner>
+
+<div class="update_sec common_gap" id="particles-js2">
+    <div class="container">
+      <div class="update_inner">
+      <ng-container *ngIf="electrodeArrayList !== undefined && electrodeArrayList?.length > 0">
+        <h3>Thin Film Electrode Arrays</h3>
+        <div class="row update_main_area_cont">
+          <div class="col-lg-4 col-md-6  update_main_area" style="margin-top: 30px;" *ngFor="let ele of electrodeArrayList | paginate: { itemsPerPage: 9, currentPage: p }">
+            <div class="update_box">
+              <figure *ngIf="ele?.image">
+                <img src="{{BASE_IMAGE_URL}}technology/{{ele?.image}}" alt="">
+              </figure>
+              <div class="update_cont">
+                <h4>
+                  <a>{{convertTitle(ele?.title)}}</a>
+                </h4>
+                <span>{{ele?.createdAt | date:'mediumDate'}}</span>
+                <section style="height: 120px;">{{convertDesc(ele?.content)}}</section>
+                <a style="margin-top: 10px;cursor: pointer;" class="redmore_btn" [routerLink]="['/technology-electrode-array-details', ele?.slug]" routerLinkActive="active">Read More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 20px;text-align: center;" >
+          <pagination-controls *ngIf="electrodeArrayList?.length > 9" (pageChange)="p = $event"></pagination-controls>
+        </div>
+        </ng-container>
+        <div class="no-data-center" *ngIf="electrodeArrayList === undefined || electrodeArrayList?.length === 0">No data available!</div>
+      </div>
+    </div>
+  </div>

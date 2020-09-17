@@ -21,6 +21,19 @@ exports.getAllLeadership = async req => {
     }
 };
 
+exports.getAllSales = async req => {
+    try {
+        var searchQuery = {
+            "isDeleted": false,
+            "status": "Active"
+        };
+        var Sales = await aboutRepo.getAllByFieldSales(searchQuery);
+        return { status: 200, data: Sales, message: 'Sales fetched Successfully' };
+    } catch (error) {
+        return { "status": 500, data: {}, "message": error.message }
+    }
+};
+
 
 /* 
 // @Method: getAboutUs

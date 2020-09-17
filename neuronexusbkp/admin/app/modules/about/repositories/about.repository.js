@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const About = require('about/models/meet_the_team.model');
 const AboutUs = require('about/models/aboutus.model');
 const Leadership = require('about/models/leadership.model');
+const Sales = require('about/models/sales.model');
 const perPage = config.PAGINATION_PERPAGE;
 
 const AboutRepository = {
@@ -208,7 +209,151 @@ const AboutRepository = {
     },
 
     //leadership
+    //sales
+    getAllSales: async (req) => {
+        try {
+            var conditions = {};
+            var and_clauses = [];
 
+            and_clauses.push({
+                "isDeleted": false
+            });
+
+            if (_.isObject(req.body.query) && _.has(req.body.query, 'generalSearch')) {
+                //and_clauses.push({"status": /req.body.query.generalSearch/i});
+                and_clauses.push({
+                    $or: [{
+                        'name': {
+                            $regex: req.body.query.generalSearch,
+                            $options: 'i'
+                        }
+                    }]
+                });
+            }
+            if (_.isObject(req.body.query) && _.has(req.body.query, 'Status')) {
+                and_clauses.push({
+                    "status": req.body.query.Status
+                });
+            }
+            conditions['$and'] = and_clauses;
+
+            var sortOperator = {
+                "$sort": {}
+            };
+            if (_.has(req.body, 'sort')) {
+                var sortField = req.body.sort.field;
+                if (req.body.sort.sort == 'desc') {
+                    var sortOrder = -1;
+                } else if (req.body.sort.sort == 'asc') {
+                    var sortOrder = 1;
+                }
+
+                sortOperator["$sort"][sortField] = sortOrder;
+            } else {
+                sortOperator["$sort"]['_id'] = -1;
+            }
+
+            var aggregate = Sales.aggregate([{
+                $match: conditions
+            },
+                sortOperator
+            ]);
+
+            var options = {
+                page: req.body.pagination.page,
+                limit: req.body.pagination.perpage
+            };
+            let allSales = await Sales.aggregatePaginate(aggregate, options);
+            return allSales;
+        } catch (e) {
+            throw (e);
+        }
+    },
+
+    getSalesCount: async (params) => {
+        try {
+
+            let sales = await Sales.countDocuments(params);
+            return sales;
+        } catch (e) {
+            throw (e);
+        }
+    },
+
+    getByIdSales: async (id) => {
+        try {
+            let sales = await Sales.findById(id).exec();
+            return sales;
+        } catch (e) {
+            throw (e);
+        }
+    },
+
+    getByFieldSales: async (params) => {
+        try {
+            let sales = await Sales.findOne(params).exec();
+            return sales;
+        } catch (e) {
+            throw (e);
+        }
+    },
+
+    getAllByFieldSales: async (params) => {
+        try {
+            let sales = await Sales.find(params).exec();
+            return sales;
+        } catch (e) {
+            throw (e);
+        }
+    },
+
+
+
+    deleteSales: async (id) => {
+        try {
+            let sales = await Sales.findById(id);
+            if (sales) {
+                let salesDelete = await Sales.remove({
+                    _id: id
+                }).exec();
+                return salesDelete;
+            } else {
+                return null;
+            }
+        } catch (e) {
+            throw (e);
+        }
+    },
+
+
+    updateByIdSales: async (data, id) => {
+        try {
+            let sales = await Sales.findByIdAndUpdate(id, data, {
+                new: true,
+                upsert: true
+            }).exec();
+            return sales;
+        } catch (e) {
+            throw (e);
+        }
+    },
+
+
+    saveSales: async (data) => {
+
+
+        try {
+            let sales = await Sales.create(data);
+            if (!sales) {
+                return null;
+            }
+            return sales;
+        } catch (e) {
+            throw e;
+        }
+    },
+
+    //sales
 
 
 };

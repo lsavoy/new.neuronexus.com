@@ -64,7 +64,7 @@ const productController = {
         try {
             var searchQuery = {
                 "isDeleted": false,
-                "status": "Active"
+                "status": "Active",
             };
             var products = await productRepo.getAllByFieldApi(searchQuery);
 
@@ -78,6 +78,10 @@ const productController = {
                 }
             }
             products.push({ "name": "Catalog", "static": true })
+
+
+
+
             return { status: 200, data: products, message: 'Products fetched Successfully' };
         } catch (error) {
             return { "status": 500, data: {}, "message": error.message }

@@ -33,6 +33,12 @@ import { TechnologyComponent } from './technology/technology.component';
 import { TestimonialsComponent } from './testimonials/testimonials.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { TestimonialDetailsComponent } from './testimonial-details/testimonial-details.component';
+import { VideoImageListComponent } from './video-image-list/video-image-list.component';
+import { VideoImageDetailsComponent } from './video-image-details/video-image-details.component';
+import { TechnologyElectrodeArrayListComponent } from './technology-electrode-array-list/technology-electrode-array-list.component';
+import { TechnologyElectrodeArrayDetailComponent } from './technology-electrode-array-detail/technology-electrode-array-detail.component';
+import { EventsComponent } from './events/events.component';
+import { SupportBlogComponent } from './support-blog/support-blog.component';
 
 
 
@@ -61,7 +67,13 @@ import { TestimonialDetailsComponent } from './testimonial-details/testimonial-d
     TechnologyDetailsComponent,
     TechnologyComponent,
     TestimonialsComponent,
-    TestimonialDetailsComponent],
+    TestimonialDetailsComponent,
+    VideoImageListComponent,
+    VideoImageDetailsComponent,
+    TechnologyElectrodeArrayListComponent,
+    TechnologyElectrodeArrayDetailComponent,
+    EventsComponent,
+    SupportBlogComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,

@@ -238,7 +238,7 @@ namedRouter.get("api.technology_electrode_arrays.list", '/technology_electrode_a
 */
 namedRouter.get("api.technology_electrode_arrays.detail", '/technology_electrode_arrays/details/:slug', async (req, res) => {
   try {
-    const success = await technologyController.getAlltechnology_electrode_arrays(req);
+    const success = await technologyController.gettechnology_electrode_arrays(req);
     res.status(success.status).send(success);
   } catch (error) {
     res.status(error.status).send(error.message);

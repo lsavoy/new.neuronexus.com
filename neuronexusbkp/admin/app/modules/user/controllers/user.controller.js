@@ -157,12 +157,12 @@ class UserController {
             else {
                 req.body.setting = false;
             }
-            if (req.body.probe_finder) {
-                req.body.probe_finder = true;
+            if (req.body.technology) {
+                req.body.technology = true;
                 validate = 1;
             }
             else {
-                req.body.probe_finder = false;
+                req.body.technology = false;
             }
 
 
@@ -369,12 +369,12 @@ class UserController {
                 else {
                     req.body.setting = false;
                 }
-                if (req.body.probe_finder) {
-                    req.body.probe_finder = true;
+                if (req.body.technology) {
+                    req.body.technology = true;
                     validate = 1;
                 }
                 else {
-                    req.body.probe_finder = false;
+                    req.body.technology = false;
                 }
                 if (validate == 0) {
                     req.flash('error', "Please give permission minimum one section.");

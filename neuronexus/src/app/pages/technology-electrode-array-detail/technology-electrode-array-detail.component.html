@@ -1,0 +1,42 @@
+<div class="banner_sec pt-5">
+    <div class="position-relative d-flex align-items-center bg-secondary pt-sm-5">
+      <div class="banner_cont bg-transparent w-100">
+        <div class="container">
+          <div class="inner_banner">
+            <div class="bnr_main_area py-md-5" style="justify-content: center;">
+              <div class="bnr_main_area_cont" *ngIf="techElectrode !== undefined">
+                <div class="text-white h1 text-center mb-4 font-weight-normal ">
+                  <div class="pb-2 px-3 d-inline-block" style="border-bottom: 2px solid #eee;">
+                    <section [innerHtml]="techElectrode?.title"></section>
+                  </div>
+                </div>
+              </div>
+              <div class="no-data-center text-white" *ngIf="techElectrode === undefined">No data available!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+  
+  
+  <div class="meet_sec common_gap" *ngIf="techElectrode">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <figure *ngIf="techElectrode?.image">
+            <img src="{{BASE_IMAGE_URL}}technology/{{techElectrode?.image}}" alt="">
+          </figure>
+        </div>
+        <div class="col-md-8">
+          <section [innerHtml]="techElectrode?.content"></section>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="update_btn" style="margin-bottom: 20px;" *ngIf="techElectrode !== undefined">
+    <a class="redmore_btn" [routerLink]="['/technology-electrode-arrays']" routerLinkActive="active">Back</a>
+  </div>
+  

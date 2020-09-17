@@ -172,6 +172,25 @@
   },
   {
     "type": "get",
+    "url": "/about/sales/list",
+    "title": "Sales List",
+    "version": "1.0.0",
+    "group": "About",
+    "success": {
+      "examples": [
+        {
+          "title": "Success",
+          "content": "{\n    \"status\": 200,\n    \"data\": [\n        {\n            \"name\": \"Asiyeh Golabchi\",\n            \"qualification\": \"PhD\",\n            \"designation\": \"Principal Applications Scientist\",\n            \"description\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\",\n            \"image\": \"image_1600332540517_sales_06.jpg\",\n            \"isDeleted\": false,\n            \"status\": \"Active\",\n            \"_id\": \"5f6322fc6eebb326b4f0f0e2\",\n            \"createdAt\": \"2020-09-17T08:49:00.580Z\",\n            \"updatedAt\": \"2020-09-17T08:49:00.580Z\",\n            \"__v\": 0\n        }\n    ],\n    \"message\": \"Sales fetched Successfully\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/api/about.routes.js",
+    "groupTitle": "About",
+    "name": "GetAboutSalesList"
+  },
+  {
+    "type": "get",
     "url": "/about/science_update_collaboration/staticinfo",
     "title": "Science update collaboration static contents",
     "version": "1.0.0",

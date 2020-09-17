@@ -244,11 +244,11 @@
                 <% if(user.role.role == 'admin' || permission.about){ %>
                 <!--  -->
                 <!-- <%=(page_name == 'about-management') ? 'kt-menu__item--open' : ''%> -->
-                <li class="kt-menu__item  kt-menu__item--submenu <%=(page_name == 'events-management' || page_name == 'events-static-management' || page_name == 'meet_the_team-management' || page_name == 'leadership-management' || page_name == 'brain-initiative-management' || page_name == 'brain-initiative-tab-management' || page_name == 'aboutus-management' || page_name == 'science-update-collaboration-management' || page_name == 'science-update-collaboration-tab-management' || page_name == 'careers-opening-management' || page_name == 'careers-management' || page_name == 'distributors-management' || page_name == 'partners-management') ? 'kt-menu__item--open' : ''%>"
+                <li class="kt-menu__item  kt-menu__item--submenu <%=(page_name == 'sales-management' || page_name == 'events-management' || page_name == 'events-static-management' || page_name == 'meet_the_team-management' || page_name == 'leadership-management' || page_name == 'brain-initiative-management' || page_name == 'brain-initiative-tab-management' || page_name == 'aboutus-management' || page_name == 'science-update-collaboration-management' || page_name == 'science-update-collaboration-tab-management' || page_name == 'careers-opening-management' || page_name == 'careers-management' || page_name == 'distributors-management' || page_name == 'partners-management') ? 'kt-menu__item--open' : ''%>"
                     aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
                     <!-- <%=(page_name == 'about-management' || page_name == 'provider-management') ? 'active' : ''%> -->
                     <a href="javascript:void(0);"
-                        class="kt-menu__link kt-menu__toggle <%=(page_name == 'events-management' || page_name == 'events-static-management' || page_name == 'meet_the_team-management' || page_name == 'leadership-management' || page_name == 'brain-initiative-management' || page_name == 'brain-initiative-tab-management' || page_name == 'aboutus-management' || page_name == 'science-update-collaboration-management' || page_name == 'science-update-collaboration-tab-management' || page_name == 'careers-opening-management' || page_name == 'careers-management' || page_name == 'distributors-management' || page_name == 'partners-management') ? 'active' : ''%>">
+                        class="kt-menu__link kt-menu__toggle <%=(page_name == 'sales-management' || page_name == 'events-management' || page_name == 'events-static-management' || page_name == 'meet_the_team-management' || page_name == 'leadership-management' || page_name == 'brain-initiative-management' || page_name == 'brain-initiative-tab-management' || page_name == 'aboutus-management' || page_name == 'science-update-collaboration-management' || page_name == 'science-update-collaboration-tab-management' || page_name == 'careers-opening-management' || page_name == 'careers-management' || page_name == 'distributors-management' || page_name == 'partners-management') ? 'active' : ''%>">
                         <i class="fas flaticon2-expand"></i>
                         <span class="kt-menu__link-text">Company</span>
                         <i class="kt-menu__ver-arrow la la-angle-right"></i>
@@ -268,11 +268,11 @@
 
                             </li>
                             <!-- sub -->
-                            <li class="kt-menu__item  kt-menu__item--submenu <%=(page_name == 'meet_the_team-management' || page_name == 'leadership-management') ? 'kt-menu__item--open' : ''%>"
+                            <li class="kt-menu__item  kt-menu__item--submenu <%=(page_name == 'sales-management' || page_name == 'meet_the_team-management' || page_name == 'leadership-management') ? 'kt-menu__item--open' : ''%>"
                                 aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
                                 <!-- <%=(page_name == 'about-management' || page_name == 'provider-management') ? 'active' : ''%> -->
                                 <a href="javascript:void(0);"
-                                    class="kt-menu__link kt-menu__toggle <%=(page_name == 'meet_the_team-management' || page_name == 'leadership-management') ? 'active' : ''%>">
+                                    class="kt-menu__link kt-menu__toggle <%=(page_name == 'sales-management' || page_name == 'meet_the_team-management' || page_name == 'leadership-management') ? 'active' : ''%>">
 
                                     <span class="kt-menu__link-text">Meet The Team</span>
                                     <i class="kt-menu__ver-arrow la la-angle-right"></i>
@@ -299,6 +299,17 @@
                                                     <span></span>
                                                 </i>
                                                 <span class="kt-menu__link-text">Leadership</span>
+                                            </a>
+
+                                        </li>
+                                        <li class="kt-menu__item" aria-haspopup="true">
+                                            <!-- <%=(page_name == 'customer-management') ? 'active' : ''%> -->
+                                            <a href="<%= generateUrl('admin.about.sales.list') %>"
+                                                class="kt-menu__link <%=(page_name == 'sales-management') ? 'active' : ''%>">
+                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                                    <span></span>
+                                                </i>
+                                                <span class="kt-menu__link-text">Sales & Marketing Group</span>
                                             </a>
 
                                         </li>

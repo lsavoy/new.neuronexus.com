@@ -487,16 +487,16 @@ var KTFormControls = function () {
                 name: {
                     required: true
                 },
-               
-               
+
+
             },
             messages: {
 
                 name: {
                     required: "This field is required."
                 },
-                
-                
+
+
 
             },
             invalidHandler: function (event, validator) {
@@ -868,9 +868,9 @@ var KTFormControls = function () {
                 name: {
                     required: true,
                 },
-                qualification: {
-                    required: true,
-                },
+                // qualification: {
+                //     required: true,
+                // },
                 designation: {
                     required: true,
                 },
@@ -886,9 +886,9 @@ var KTFormControls = function () {
                 name: {
                     required: 'This field is Required.',
                 },
-                qualification: {
-                    required: 'This field is Required.',
-                },
+                // qualification: {
+                //     required: 'This field is Required.',
+                // },
                 designation: {
                     required: 'This field is Required.',
                 },
@@ -914,9 +914,9 @@ var KTFormControls = function () {
                 name: {
                     required: true,
                 },
-                qualification: {
-                    required: true,
-                },
+                // qualification: {
+                //     required: true,
+                // },
                 designation: {
                     required: true,
                 },
@@ -930,9 +930,9 @@ var KTFormControls = function () {
                 name: {
                     required: 'This field is Required.',
                 },
-                qualification: {
-                    required: 'This field is Required.',
-                },
+                // qualification: {
+                //     required: 'This field is Required.',
+                // },
                 designation: {
                     required: 'This field is Required.',
                 },

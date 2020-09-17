@@ -23,6 +23,12 @@ import { TechnologyDetailsComponent } from './technology-details/technology-deta
 import { TechnologyComponent } from './technology/technology.component';
 import { TestimonialsComponent } from './testimonials/testimonials.component';
 import { TestimonialDetailsComponent } from './testimonial-details/testimonial-details.component';
+import { VideoImageListComponent } from './video-image-list/video-image-list.component';
+import { VideoImageDetailsComponent } from './video-image-details/video-image-details.component';
+import { TechnologyElectrodeArrayListComponent } from './technology-electrode-array-list/technology-electrode-array-list.component';
+import { TechnologyElectrodeArrayDetailComponent } from './technology-electrode-array-detail/technology-electrode-array-detail.component';
+import { EventsComponent } from './events/events.component';
+import { SupportBlogComponent } from './support-blog/support-blog.component';
 
 
 const routes: Routes = [
@@ -122,6 +128,30 @@ const routes: Routes = [
   {
     path: 'catalogs-brochures',
     component: CatalogsBrochuresComponent
+  },
+  {
+    path: 'media-list/:type',
+    component: VideoImageListComponent
+  },
+  {
+    path: 'media-details/:type/:record',
+    component: VideoImageDetailsComponent
+  },
+  {
+    path: 'technology-electrode-arrays',
+    component: TechnologyElectrodeArrayListComponent
+  },
+  {
+    path: 'technology-electrode-array-details/:slug',
+    component: TechnologyElectrodeArrayDetailComponent
+  },
+  {
+    path: 'events',
+    component: EventsComponent
+  },
+  {
+    path: 'support-blog',
+    component: SupportBlogComponent
   },
   {
     path: '',

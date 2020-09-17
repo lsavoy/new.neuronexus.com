@@ -121,6 +121,40 @@ namedRouter.get("api.about.leadership.list", '/about/leadership/list', async (re
 });
 
 /**
+ * @api {get} /about/sales/list Sales List
+ * @apiVersion 1.0.0
+ * @apiGroup About
+ * @apiSuccessExample {json} Success
+ * {
+    "status": 200,
+    "data": [
+        {
+            "name": "Asiyeh Golabchi",
+            "qualification": "PhD",
+            "designation": "Principal Applications Scientist",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+            "image": "image_1600332540517_sales_06.jpg",
+            "isDeleted": false,
+            "status": "Active",
+            "_id": "5f6322fc6eebb326b4f0f0e2",
+            "createdAt": "2020-09-17T08:49:00.580Z",
+            "updatedAt": "2020-09-17T08:49:00.580Z",
+            "__v": 0
+        }
+    ],
+    "message": "Sales fetched Successfully"
+}
+*/
+namedRouter.get("api.about.sales.list", '/about/sales/list', async (req, res) => {
+  try {
+    const success = await aboutController.getAllSales(req);
+    res.status(success.status).send(success);
+  } catch (error) {
+    res.status(error.status).send(error.message);
+  }
+});
+
+/**
  * @api {get} /about/brain_initiative/staticinfo  Brain Initiative Static Contents
  * @apiVersion 1.0.0
  * @apiGroup About

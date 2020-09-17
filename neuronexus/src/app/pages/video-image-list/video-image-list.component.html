@@ -1,0 +1,51 @@
+<app-banner [banner]="banner"></app-banner>
+
+<div class="update_sec common_gap" id="particles-js2">
+    <div class="container">
+      <div class="update_inner">
+      <ng-container *ngIf="list !== undefined && list?.length > 0">
+        <h3 *ngIf="pageSlug === 'electrode'">Electrode Media List</h3>
+        <h3 *ngIf="pageSlug === 'software'">Software Media List</h3>
+        <h3 *ngIf="pageSlug === 'accessories'">Accessories Media List</h3>
+        <h3 *ngIf="pageSlug === 'training'">Training Media List</h3>
+        <div class="row update_main_area_cont">
+          <div class="col-lg-4 col-md-6  update_main_area" style="margin-top: 30px;" *ngFor="let ele of list | paginate: { itemsPerPage: 9, currentPage: p }">
+            <div class="update_box">
+              <figure *ngIf="ele?.type === 'video' && ele?.media" class="testimonial-vdo">
+                <!-- <img src="{{BASE_IMAGE_URL}}testimonials/{{ele?.video}}" alt=""> -->
+                <video [id]="'video'+ele?._id">
+                    <source src="{{BASE_IMAGE_URL}}{{ele?.media}}" type='video/mp4' />
+                    <source src="{{BASE_IMAGE_URL}}{{ele?.media}}" type='video/webm' />
+                    Your browser does not support the video tag.
+                </video>
+                <p class="video-controls" (click)="playPause(ele?._id)">
+                    <i class="fa fa-play" aria-hidden="true" *ngIf="!ele?.play"></i>
+                    <i class="fa fa-pause" aria-hidden="true" *ngIf="ele?.play"></i>
+                </p>
+              </figure>
+
+              <figure *ngIf="ele?.type === 'image' && ele?.media" class="testimonial-vdo">
+                <img src="{{BASE_IMAGE_URL}}{{ele?.media}}" alt="">
+              </figure>
+              <div class="update_cont">
+                <h4>
+                  <a>{{convertTitle(ele?.title)}}</a>
+                </h4>
+                <span>{{ele?.createdAt | date:'mediumDate'}}</span>
+                <section style="height: 120px;">{{convertDesc(ele?.content)}}</section>
+                <a *ngIf="pageSlug === 'electrode'" style="margin-top: 10px;cursor: pointer;" class="redmore_btn" [routerLink]="['/media-details', 'electrode', ele?.slug]" routerLinkActive="active">See More</a>
+                <a *ngIf="pageSlug === 'software'" style="margin-top: 10px;cursor: pointer;" class="redmore_btn" [routerLink]="['/media-details', 'software', ele?.slug]" routerLinkActive="active">See More</a>
+                <a *ngIf="pageSlug === 'accessories'" style="margin-top: 10px;cursor: pointer;" class="redmore_btn" [routerLink]="['/media-details', 'accessories', ele?.slug]" routerLinkActive="active">See More</a>
+                <a *ngIf="pageSlug === 'training'" style="margin-top: 10px;cursor: pointer;" class="redmore_btn" [routerLink]="['/media-details', 'training', ele?.slug]" routerLinkActive="active">See More</a>  
+            </div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 20px;text-align: center;" >
+          <pagination-controls *ngIf="list?.length > 9" (pageChange)="changePage($event)"></pagination-controls>
+        </div>
+        </ng-container>
+        <div class="no-data-center" *ngIf="list === undefined || list?.length === 0">No data available!</div>
+      </div>
+    </div>
+  </div>

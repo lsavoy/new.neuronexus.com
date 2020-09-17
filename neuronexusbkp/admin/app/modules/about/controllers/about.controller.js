@@ -388,6 +388,244 @@ class cmsController {
 
     //LeaderShip..........................
 
+    //Sales........................
+
+    /* @Method: insert
+      // @Description: save sales action
+      */
+    async insertSales(req, res) {
+
+        try {
+
+
+            if (req.files.length > 0) {
+                for (let i = 0; i < req.files.length; i++) {
+                    req.body.image = req.files[i].filename;
+                }
+            }
+
+            let newSales = await aboutRepo.saveSales(req.body);
+            req.flash('success', 'Sales created succesfully.');
+            res.redirect(namedRouter.urlFor('admin.about.sales.list'));
+
+        } catch (e) {
+
+            const error = errorHandler(e);
+            req.flash('error', error.message);
+            //res.status(500).send({message: error.message});
+            res.redirect(namedRouter.urlFor('admin.about.sales.create'));
+        }
+    };
+
+
+    /* @Method: update
+    // @Description: sales update action
+    */
+    async updateSales(req, res) {
+
+        try {
+            const salesId = req.body.pid;
+            let salesData = await aboutRepo.getByIdSales(salesId);
+
+
+            if (_.isEmpty(salesData)) {
+                req.flash('error', 'Sales not found.');
+                res.redirect(namedRouter.urlFor('admin.about.sales.edit', {
+                    id: salesId
+                }));
+            } else {
+
+
+
+                let salesValue = await aboutRepo.getByIdSales(salesId);
+
+                if (req.files.length > 0) {
+
+                    if (fs.existsSync('./public/uploads/cms/' + salesValue.image) && salesValue.image) {
+                        fs.unlinkSync('./public/uploads/cms/' + salesValue.image);
+                    }
+
+                    for (let i = 0; i < req.files.length; i++) {
+                        req.body.image = req.files[i].filename;
+                    }
+                }
+
+                let salesUpdate = await aboutRepo.updateByIdSales(req.body, salesId);
+                if (salesUpdate) {
+                    req.flash('success', "Sales Updated Successfully");
+                    res.redirect(namedRouter.urlFor('admin.about.sales.list'));
+                } else {
+                    res.redirect(namedRouter.urlFor('admin.about.sales.edit', {
+                        id: salesId
+                    }));
+                }
+
+
+            }
+        } catch (e) {
+            const error = errorHandler(e);
+            req.flash('error', error.message);
+            res.redirect(namedRouter.urlFor('admin.about.sales.edit', {
+                id: req.body.pid
+            }));
+        }
+
+    };
+
+    /* @Method: list
+    // @Description: To list all the sales from DB
+    */
+
+    async listSales(req, res) {
+        try {
+
+            res.render('about/views/list_sales.ejs', {
+                page_name: 'sales-management',
+                page_title: 'Sales List',
+                user: req.user,
+                permission: req.permission,
+            });
+        } catch (e) {
+            return res.status(500).send({
+                message: e.message
+            });
+        }
+    };
+
+    /* @Method: getAll
+    // @Description: To get all the sales from DB
+    */
+    async getAllSales(req, res) {
+        try {
+            let saless = await aboutRepo.getAllSales(req);
+
+            if (_.has(req.body, 'sort')) {
+                var sortOrder = req.body.sort.sort;
+                var sortField = req.body.sort.field;
+            } else {
+                var sortOrder = -1;
+                var sortField = '_id';
+            }
+            let meta = {
+                "page": req.body.pagination.page,
+                "pages": saless.pageCount,
+                "perpage": req.body.pagination.perpage,
+                "total": saless.totalCount,
+                "sort": sortOrder,
+                "field": sortField
+            };
+
+            return {
+                status: 200,
+                meta: meta,
+                data: saless.data,
+                message: `Data fetched succesfully.`
+            };
+        } catch (e) {
+            throw e;
+        }
+    }
+
+    /* @Method: create
+    // @Description: create sales action
+    */
+    async createSales(req, res) {
+        try {
+            res.render('about/views/add_sales.ejs', {
+                page_name: 'sales-management',
+                page_title: 'Sales Create',
+                permission: req.permission,
+                user: req.user
+            });
+        } catch (e) {
+            throw (e);
+        }
+    };
+
+    /*
+    // @Method: edit
+    // @Description:  sales edit page
+    */
+    async editSales(req, res) {
+        try {
+            let salesValue = await aboutRepo.getByIdSales(req.params.id);
+            if (!_.isEmpty(salesValue)) {
+                res.render('about/views/edit_sales.ejs', {
+                    page_name: 'sales-management',
+                    page_title: 'Sales Edit',
+                    user: req.user,
+                    permission: req.permission,
+                    response: salesValue
+                });
+            } else {
+                req.flash('error', "Sorry, sales not found!");
+                res.redirect(namedRouter.urlFor('admin.about.sales.list'));
+            }
+        } catch (e) {
+            return res.status(500).send({
+                message: e.message
+            });
+        }
+    };
+
+
+    /* @Method: delete
+    // @Description: sales delete
+    */
+    async deleteSales(req, res) {
+        try {
+
+
+            let salesValue = await aboutRepo.getByIdSales(req.params.id);
+
+            if (salesValue.image) {
+
+                if (fs.existsSync('./public/uploads/cms/' + salesValue.image) && salesValue.image) {
+                    fs.unlinkSync('./public/uploads/cms/' + salesValue.image);
+                }
+
+            }
+
+            let salesDelete = await aboutRepo.updateByIdSales({
+                "isDeleted": true
+            }, req.params.id);
+            req.flash('success', 'Sales removed successfully');
+            res.redirect(namedRouter.urlFor('admin.about.sales.list'));
+
+        } catch (e) {
+            return res.status(500).send({
+                message: e.message
+            });
+        }
+    };
+
+    /*
+    // @Method: statusChange
+    // @Description: sales status change action
+    */
+    async statusChangeSales(req, res) {
+        try {
+
+            let sales = await aboutRepo.getByIdSales(req.params.id);
+            if (!_.isEmpty(sales)) {
+                let salesStatus = (sales.status == 'Active') ? 'Inactive' : 'Active';
+                let salesUpdate = aboutRepo.updateByIdSales({
+                    'status': salesStatus
+                }, req.params.id);
+
+                req.flash('success', "Sales status has changed successfully");
+                res.redirect(namedRouter.urlFor('admin.about.sales.list'));
+            }
+
+        } catch (e) {
+            return res.status(500).send({
+                message: e.message
+            });
+        }
+    };
+
+    //Sales..........................
+
 
 }
 

@@ -71,7 +71,42 @@ namedRouter.get("admin.about.leadership.statusChange", '/about/leadership/status
 
 //Export the express.Router() instance
 
+//////////////////////////////sales///////////////////////////
+// sales Listing Route
+namedRouter.get("admin.about.sales.list", '/about/sales/list', aboutController.listSales);
 
+// sales Get All Route
+namedRouter.post("admin.about.sales.getall", '/about/sales/getall', async (req, res) => {
+    try {
+        const success = await aboutController.getAllSales(req, res);
+        res.send({
+            "meta": success.meta,
+            "data": success.data
+        });
+    } catch (error) {
+        res.status(error.status).send(error);
+    }
+});
+
+// sales Create Route
+namedRouter.get("admin.about.sales.create", '/about/sales/create', aboutController.createSales);
+
+// sales Insert Route
+namedRouter.post("admin.about.sales.insert", '/about/sales/insert', uploadFile.any(), aboutController.insertSales);
+
+// sales Edit Route
+namedRouter.get("admin.about.sales.edit", "/about/sales/edit/:id", aboutController.editSales);
+
+// sales Update Route
+namedRouter.post("admin.about.sales.update", '/about/sales/update', uploadFile.any(), aboutController.updateSales);
+
+// sales Delete Route
+namedRouter.get("admin.about.sales.delete", "/about/sales/delete/:id", aboutController.deleteSales);
+
+// sales status change
+namedRouter.get("admin.about.sales.statusChange", '/about/sales/status-change/:id', aboutController.statusChangeSales);
+
+//Export the express.Router() instance
 ////////////////////////////////////////////////////////////////////////////
 ////brain_initiative
 

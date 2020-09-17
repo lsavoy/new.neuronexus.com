@@ -46,6 +46,22 @@ exports.getAlltechnology_electrode_arrays = async req => {
     }
 };
 
+exports.gettechnology_electrode_arrays = async req => {
+    try {
+        var searchQuery = {
+            "isDeleted": false,
+            "status": "Active",
+        };
+
+        if (req.params.slug) {
+            Object.assign(searchQuery, { "slug": req.params.slug });
+        }
+        var technology = await technologyElectrodeRepo.getAllByField(searchQuery);
+        return { status: 200, data: technology[0], message: 'Record fetched Successfully' };
+    } catch (error) {
+        return { "status": 500, data: {}, "message": error.message }
+    }
+};
 
 /* 
 // @Method: gettechnologystatic
