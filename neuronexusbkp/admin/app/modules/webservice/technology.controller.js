@@ -40,7 +40,15 @@ exports.getAlltechnology_electrode_arrays = async req => {
             Object.assign(searchQuery, { "slug": req.params.slug });
         }
         var technology = await technologyElectrodeRepo.getAllByField(searchQuery);
-        return { status: 200, data: technology, message: 'Record fetched Successfully' };
+
+        var searchQuery = {
+            "isDeleted": false,
+            "status": "Active",
+        };
+
+        var technologystatic = await technologyRepo.technology_staticGetByField(searchQuery);
+
+        return { status: 200, data: technology, page_title: technologystatic.electrode_page_title, message: 'Record fetched Successfully' };
     } catch (error) {
         return { "status": 500, data: {}, "message": error.message }
     }

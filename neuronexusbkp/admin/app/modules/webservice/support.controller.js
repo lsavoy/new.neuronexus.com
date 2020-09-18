@@ -39,7 +39,16 @@ exports.getAllsupportblog = async req => {
             Object.assign(searchQuery, { "slug": req.params.slug });
         }
         var support = await supportBlogRepo.getAllByField(searchQuery);
-        return { status: 200, data: support, message: 'Record fetched Successfully' };
+
+        var searchQuery = {
+            "isDeleted": false,
+            "status": "Active",
+        };
+
+        //  console.log(searchQuery);
+        var supportstatic = await supportRepo.support_staticGetByField(searchQuery);
+
+        return { status: 200, data: support, page_title: supportstatic.grant_support_page_title, message: 'Record fetched Successfully' };
     } catch (error) {
         return { "status": 500, data: {}, "message": error.message }
     }

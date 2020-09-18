@@ -4,7 +4,7 @@
     <div class="container">
       <div class="update_inner">
       <ng-container *ngIf="eventList !== undefined && eventList?.length > 0">
-        <h3>Events List</h3>
+        <h3 *ngIf="pageTitle">{{pageTitle}}</h3>
         <div class="row update_main_area_cont" *ngFor="let event of eventList | paginate: { itemsPerPage: 9, currentPage: p }">
           <div class="col-lg-12 col-md-12  update_main_area" style="margin-top: 30px;">
             <div class="update_box">

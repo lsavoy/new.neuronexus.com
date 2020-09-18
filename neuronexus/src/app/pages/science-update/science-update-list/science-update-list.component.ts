@@ -14,6 +14,7 @@ export class ScienceUpdateListComponent implements OnInit {
   banner = [];
   scienceUpdateList: any;
   BASE_IMAGE_URL = environment.BASE_IMAGE_URL;
+  pageTitle: any;
   p: any = 1;
 
   constructor(
@@ -22,6 +23,7 @@ export class ScienceUpdateListComponent implements OnInit {
   ) {
     this.banner = [];
     this.scienceUpdateList = undefined;
+    this.pageTitle = undefined;
    }
 
   ngOnInit(): void {
@@ -55,6 +57,7 @@ export class ScienceUpdateListComponent implements OnInit {
       this.api.get(`science_update/list`).toPromise().then((res: any) => {
         if (res.status === 200) {
           this.scienceUpdateList = res.data;
+          this.pageTitle = res.page_title
         } else if (res.status === 201) {
           this.scienceUpdateList = undefined;
         }

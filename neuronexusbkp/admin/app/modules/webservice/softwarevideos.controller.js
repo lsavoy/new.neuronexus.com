@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const softwarevideosRepo = require('softwarevideos/repositories/softwarevideos.repository');
-
+const productRepo = require('product_category/repositories/category.repository');
 
 /* 
 // @Method: getAllsoftwarevideosRepo
@@ -19,7 +19,16 @@ exports.getAllsoftwarevideos = async req => {
             Object.assign(searchQuery, { "title": { $regex: req.query.title, $options: 'i' } });
         }
         var softwarevideos = await softwarevideosRepo.getAllByField(searchQuery);
-        return { status: 200, data: softwarevideos, message: 'Record fetched Successfully' };
+
+        var searchQuerystatic = {
+            "isDeleted": false,
+            "status": "Active"
+        };
+
+        var productstatic = await productRepo.product_static_contentsGetByField(searchQuerystatic);
+
+
+        return { status: 200, data: softwarevideos, page_title: productstatic.software_product_video_page_title, message: 'Record fetched Successfully' };
     } catch (error) {
         return { "status": 500, data: {}, "message": error.message }
     }

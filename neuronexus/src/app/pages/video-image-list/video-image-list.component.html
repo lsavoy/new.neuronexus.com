@@ -4,10 +4,7 @@
     <div class="container">
       <div class="update_inner">
       <ng-container *ngIf="list !== undefined && list?.length > 0">
-        <h3 *ngIf="pageSlug === 'electrode'">Electrode Media List</h3>
-        <h3 *ngIf="pageSlug === 'software'">Software Media List</h3>
-        <h3 *ngIf="pageSlug === 'accessories'">Accessories Media List</h3>
-        <h3 *ngIf="pageSlug === 'training'">Training Media List</h3>
+        <h3 *ngIf="pageTitle">{{pageTitle}}</h3>
         <div class="row update_main_area_cont">
           <div class="col-lg-4 col-md-6  update_main_area" style="margin-top: 30px;" *ngFor="let ele of list | paginate: { itemsPerPage: 9, currentPage: p }">
             <div class="update_box">
@@ -33,10 +30,7 @@
                 </h4>
                 <span>{{ele?.createdAt | date:'mediumDate'}}</span>
                 <section style="height: 120px;">{{convertDesc(ele?.content)}}</section>
-                <a *ngIf="pageSlug === 'electrode'" style="margin-top: 10px;cursor: pointer;" class="redmore_btn" [routerLink]="['/media-details', 'electrode', ele?.slug]" routerLinkActive="active">See More</a>
-                <a *ngIf="pageSlug === 'software'" style="margin-top: 10px;cursor: pointer;" class="redmore_btn" [routerLink]="['/media-details', 'software', ele?.slug]" routerLinkActive="active">See More</a>
-                <a *ngIf="pageSlug === 'accessories'" style="margin-top: 10px;cursor: pointer;" class="redmore_btn" [routerLink]="['/media-details', 'accessories', ele?.slug]" routerLinkActive="active">See More</a>
-                <a *ngIf="pageSlug === 'training'" style="margin-top: 10px;cursor: pointer;" class="redmore_btn" [routerLink]="['/media-details', 'training', ele?.slug]" routerLinkActive="active">See More</a>  
+                <a style="margin-top: 10px;cursor: pointer;" class="redmore_btn" [routerLink]="['/media-details', pageSlug, ele?.slug]" routerLinkActive="active">See More</a> 
             </div>
             </div>
           </div>

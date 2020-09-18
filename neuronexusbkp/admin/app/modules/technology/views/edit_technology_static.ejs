@@ -53,6 +53,14 @@
                     </div>
                     
                 </div>
+                <div class="form-group row">
+                    <div class="col-lg-6">
+                        <label>Thin flim Electrode Page Title:</label>
+                        <input type="text" name="electrode_page_title"
+                            id="electrode_page_title" class="form-control"
+                            value="<%=response.cms_data.electrode_page_title%>">
+                    </div>
+                </div>
 
 
 
@@ -62,18 +70,18 @@
             <!-- hidden user id -->
             <input type="hidden" name="id" value="<%=response.cms_data._id%>">
 
-                        <div class="kt-portlet__foot">
-                            <div class="kt-form__actions">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <a href="<%= generateUrl('admin.technology_static.edit') %>"
-                                            class="btn btn-secondary">Cancel</a>
-                                        <button type="submit" class="btn btn-primary">Update</button>
+            <div class="kt-portlet__foot">
+                <div class="kt-form__actions">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <a href="<%= generateUrl('admin.technology_static.edit') %>"
+                                class="btn btn-secondary">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Update</button>
 
-                                    </div>
-                                </div>
-                            </div>
                         </div>
+                    </div>
+                </div>
+            </div>
         </form>
 
     </div>

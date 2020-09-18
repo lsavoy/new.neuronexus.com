@@ -14,6 +14,7 @@ export class EventsComponent implements OnInit {
   eventList: any;
   BASE_IMAGE_URL = environment.BASE_IMAGE_URL;
   p: any = 1;
+  pageTitle: any;
 
   constructor(
     private api: ApiService,
@@ -21,6 +22,7 @@ export class EventsComponent implements OnInit {
   ) {
     this.banner = [];
     this.eventList = undefined;
+    this.pageTitle = undefined;
    }
 
   ngOnInit(): void {
@@ -54,6 +56,7 @@ export class EventsComponent implements OnInit {
       this.api.get(`events/list`).toPromise().then((res: any) => {
         if (res.status === 200) {
           this.eventList = res.data;
+          this.pageTitle = res.page_title;
           this.eventList.forEach(ev => {
             const text = htmlToText.fromString(ev.content, {
               wordwrap: 130

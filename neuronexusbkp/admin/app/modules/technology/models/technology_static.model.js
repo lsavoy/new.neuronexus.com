@@ -8,6 +8,7 @@ const technology_staticSchema = new Schema({
   title: { type: String, default: '' },
   content: { type: String, default: '' },
   header_banner_image: { type: String, default: '' },
+  electrode_page_title: { type: String, default: '' },
   isDeleted: { type: Boolean, default: false, enum: [true, false] },
   status: { type: String, default: 'Active', enum: status },
 }, { timestamps: true });

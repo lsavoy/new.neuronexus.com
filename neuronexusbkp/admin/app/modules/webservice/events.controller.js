@@ -19,7 +19,15 @@ exports.getAllevents = async req => {
             Object.assign(searchQuery, { "title": { $regex: req.query.title, $options: 'i' } });
         }
         var events = await eventsRepo.getAllByField(searchQuery);
-        return { status: 200, data: events, message: 'Record fetched Successfully' };
+
+        var searchQuery = {
+            "isDeleted": false,
+            "status": "Active"
+        };
+
+        var eventsstatic = await eventsRepo.events_static_contentsGetByField(searchQuery);
+
+        return { status: 200, data: events, page_title: eventsstatic.event_page_title, message: 'Record fetched Successfully' };
     } catch (error) {
         return { "status": 500, data: {}, "message": error.message }
     }

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const scienceRepo = require('science_update/repositories/testimonials.repository');
+const scienceRepostatic = require('science_update/repositories/science.repository');
 
 
 /* 
@@ -20,7 +21,15 @@ exports.getAllscience_testimonials = async req => {
         }
 
         var science_testimonials = await scienceRepo.getAllByField(searchQuery);
-        return { status: 200, data: science_testimonials, message: 'Record fetched Successfully' };
+
+        var searchQuery = {
+            "isDeleted": false,
+            "status": "Active"
+        };
+
+        var scienceupdate = await scienceRepostatic.science_static_contentsGetByField(searchQuery);
+
+        return { status: 200, data: science_testimonials, page_title: scienceupdate.testimonials_page_title, message: 'Record fetched Successfully' };
     } catch (error) {
         return { "status": 500, data: {}, "message": error.message }
     }

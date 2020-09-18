@@ -13,6 +13,7 @@ export class TestimonialsComponent implements OnInit {
   testimonials: any;
   BASE_IMAGE_URL = environment.BASE_IMAGE_URL;
   p: any = 1;
+  pageTitle: any;
   constructor(private api: ApiService) { }
 
   ngOnInit(): void {
@@ -44,10 +45,12 @@ export class TestimonialsComponent implements OnInit {
 
   getTestimonials(){
     this.testimonials = undefined;
+    this.pageTitle = undefined;
     const promise = new Promise((resolve, reject) => {
       this.api.get('science_testimonials/list').toPromise().then((res:any) => {
         if(res.status === 200){
           this.testimonials = res.data;
+          this.pageTitle = res.page_title;
           this.testimonials.forEach(ele => {
             ele.play = false;
           });

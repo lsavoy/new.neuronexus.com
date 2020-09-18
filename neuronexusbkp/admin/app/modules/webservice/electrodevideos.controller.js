@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const electrodevideosRepo = require('electrodevideos/repositories/electrodevideos.repository');
-
+const productRepo = require('product_category/repositories/category.repository');
 
 /* 
 // @Method: getAllelectrodevideosRepo
@@ -19,7 +19,16 @@ exports.getAllelectrodevideos = async req => {
             Object.assign(searchQuery, { "title": { $regex: req.query.title, $options: 'i' } });
         }
         var electrodevideos = await electrodevideosRepo.getAllByField(searchQuery);
-        return { status: 200, data: electrodevideos, message: 'Record fetched Successfully' };
+
+        var searchQuerystatic = {
+            "isDeleted": false,
+            "status": "Active"
+        };
+
+        var productstatic = await productRepo.product_static_contentsGetByField(searchQuerystatic);
+
+
+        return { status: 200, data: electrodevideos, page_title: productstatic.electrode_arrays_product_video_page_title, message: 'Record fetched Successfully' };
     } catch (error) {
         return { "status": 500, data: {}, "message": error.message }
     }

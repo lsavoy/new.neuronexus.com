@@ -1,0 +1,86 @@
+::ng-deep .modalStyle{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+    background-color: #f5f5f5;
+    z-index: 9999;
+    min-width: 300px;
+    width: 100%;
+    max-width: 600px;
+    padding: 25px;
+    font-size: 16px;
+    .mat-dialog-actions {
+        padding: 18px 0;
+    }
+    h2 {
+        font-size: 50px !important;
+    }
+}
+
+::ng-deep .modalStyleImage{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+    background-color: #f5f5f5;
+    z-index: 9999;
+    min-width: 300px;
+    width: 100%;
+    max-width: 800px;
+    padding: 25px;
+    font-size: 16px;
+    .mat-dialog-content {
+        max-height: 80vh !important;
+    }
+    .mat-dialog-actions {
+        padding: 18px 0;
+    }
+}
+.modalStyle{
+    max-width: 800px;
+}
+
+ figcaption {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    max-height: 100%;
+    overflow: auto;
+    padding: 40px 10px 9px;
+    color: #fff;
+    text-align: center;
+    font-size: 13px;
+    background: linear-gradient(0deg,rgba(0,0,0,.7),rgba(0,0,0,.3) 70%,transparent);
+  }
+.imagecont{
+    position: relative;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

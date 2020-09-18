@@ -22,7 +22,14 @@ exports.getAllscience_update = async req => {
             Object.assign(searchQuery, { "category_id": mongoose.Types.ObjectId(req.params.category_id) });
         }
         var science_update = await scienceRepo.getAllByField(searchQuery);
-        return { status: 200, data: science_update, message: 'Record fetched Successfully' };
+
+        var searchQuery = {
+            "isDeleted": false,
+            "status": "Active"
+        };
+
+        var scienceupdate = await scienceRepo.science_static_contentsGetByField(searchQuery);
+        return { status: 200, data: science_update, page_title: scienceupdate.science_update_page_title, message: 'Record fetched Successfully' };
     } catch (error) {
         return { "status": 500, data: {}, "message": error.message }
     }

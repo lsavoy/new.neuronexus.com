@@ -1,0 +1,34 @@
+    <div class="modalStyle">
+      <!-- <h4 mat-dialog-title></h4> -->
+      <mat-dialog-content class="mat-typography">
+        <div class="container" *ngIf="member">
+          <div class="row">
+            <div class="col-md-4">
+              <figure *ngIf="member?.image" class="imagecont">
+                <img src="{{BASE_IMAGE_URL}}cms/{{member?.image}}" alt="">
+                <ng-container *ngIf="member?.qualification">
+                    <figcaption class="blocks-gallery-item__caption">
+                    {{member?.name}}, {{member?.qualification}}
+                    <br>
+                    {{member?.designation}}
+                    </figcaption>
+                </ng-container>
+                <ng-container *ngIf="member?.qualification === ''">
+                    <figcaption class="blocks-gallery-item__caption">
+                    {{member?.name}}
+                    <br>
+                    {{member?.designation}}
+                    </figcaption>
+                </ng-container>
+              </figure>
+            </div>
+            <div class="col-md-8">
+              <div [innerHTML]="member?.description"></div>
+            </div>
+          </div>
+        </div>
+      </mat-dialog-content>
+      <mat-dialog-actions align="center">
+        <button mat-button mat-dialog-close>Close</button>
+      </mat-dialog-actions>
+    </div>

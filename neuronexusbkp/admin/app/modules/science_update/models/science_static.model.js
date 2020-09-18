@@ -7,6 +7,8 @@ const status = ['Active', 'Inactive'];
 const science_static_con_Schema = new Schema({
 
   header_banner_image: { type: String, default: '' },
+  testimonials_page_title: { type: String, default: '' },
+  science_update_page_title: { type: String, default: '' },
   isDeleted: { type: Boolean, default: false, enum: [true, false] },
   status: { type: String, default: 'Active', enum: status },
 }, {

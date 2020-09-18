@@ -7,6 +7,7 @@ const status = ['Active', 'Inactive'];
 const events_static_con_Schema = new Schema({
 
   header_banner_image: { type: String, default: '' },
+  event_page_title: { type: String, default: '' },
   isDeleted: { type: Boolean, default: false, enum: [true, false] },
   status: { type: String, default: 'Active', enum: status },
 }, {

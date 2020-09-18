@@ -15,10 +15,13 @@ export class VideoImageListComponent implements OnInit {
   pageSlug: any;
   BASE_IMAGE_URL = environment.BASE_IMAGE_URL;
   p: any = 1;
+  pageTitle: any;
   constructor(private api: ApiService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(param => {
+      this.list = undefined;
+      this.pageTitle = undefined
       if(param && param.type){
         this.pageSlug = param.type;
         this.p = 1;
@@ -61,7 +64,6 @@ export class VideoImageListComponent implements OnInit {
   }
 
   getImageVideoLists(){
-    this.list = undefined;
     let api;
     if(this.pageSlug === 'electrode'){
       api = 'electrodevideos/list';
@@ -80,6 +82,7 @@ export class VideoImageListComponent implements OnInit {
       this.api.get(api).toPromise().then((res:any) => {
         if(res.status === 200){
           this.list = res.data;
+          this.pageTitle = res.page_title;
           this.list.forEach(ele => {
             if(ele.type === 'video'){
               ele.play = false;

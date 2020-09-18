@@ -70,14 +70,20 @@ const productController = {
 
             let selectedcategory = await probeFinderRepo.getCategoryNameByField({ 'status': 'Active', 'isDeleted': false });
 
+            var searchQuerystatic = {
+                "isDeleted": false,
+                "status": "Active"
+            };
+
+            var productstatic = await productRepo.product_static_contentsGetByField(searchQuerystatic);
 
             for (var i = 0; i < products.length; i++) {
 
                 if (products[i]._id.toString() == selectedcategory.menu_id.toString()) {
-                    products[i].productsList.push({ "name": "Probe Finder", "static": true });
+                    products[i].productsList.push({ "name": productstatic.probe_finder_menu_name, "slug": "probefinder-1b23d", "static": true });
                 }
             }
-            products.push({ "name": "Catalog", "static": true })
+            products.push({ "name": productstatic.catelog_menu_name, "slug": "catalog-1a23d", "static": true })
 
 
 
@@ -98,8 +104,16 @@ const productController = {
             };
             var catalogs = await productRepo.getByFieldCatalog(searchQuery);
 
+            var searchQuerystatic = {
+                "isDeleted": false,
+                "status": "Active"
+            };
+
+            var productstatic = await productRepo.product_static_contentsGetByField(searchQuerystatic);
+
+
             if (catalogs) {
-                return { status: 200, data: catalogs, message: 'Catalogs fetched Successfully' };
+                return { status: 200, data: catalogs, page_title: productstatic.catelog_menu_name, message: 'Catalogs fetched Successfully' };
             } else {
                 return { status: 201, data: [], message: 'Catalogs Not Found' };
             }

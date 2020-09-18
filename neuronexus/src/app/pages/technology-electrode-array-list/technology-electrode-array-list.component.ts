@@ -14,6 +14,7 @@ export class TechnologyElectrodeArrayListComponent implements OnInit {
   electrodeArrayList: any;
   BASE_IMAGE_URL = environment.BASE_IMAGE_URL;
   p: any = 1;
+  pageTitle: any;
 
   constructor(
     private api: ApiService,
@@ -21,6 +22,7 @@ export class TechnologyElectrodeArrayListComponent implements OnInit {
   ) {
     this.banner = [];
     this.electrodeArrayList = undefined;
+    this.pageTitle = undefined;
    }
 
   ngOnInit(): void {
@@ -54,6 +56,7 @@ export class TechnologyElectrodeArrayListComponent implements OnInit {
       this.api.get(`technology_electrode_arrays/list`).toPromise().then((res: any) => {
         if (res.status === 200) {
           this.electrodeArrayList = res.data;
+          this.pageTitle = res.page_title;
         } else if (res.status === 201) {
           this.electrodeArrayList = undefined;
         }

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const trainingvideosRepo = require('trainingvideos/repositories/trainingvideos.repository');
-
+const supportRepo = require('support/repositories/support.repository');
 
 /* 
 // @Method: getAlltrainingvideosRepo
@@ -19,7 +19,16 @@ exports.getAlltrainingvideos = async req => {
             Object.assign(searchQuery, { "title": { $regex: req.query.title, $options: 'i' } });
         }
         var trainingvideos = await trainingvideosRepo.getAllByField(searchQuery);
-        return { status: 200, data: trainingvideos, message: 'Record fetched Successfully' };
+
+        var searchQuery = {
+            "isDeleted": false,
+            "status": "Active",
+        };
+
+        //  console.log(searchQuery);
+        var supportstatic = await supportRepo.support_staticGetByField(searchQuery);
+
+        return { status: 200, data: trainingvideos, page_title: supportstatic.training_videos_page_title, message: 'Record fetched Successfully' };
     } catch (error) {
         return { "status": 500, data: {}, "message": error.message }
     }

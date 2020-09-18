@@ -4,7 +4,7 @@
     <div class="container">
       <div class="update_inner">
       <ng-container *ngIf="electrodeArrayList !== undefined && electrodeArrayList?.length > 0">
-        <h3>Thin Film Electrode Arrays</h3>
+        <h3 *ngIf="pageTitle">{{pageTitle}}</h3>
         <div class="row update_main_area_cont">
           <div class="col-lg-4 col-md-6  update_main_area" style="margin-top: 30px;" *ngFor="let ele of electrodeArrayList | paginate: { itemsPerPage: 9, currentPage: p }">
             <div class="update_box">

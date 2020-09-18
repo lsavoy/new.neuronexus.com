@@ -13,12 +13,14 @@ export class SupportBlogComponent implements OnInit {
   blogList: any;
   BASE_IMAGE_URL = environment.BASE_IMAGE_URL;
   p: any = 1;
+  pageTitle: any;
 
   constructor(
     private api: ApiService,
   ) {
     this.banner = [];
     this.blogList = undefined;
+    this.pageTitle = undefined;
    }
 
   ngOnInit(): void {
@@ -52,6 +54,7 @@ export class SupportBlogComponent implements OnInit {
       this.api.get(`support_blog/list`).toPromise().then((res: any) => {
         if (res.status === 200) {
           this.blogList = res.data;
+          this.pageTitle = res.page_title
           this.blogList.forEach(ev => {
             ev.showFull = false;
           })

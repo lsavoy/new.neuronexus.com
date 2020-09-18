@@ -11,12 +11,14 @@ export class CatalogsBrochuresComponent implements OnInit {
   banner = [];
   catlogAndBrouchers: any;
   BASE_IMAGE_URL = environment.BASE_IMAGE_URL;
+  pageTitle: any;
 
   constructor(
     private api: ApiService,
   ) {
     this.banner = [];
     this.catlogAndBrouchers = undefined;
+    this.pageTitle = undefined;
    }
 
   ngOnInit(): void {
@@ -41,6 +43,7 @@ export class CatalogsBrochuresComponent implements OnInit {
     this.api.get(`catalogs/list`).subscribe((res: any) => {
       if (res.status === 200) {
         this.catlogAndBrouchers = res.data;
+        this.pageTitle = res.page_title
       } else if (res.status === 201) {
         this.catlogAndBrouchers = undefined;
       }

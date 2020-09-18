@@ -62,7 +62,7 @@
           <h3>Leadership</h3>
           <figure>
             <ul class="blocks-gallery-grid columns-3">
-              <li class="blocks-gallery-item" *ngFor="let member of leadershipList">
+              <li class="blocks-gallery-item" style="cursor: pointer;" *ngFor="let member of leadershipList" (click)="openBio(member)">
                 <figure *ngIf="member?.image">
                   <img src="{{BASE_IMAGE_URL}}cms/{{member?.image}}" alt="">
                   <figcaption class="blocks-gallery-item__caption">
@@ -82,7 +82,7 @@
         <h3>Sales & Marketing Group</h3>
         <figure>
           <ul class="blocks-gallery-grid columns-5">
-            <li class="blocks-gallery-item" *ngFor="let member of salesList">
+            <li class="blocks-gallery-item" style="cursor: pointer;" *ngFor="let member of salesList" (click)="openBio(member)">
               <figure *ngIf="member?.image">
                 <img src="{{BASE_IMAGE_URL}}cms/{{member?.image}}" alt="">
                 <figcaption class="blocks-gallery-item__caption">
