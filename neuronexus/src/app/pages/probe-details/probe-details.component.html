@@ -3,7 +3,7 @@
   <div class="system_sec produced_sec common_gap">
     <div class="container">
       <div class="inner_system">
-        <div class="row system_main_area" *ngIf="probDetailsContent !== undefined">
+        <div class="row system_main_area" *ngIf="probDetailsContent && probDetailsContent !== 'error' && probDetailsContent !== 'no-data'">
           <!-- <div class="col-lg-6 system_main_area_cont">
             <h3>{{probDetailsContent?.name}}</h3>
             <section [innerHtml]="probDetailsContent?.content"></section>
@@ -15,19 +15,22 @@
             </figure>
           </div>
         </div>
-        <div class="no-data-center" *ngIf="probDetailsContent === undefined">No data available!</div>
+        <!-- <div class="no-data-center" *ngIf="probDetailsContent === undefined">No data available!</div> -->
+        <div class="no-data-center" *ngIf="probDetailsContent && probDetailsContent === 'error'">Some Error occurred</div>
+        <div class="no-data-center" *ngIf="probDetailsContent && probDetailsContent === 'no-data'">No data Available</div>
+        <div class="no-data-center" *ngIf="probDetailsContent === undefined">Loading...</div>
       </div>
     </div>
   </div>
 
-  <div class="update_btn" style="margin-bottom: 20px;" *ngIf="probDetailsContent !== undefined">
+  <div class="update_btn" style="margin-bottom: 20px;" *ngIf="probDetailsContent && probDetailsContent !== 'error' && probDetailsContent !== 'no-data'">
     <a class="redmore_btn" [routerLink]="['/home']" routerLinkActive="active">Back</a>
   </div>
 
 
   <div class="knowledge_sec accrodion_sec">
     <div class="container">
-      <div class="knowledge_inner" *ngIf="probDetailsContent !== undefined">
+      <div class="knowledge_inner" *ngIf="probDetailsContent && probDetailsContent !== 'error' && probDetailsContent !== 'no-data'">
         <div class="knowledge_box">
           <div class="accordion" id="accordionExample">
             <div class="card" *ngIf="probDetailsContent?.specification_content !== '' || undefined">
@@ -100,7 +103,10 @@
 
         </div>
       </div>
-      <div class="no-data-center" *ngIf="probDetailsContent === undefined">No data available!</div>
+      <!-- <div class="no-data-center" *ngIf="probDetailsContent === undefined">No data available!</div> -->
+      <div class="no-data-center" *ngIf="probDetailsContent && probDetailsContent === 'error'">Some Error occurred</div>
+        <div class="no-data-center" *ngIf="probDetailsContent && probDetailsContent === 'no-data'">No data Available</div>
+        <div class="no-data-center" *ngIf="probDetailsContent === undefined">Loading...</div>
     </div>
   </div>
   <!-- <div style="margin-left: 80px;margin-top: 20px;">

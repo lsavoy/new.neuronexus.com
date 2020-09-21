@@ -3,16 +3,16 @@
 <div class="update_sec common_gap" id="particles-js2">
     <div class="container">
       <div class="update_inner">
-      <ng-container *ngIf="list !== undefined && list?.length > 0">
+      <ng-container *ngIf="list && list !== 'error' && list !== 'no-data'  && list?.length > 0">
         <h3 *ngIf="pageTitle">{{pageTitle}}</h3>
         <div class="row update_main_area_cont">
           <div class="col-lg-4 col-md-6  update_main_area" style="margin-top: 30px;" *ngFor="let ele of list | paginate: { itemsPerPage: 9, currentPage: p }">
             <div class="update_box">
               <figure *ngIf="ele?.type === 'video' && ele?.media" class="testimonial-vdo">
                 <!-- <img src="{{BASE_IMAGE_URL}}testimonials/{{ele?.video}}" alt=""> -->
-                <video [id]="'video'+ele?._id">
+                <video [id]="'video'+ele?._id" autobuffer>
                     <source src="{{BASE_IMAGE_URL}}{{ele?.media}}" type='video/mp4' />
-                    <source src="{{BASE_IMAGE_URL}}{{ele?.media}}" type='video/webm' />
+                    <!-- <source src="{{BASE_IMAGE_URL}}{{ele?.media}}" type='video/webm' /> -->
                     Your browser does not support the video tag.
                 </video>
                 <p class="video-controls" (click)="playPause(ele?._id)">
@@ -39,7 +39,11 @@
           <pagination-controls *ngIf="list?.length > 9" (pageChange)="changePage($event)"></pagination-controls>
         </div>
         </ng-container>
-        <div class="no-data-center" *ngIf="list === undefined || list?.length === 0">No data available!</div>
+        <div class="no-data-center" *ngIf="list && list !== 'error' && list !== 'no-data' && list?.length === 0">No data available!</div>
+        <div class="no-data-center" *ngIf="list && list !== 'error' && list === 'no-data'">No data available!</div>
+        <div class="no-data-center" *ngIf="list && list === 'error'">Some error occurred!</div>
+        <div class="no-data-center" *ngIf="list === undefined">Loading...</div>
+
       </div>
     </div>
   </div>

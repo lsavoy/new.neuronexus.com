@@ -37,7 +37,7 @@ export class VideoImageListComponent implements OnInit {
     const banner = [];
     let api;
     let path;
-    if(this.pageSlug === 'electrode' || this.pageSlug === 'software' || this.pageSlug === 'accessories'){
+    if(this.pageSlug === 'electrode' || this.pageSlug === 'software' || this.pageSlug === 'accessories' || this.pageSlug === 'instrumentation'){
       api = 'product/staticinfo'
       path = 'product/'
     }else if(this.pageSlug === 'training'){
@@ -77,6 +77,9 @@ export class VideoImageListComponent implements OnInit {
     }else if(this.pageSlug === 'training'){
       api = 'trainingvideos/list';
       this.BASE_IMAGE_URL+='trainingvideos/'
+    }else if(this.pageSlug === 'instrumentation'){
+      api = 'instrumentationvideos/list';
+      this.BASE_IMAGE_URL+='instrumentationvideos/'
     }
     const promise = new Promise((resolve, reject) => {
       this.api.get(api).toPromise().then((res:any) => {
@@ -91,10 +94,13 @@ export class VideoImageListComponent implements OnInit {
           setTimeout(()=>{
             this.listenToVideoEnd();
           }, 300)
+        }else{
+          this.list = 'no-data';
         }
         resolve();
       }, (msg:any) => {
         reject(msg);
+        this.list = 'error';
       });
     });
     return promise;

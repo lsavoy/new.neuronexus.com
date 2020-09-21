@@ -4,14 +4,17 @@
   <div class="meet_sec common_gap">
     <div class="container">
       <div class="meet_inner">
-        <div class="meet_top" *ngIf="scienceUpdateCollaborationStaticinfo !== undefined">
+        <div class="meet_top" *ngIf="scienceUpdateCollaborationStaticinfo && scienceUpdateCollaborationStaticinfo !== 'error' && scienceUpdateCollaborationStaticinfo !== 'no-data'">
           <h3>{{scienceUpdateCollaborationStaticinfo?.title}}</h3> 
           <section [innerHtml]="scienceUpdateCollaborationStaticinfo?.content"></section>
         </div>
-        <div class="no-data-center" *ngIf="scienceUpdateCollaborationStaticinfo === undefined">No data available!</div>
+        <!-- <div class="no-data-center" *ngIf="scienceUpdateCollaborationStaticinfo === undefined">No data available!</div> -->
+        <div class="no-data-center" *ngIf="scienceUpdateCollaborationStaticinfo && scienceUpdateCollaborationStaticinfo === 'error'">Some Error occurred</div>
+      <div class="no-data-center" *ngIf="scienceUpdateCollaborationStaticinfo && scienceUpdateCollaborationStaticinfo === 'no-data'">No data Available</div>
+      <div class="no-data-center" *ngIf="scienceUpdateCollaborationStaticinfo === undefined">Loading...</div>
       </div>
 
-      <ng-container *ngIf="scienceUpdateCollaborationList !== undefined || scienceUpdateCollaborationList?.length > 0">
+      <ng-container *ngIf="scienceUpdateCollaborationList && scienceUpdateCollaborationList !== 'error' && scienceUpdateCollaborationList !== 'no-data'">
         <mat-tab-group >
           <ng-container *ngFor="let tab of scienceUpdateCollaborationList;">
               <mat-tab label="{{tab?.title}}">
@@ -22,8 +25,11 @@
             </ng-container>
         </mat-tab-group>
       </ng-container>
-      <div class="no-data-center" *ngIf="scienceUpdateCollaborationList?.length === 0 || scienceUpdateCollaborationList === undefined">
+      <!-- <div class="no-data-center" *ngIf="scienceUpdateCollaborationList?.length === 0 || scienceUpdateCollaborationList === undefined">
         No data available!
-      </div>
+      </div> -->
+      <div class="no-data-center" *ngIf="scienceUpdateCollaborationList && scienceUpdateCollaborationList === 'error'">Some Error occurred</div>
+      <div class="no-data-center" *ngIf="scienceUpdateCollaborationList && scienceUpdateCollaborationList === 'no-data'">No data Available</div>
+      <div class="no-data-center" *ngIf="scienceUpdateCollaborationList === undefined">Loading...</div>
     </div>
   </div>

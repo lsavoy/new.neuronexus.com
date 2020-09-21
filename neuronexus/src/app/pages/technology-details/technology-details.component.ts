@@ -21,9 +21,8 @@ export class TechnologyDetailsComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private sanitizer: DomSanitizer
   ) {
-    this.banner = [];
-    this.technologyDetailsContent = undefined;
     this.activatedRoute.params.subscribe((params) => {
+      this.banner = [];
       if (params.technologySlug !== undefined) {
       this.technologySlug = params.technologySlug;
       this.getStaticContent();
@@ -52,14 +51,16 @@ export class TechnologyDetailsComponent implements OnInit {
     });
   }
   getTechnologyDetails(technologyId: any) {
+    this.technologyDetailsContent = undefined;
     this.api.get(`technology/details/${technologyId}`).subscribe((res: any) => {
-      if (res.status === 200) {
+      if (res.status === 200 && res.data.length > 0) {
         this.technologyDetailsContent = res.data[0];
         this.decodeHtml(this.technologyDetailsContent.content);
       } else if (res.status === 201) {
-        this.technologyDetailsContent = undefined;
+        this.technologyDetailsContent = 'no-data';
       }
     }, (e) => {
+      this.technologyDetailsContent = 'error';
     });
   }
   getSanitizedData(data: any) {

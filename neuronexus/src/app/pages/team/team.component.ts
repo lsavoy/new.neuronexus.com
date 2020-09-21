@@ -21,13 +21,13 @@ export class TeamComponent implements OnInit {
     private dialog: MatDialog
   ) {
     this.banner = [];
-    this.teamStaticContent = undefined;
-   }
+    // this.teamStaticContent = undefined;
+  }
 
   ngOnInit(): void {
-    this.getAbourtStaticContentforHeaderImage().then(()=>{
-      this.getStaticContent().then(()=>{
-        this.getLeadershipList().then(()=>{
+    this.getAbourtStaticContentforHeaderImage().then(() => {
+      this.getStaticContent().then(() => {
+        this.getLeadershipList().then(() => {
           this.getSalesList();
         });
       });
@@ -39,34 +39,36 @@ export class TeamComponent implements OnInit {
       this.api.get(`about/aboutus/staticinfo`).toPromise().then((res: any) => {
         if (res.status === 200) {
           if (res.data.header_banner_image !== undefined || res.data.header_banner_image !== '') {
-            const img = {imagesrc: this.BASE_IMAGE_URL + 'cms/' + res.data.header_banner_image,  type: 'image', url: 'about'};
+            const img = { imagesrc: this.BASE_IMAGE_URL + 'cms/' + res.data.header_banner_image, type: 'image', url: 'about' };
             banner.push(img);
             this.banner = banner;
           }
         } else if (res.status === 201) {
         }
         resolve();
-      }, (e : any) => {
-        reject(e)
+      }, (e: any) => {
+        reject(e);
       });
     });
     return promise;
   }
 
   getStaticContent() {
-    const promise = new Promise((resolve,reject)=>{
+    this.teamStaticContent = undefined;
+    const promise = new Promise((resolve, reject) => {
       this.api.get(`about/meet-the-team/staticinfo`).subscribe((res: any) => {
         if (res.status === 200) {
           this.teamStaticContent = res.data;
           if (res.data.header_banner_image !== undefined || res.data.header_banner_image !== '') {
-          const img = {imagesrc: res.data.header_banner_image,  type: 'image', url: 'team'};
-          this.banner.push(img);
+            const img = { imagesrc: res.data.header_banner_image, type: 'image', url: 'team' };
+            this.banner.push(img);
           }
         } else if (res.status === 201) {
-          this.teamStaticContent = undefined;
+          this.teamStaticContent = 'no-data';
         }
         resolve();
-      }, (e : any) => {
+      }, (e: any) => {
+        this.teamStaticContent = 'error';
         reject(e);
       });
     });
@@ -74,51 +76,55 @@ export class TeamComponent implements OnInit {
   }
   getLeadershipList() {
     // const data = [
-        //   {
-        //     image: 'daryl-691x1024.jpg',
-        //     name: 'Daryl Kipke',
-        //     qualification: 'PhD',
-        //     designation: 'Chief Executive Officer & Managing Director of NeuroNexus & NEL Group, Inc.'
-        //   },
-        //   {
-        //     image: 'rio-697x1024.jpeg',
-        //     name: 'Rio Vetter',
-        //     qualification: 'PhD',
-        //     designation: 'Chief Technology Officer & VP of Research'
-        //   },
-        //   {
-        //     image: 'jamie-695x1024.jpeg',
-        //     name: 'Jamille Hetke',
-        //     qualification: 'MS',
-        //     designation: 'VP of Engineering'
-        //   },
-        //   {
-        //     image: 'taegyun-689x1024.jpeg',
-        //     name: 'Taegyun Moon',
-        //     qualification: 'PhD',
-        //     designation: 'VP of Strategy & Business Development'
-        //   },
-        //   {
-        //     image: 'priyanka-691x1024.jpeg',
-        //     name: 'Priyanka Seghal',
-        //     qualification: 'MS',
-        //     designation: 'Director of Operations'
-        //   },
-        //   {
-        //     image: 'alexis-704x1024.jpg',
-        //     name: 'Alexis Paez',
-        //     qualification: 'PhD',
-        //     designation: 'Director of Science Outreach'
-        //   }
-        // ];
-        // this.leadershipList = data;
-    const promise = new Promise((resolve,reject)=>{
+    //   {
+    //     image: 'daryl-691x1024.jpg',
+    //     name: 'Daryl Kipke',
+    //     qualification: 'PhD',
+    //     designation: 'Chief Executive Officer & Managing Director of NeuroNexus & NEL Group, Inc.'
+    //   },
+    //   {
+    //     image: 'rio-697x1024.jpeg',
+    //     name: 'Rio Vetter',
+    //     qualification: 'PhD',
+    //     designation: 'Chief Technology Officer & VP of Research'
+    //   },
+    //   {
+    //     image: 'jamie-695x1024.jpeg',
+    //     name: 'Jamille Hetke',
+    //     qualification: 'MS',
+    //     designation: 'VP of Engineering'
+    //   },
+    //   {
+    //     image: 'taegyun-689x1024.jpeg',
+    //     name: 'Taegyun Moon',
+    //     qualification: 'PhD',
+    //     designation: 'VP of Strategy & Business Development'
+    //   },
+    //   {
+    //     image: 'priyanka-691x1024.jpeg',
+    //     name: 'Priyanka Seghal',
+    //     qualification: 'MS',
+    //     designation: 'Director of Operations'
+    //   },
+    //   {
+    //     image: 'alexis-704x1024.jpg',
+    //     name: 'Alexis Paez',
+    //     qualification: 'PhD',
+    //     designation: 'Director of Science Outreach'
+    //   }
+    // ];
+    // this.leadershipList = data;
+    this.leadershipList = undefined;
+    const promise = new Promise((resolve, reject) => {
       this.api.get(`about/leadership/list`).toPromise().then((res: any) => {
         if (res.status === 200) {
           this.leadershipList = res.data;
-        } else if (res.status === 201) {}
+        } else if (res.status === 201) {
+          this.leadershipList = 'no-data';
+        }
         resolve();
       }, (e: any) => {
+        this.leadershipList = 'error';
         reject(e);
       });
     });
@@ -176,22 +182,22 @@ export class TeamComponent implements OnInit {
     //   },
     // ];
     // this.salesList = data;
-    this.api.get('about/sales/list').subscribe((res:any)=>{
-      if(res.status === 200){
+    this.api.get('about/sales/list').subscribe((res: any) => {
+      if (res.status === 200) {
         this.salesList = res.data;
-      }else{
-        this.salesList = undefined;
+      } else if (res.status === 201) {
+        this.salesList = 'no-data';
       }
     }, err => {
-      this.salesList = undefined;
-    })
+      this.salesList = 'error';
+    });
   }
 
-  openBio(member){
+  openBio(member) {
     this.dialog.open(TeamBioComponent, {
-      data: {member: member},
-     
-    })
+      data: { member: member },
+
+    });
   }
 
 }

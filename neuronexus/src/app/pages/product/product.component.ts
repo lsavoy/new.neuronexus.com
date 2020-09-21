@@ -20,8 +20,8 @@ export class ProductComponent implements OnInit {
     private api: ApiService,
   ) {
     this.banner = [];
-    this.productStaticContent = undefined;
-    this.productList = undefined;
+    // this.productStaticContent = undefined;
+    // this.productList = undefined;
   }
 
   ngOnInit(): void {
@@ -29,33 +29,37 @@ export class ProductComponent implements OnInit {
     this.getProductList();
   }
   getStaticContent() {
+    this.productStaticContent = undefined;
     const banner = [];
     this.api.get(`product/staticinfo`).subscribe((res: any) => {
       if (res.status === 200) {
         this.productStaticContent = res.data;
         if (res.data.header_banner_image !== undefined || res.data.header_banner_image !== '') {
-          const img = {imagesrc: this.BASE_IMAGE_URL + 'product/' + res.data.header_banner_image,  type: 'image', url: 'product'};
+          const img = { imagesrc: this.BASE_IMAGE_URL + 'product/' + res.data.header_banner_image, type: 'image', url: 'product' };
           banner.push(img);
           this.banner = banner;
         }
       } else if (res.status === 201) {
-        this.productStaticContent = undefined;
+        this.productStaticContent = 'no-data';
       }
     }, (e) => {
+      this.productStaticContent = 'error';
     });
   }
   getProductList() {
+    this.productList = undefined;
     this.api.get(`product/list`).subscribe((res: any) => {
-      if (res.status === 200) {
+      if (res.status === 200 && res.data.length > 0) {
         this.productList = res.data;
       } else if (res.status === 201) {
-        this.productList = undefined;
+        this.productList = 'no-data';
       }
     }, (e) => {
+      this.productList = 'error';
     });
   }
   routeToDeatils(productId: any, productSlug: any) {
-    this.router.navigate(['/product-details', productSlug]);
+    this.router.navigate(['/product-details', 'product', productSlug]);
   }
 
 }

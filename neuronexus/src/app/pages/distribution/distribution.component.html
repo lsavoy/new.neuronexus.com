@@ -4,7 +4,7 @@
   <div class="meet_sec common_gap">
     <div class="container">
       <div class="meet_inner">
-        <div class="meet_top" *ngIf="distributorsStaticContent !== undefined">
+        <div class="meet_top" *ngIf="distributorsStaticContent && distributorsStaticContent !== 'error' && distributorsStaticContent !== 'no-data'">
           <h3>{{distributorsStaticContent?.title}}</h3>
           <h4>{{distributorsStaticContent?.subtitle}}</h4> 
           <figure *ngIf="distributorsStaticContent?.image">
@@ -12,11 +12,14 @@
           </figure>
           <section [innerHtml]="distributorsStaticContent?.content"></section>
         </div>
-        <div class="no-data-center" *ngIf="distributorsStaticContent === undefined">No data available!</div>
+        <!-- <div class="no-data-center" *ngIf="distributorsStaticContent === undefined">No data available!</div> -->
+      <div class="no-data-center" *ngIf="distributorsStaticContent && distributorsStaticContent === 'error'">Some Error occurred</div>
+      <div class="no-data-center" *ngIf="distributorsStaticContent && distributorsStaticContent === 'no-data'">No data Available</div>
+      <div class="no-data-center" *ngIf="distributorsStaticContent === undefined">Loading...</div>
       </div>
     </div>
     <div class="container">
-      <ng-container *ngIf="distributorList !== undefined && distributorList?.length > 0">
+      <ng-container *ngIf="distributorList && distributorList !== 'error' && distributorList !== 'no-data'">
       <ul class="remove_style">
         <li *ngFor="let partner of distributorList;">
           <div class="partneLocation">
@@ -31,7 +34,10 @@
         </li>
       </ul>
     </ng-container>
-    <div class="no-data-center" *ngIf="distributorList === undefined || distributorList?.length === 0">No data available!</div>
+    <!-- <div class="no-data-center" *ngIf="distributorList === undefined || distributorList?.length === 0">No data available!</div> -->
+    <div class="no-data-center" *ngIf="distributorList && distributorList === 'error'">Some Error occurred</div>
+      <div class="no-data-center" *ngIf="distributorList && distributorList === 'no-data'">No data Available</div>
+      <div class="no-data-center" *ngIf="distributorList === undefined">Loading...</div>
     </div>
   </div>
 

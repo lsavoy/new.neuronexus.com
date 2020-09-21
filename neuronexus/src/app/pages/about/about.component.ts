@@ -15,7 +15,7 @@ export class AboutComponent implements OnInit {
   constructor(
     private api: ApiService,
   ) {
-    this.aboutStaticContent = undefined;
+    // this.aboutStaticContent = undefined;
     this.banner = [];
   }
 
@@ -23,6 +23,7 @@ export class AboutComponent implements OnInit {
     this.getStaticContent();
   }
   getStaticContent() {
+    this.aboutStaticContent = undefined;
     const banner = [];
     this.api.get(`about/aboutus/staticinfo`).subscribe((res: any) => {
       if (res.status === 200) {
@@ -33,9 +34,10 @@ export class AboutComponent implements OnInit {
           this.banner = banner;
         }
       } else if (res.status === 201) {
-        this.aboutStaticContent = undefined;
+        this.aboutStaticContent = 'no-data';
       }
     }, (e) => {
+      this.aboutStaticContent = 'error';
     });
   }
 

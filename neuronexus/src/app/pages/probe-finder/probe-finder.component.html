@@ -3,9 +3,9 @@
 <div class="system_sec produced_sec common_gap">
     <div class="container">
       <div class="inner_system">
-        <div class="row system_main_area" *ngIf="probeFinderMaster !== undefined">
+        <div class="row system_main_area" *ngIf="probeFinderMaster && probeFinderMaster !== 'error' && probeFinderMaster !== 'no-data'">
           <div class="col-lg-6 system_main_area_cont">
-            <div class="inner_university" *ngIf="probeFinderMaster !== undefined">
+            <div class="inner_university" *ngIf="probeFinderMaster && probeFinderMaster !== 'error' && probeFinderMaster !== 'no-data'">
               <div style="margin-bottom: 15px;" class="inner_university_body">
                 <h4 style="margin-bottom: 5px;">EXPERIMENT</h4>
                 <select (change)="optionChange('experiment_id', $event.target.value)">
@@ -63,10 +63,13 @@
             <p>If a suitable design cannot be found with the Probe Finder, a <a style="color: #009ddc" href="https://neuronexus.com/products/custom-design/custom-probe-design/">Custom Design</a> can be manufactured to your desired specifications.</p>
           </div>
         </div>
-        <div class="update_btn" *ngIf="probeFinderMaster !== undefined">
+        <div class="update_btn" *ngIf="probeFinderMaster && probeFinderMaster !== 'error' && probeFinderMaster !== 'no-data'">
           <a class="redmore_btn" [routerLink]="['/home']" routerLinkActive="active">Back</a>
         </div>
-        <div class="no-data-center" *ngIf="probeFinderMaster === undefined">No data available!</div>
+        <!-- <div class="no-data-center" *ngIf="probeFinderMaster === undefined">No data available!</div> -->
+        <div class="no-data-center" *ngIf="probeFinderMaster && probeFinderMaster === 'error'">Some Error occurred</div>
+        <div class="no-data-center" *ngIf="probeFinderMaster && probeFinderMaster === 'no-data'">No data Available</div>
+        <div class="no-data-center" *ngIf="probeFinderMaster === undefined">Loading...</div>
       </div>
     </div>
   </div>
@@ -75,7 +78,7 @@
   <div class="update_sec common_gap" id="particles-js2">
     <div class="container">
       <div class="update_inner">
-      <ng-container *ngIf="probFinderList !== undefined && probFinderList?.length > 0">
+      <ng-container *ngIf="probFinderList && probFinderList !== 'error' && probFinderList !== 'no-data'">
         <div class="row update_main_area_cont">
           <div class="col-lg-4 col-md-6  update_main_area" style="margin-top: 30px;" *ngFor="let prob of probFinderList;">
             <a [routerLink]="['/probe-details', prob?.slug ]" routerLinkActive="active">
@@ -93,7 +96,10 @@
           </div>
         </div>
         </ng-container>
-        <div class="no-data-center" *ngIf="probFinderList === undefined || probFinderList?.length === 0">No data available!</div>
+        <!-- <div class="no-data-center" *ngIf="probFinderList === undefined || probFinderList?.length === 0">No data available!</div> -->
+        <div class="no-data-center" *ngIf="probFinderList && probFinderList === 'error'">Some Error occurred</div>
+        <div class="no-data-center" *ngIf="probFinderList && probFinderList === 'no-data'">No data Available</div>
+        <div class="no-data-center" *ngIf="probFinderList === undefined">Loading...</div>
       </div>
     </div>
   </div>

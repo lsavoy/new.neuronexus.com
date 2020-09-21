@@ -18,7 +18,7 @@ export class ProbeFinderComponent implements OnInit {
   constructor(
     private api: ApiService
   ) {
-    this.probeFinderMaster = undefined;
+    // this.probeFinderMaster = undefined;
     this.probFinderList = undefined;
    }
 
@@ -43,12 +43,15 @@ export class ProbeFinderComponent implements OnInit {
   }
 
   getMasterList() {
+    this.probeFinderMaster = undefined;
     this.api.get(`probe-finder/master-list`).subscribe((res: any) => {
       if (res.status === 200) {
         this.probeFinderMaster = res;
       } else if (res.status === 201) {
+        this.probeFinderMaster = 'no-data';
       }
     }, (e) => {
+      this.probeFinderMaster = 'error';
     });
   }
   optionChange(key: any, value: any) {
@@ -56,12 +59,15 @@ export class ProbeFinderComponent implements OnInit {
     this.getProbeFinderList(this.probeData);
   }
   getProbeFinderList(filterData: any) {
+    this.probFinderList = undefined;
     this.api.post(`probe-finder/list`, filterData).subscribe((res: any) => {
       if (res.status === 200) {
         this.probFinderList = res.data;
       } else if (res.status === 201) {
+        this.probFinderList = 'no-data';
       }
     }, (e) => {
+      this.probFinderList = 'error';
     });
   }
 

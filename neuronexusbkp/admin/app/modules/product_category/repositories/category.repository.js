@@ -260,7 +260,7 @@ const categoryRepository = {
 
             for (var i = 0; i < products.length; i++) {
 
-                products[i].productsList = products[i].productsList.filter(function (item) { return item.status == "Active" })
+                products[i].productsList = products[i].productsList.filter(function (item) { return item.status == "Active" && item.isDeleted == false })
 
             }
             return products;

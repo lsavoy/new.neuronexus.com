@@ -3,7 +3,7 @@
   <div class="system_sec produced_sec common_gap">
     <div class="container">
       <div class="inner_system">
-        <div class="row system_main_area" *ngIf="productDetailsContent !== undefined">
+        <div class="row system_main_area" *ngIf="productDetailsContent && productDetailsContent !== 'error' && productDetailsContent !== 'no-data'">
           <div class="col-lg-6 system_main_area_cont">
             <h3>{{productDetailsContent?.name}}</h3>
             <section [innerHtml]="productDetailsContent?.content"></section>
@@ -14,19 +14,19 @@
             </figure>
           </div>
         </div>
-        <div class="no-data-center" *ngIf="productDetailsContent === undefined">No data available!</div>
+        <!-- <div class="no-data-center" *ngIf="productDetailsContent === undefined">No data available!</div> -->
+        <div class="no-data-center" *ngIf="productDetailsContent && productDetailsContent === 'error'">Some Error occurred</div>
+        <div class="no-data-center" *ngIf="productDetailsContent && productDetailsContent === 'no-data'">No data Available</div>
+        <div class="no-data-center" *ngIf="productDetailsContent === undefined">Loading...</div>
       </div>
     </div>
   </div>
 
-  <div class="update_btn" style="margin-bottom: 20px;" *ngIf="productDetailsContent !== undefined">
-    <a class="redmore_btn" [routerLink]="['/home']" routerLinkActive="active">Back</a>
-  </div>
 
   <div class="university_sec">
     <div class="container">
       
-      <div class="inner_university" *ngIf="productDetailsContent !== undefined">
+      <div class="inner_university" *ngIf="productDetailsContent && productDetailsContent !== 'error' && productDetailsContent !== 'no-data'">
         <ng-container *ngIf="productDetailsContent?.section2_content !== ''">
          <section [innerHtml]="productDetailsContent?.section2_content"></section>
         </ng-container>
@@ -34,13 +34,16 @@
         <h4>{{productDetailsContent?.section2_name}} <span>{{productDetailsContent?.section2_location}}</span></h4>
         </ng-container>
       </div>
-      <div class="no-data-center" *ngIf="productDetailsContent === undefined">No data available!</div>
+      <!-- <div class="no-data-center" *ngIf="productDetailsContent === undefined">No data available!</div> -->
+      <div class="no-data-center" *ngIf="productDetailsContent && productDetailsContent === 'error'">Some Error occurred</div>
+        <div class="no-data-center" *ngIf="productDetailsContent && productDetailsContent === 'no-data'">No data Available</div>
+        <div class="no-data-center" *ngIf="productDetailsContent === undefined">Loading...</div>
     </div>
   </div>
 
   <div class="knowledge_sec accrodion_sec">
     <div class="container">
-      <div class="knowledge_inner" *ngIf="productDetailsContent !== undefined">
+      <div class="knowledge_inner" *ngIf="productDetailsContent && productDetailsContent !== 'error' && productDetailsContent !== 'no-data'">
         <div class="knowledge_box">
           <div class="accordion" id="accordionExample">
             <div class="card" *ngIf="productDetailsContent?.specification_content !== '' || undefined">
@@ -113,7 +116,14 @@
 
         </div>
       </div>
-      <div class="no-data-center" *ngIf="productDetailsContent === undefined">No data available!</div>
+      <!-- <div class="no-data-center" *ngIf="productDetailsContent === undefined">No data available!</div> -->
+      <div class="no-data-center" *ngIf="productDetailsContent && productDetailsContent === 'error'">Some Error occurred</div>
+        <div class="no-data-center" *ngIf="productDetailsContent && productDetailsContent === 'no-data'">No data Available</div>
+        <div class="no-data-center" *ngIf="productDetailsContent === undefined">Loading...</div>
     </div>
+  </div>
+
+  <div class="update_btn" style="margin-bottom: 20px;" *ngIf="productDetailsContent && productDetailsContent !== 'error' && productDetailsContent !== 'no-data'">
+    <a class="redmore_btn" (click)="routeBackToCategory()" style="cursor: pointer;">Back</a>
   </div>
   

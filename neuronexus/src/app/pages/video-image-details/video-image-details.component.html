@@ -4,14 +4,16 @@
         <div class="container">
           <div class="inner_banner">
             <div class="bnr_main_area py-md-5" style="justify-content: center;">
-              <div class="bnr_main_area_cont" *ngIf="mediaDetail !== undefined">
+              <div class="bnr_main_area_cont" *ngIf="mediaDetail && mediaDetail !== 'error' && mediaDetail !== 'no-data'">
                 <div class="text-white h1 text-center mb-4 font-weight-normal ">
                   <div class="pb-2 px-3 d-inline-block" style="border-bottom: 2px solid #eee;">
                     <section [innerHtml]="mediaDetail?.title"></section>
                   </div>
                 </div>
               </div>
-              <div class="no-data-center text-white" *ngIf="mediaDetail === undefined">No data available!</div>
+              <div class="no-data-center text-white" *ngIf="mediaDetail && mediaDetail === 'error'">Some error occurred!</div>
+              <div class="no-data-center text-white" *ngIf="mediaDetail && mediaDetail === 'no-data'">No data available!</div>
+              <div class="no-data-center text-white" *ngIf="mediaDetail === undefined">Loading...</div>
             </div>
           </div>
         </div>
@@ -21,14 +23,15 @@
   </div>
   
   
-  <div class="meet_sec common_gap" *ngIf="mediaDetail">
+  <div class="meet_sec common_gap" *ngIf="mediaDetail && mediaDetail !== 'error' && mediaDetail !== 'no-data'">
     <div class="container">
       <div class="row">
         <div class="col-md-4">
           <figure *ngIf="mediaDetail?.type === 'video' && mediaDetail?.media">
-            <video controls>
+            <video controls autobuffer>
                 <source src="{{BASE_IMAGE_URL}}{{mediaDetail?.media}}" type='video/mp4' />
-                <source src="{{BASE_IMAGE_URL}}{{mediaDetail?.media}}" type='video/webm' />
+                <!-- <source src="{{BASE_IMAGE_URL}}{{mediaDetail?.media}}" type='video/webm' /> -->
+                <!-- <source src="{{BASE_IMAGE_URL}}{{mediaDetail?.media}}" /> -->
                 Your browser does not support the video tag.
             </video>
           </figure>

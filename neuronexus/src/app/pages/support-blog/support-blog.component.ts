@@ -59,12 +59,13 @@ export class SupportBlogComponent implements OnInit {
             ev.showFull = false;
           })
         } else if (res.status === 201) {
-          this.blogList = undefined;
+          this.blogList = 'no-data';
         }
         resolve();
         },
         (msg: any) => {
           reject(msg);
+          this.blogList = 'error'
         });
     });
     return promise;

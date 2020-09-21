@@ -34,9 +34,10 @@ export class SupportComponent implements OnInit {
           this.banner = banner;
         }
       } else if (res.status === 201) {
-        this.supportStaticinfo = undefined;
+        this.supportStaticinfo = 'no-data';
       }
     }, (e) => {
+      this.supportStaticinfo = 'error';
     });
   }
 

@@ -4,11 +4,13 @@
   <div class="meet_sec common_gap">
     <div class="container">
       <div class="meet_inner">
-        <div class="meet_top" *ngIf="supportStaticinfo !== undefined">
+        <div class="meet_top" *ngIf="supportStaticinfo && supportStaticinfo !== 'no-data' && supportStaticinfo !== 'error'">
           <h3>{{supportStaticinfo?.title}}</h3> 
           <section [innerHtml]="supportStaticinfo?.content"></section>
         </div>
-        <div class="no-data-center" *ngIf="supportStaticinfo === undefined">No data available!</div>
+        <div class="no-data-center" *ngIf="supportStaticinfo === undefined">Loading...</div>
+        <div class="no-data-center" *ngIf="supportStaticinfo && supportStaticinfo === 'no-data'">No data available!</div>
+        <div class="no-data-center" *ngIf="supportStaticinfo && supportStaticinfo === 'error'">Some error occurred!</div>
       </div>
     </div>
   </div>

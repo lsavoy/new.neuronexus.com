@@ -3,7 +3,7 @@
   <div class="system_sec produced_sec common_gap">
     <div class="container">
       <div class="inner_system">
-        <div class="row system_main_area" *ngIf="catlogAndBrouchers !== undefined">
+        <div class="row system_main_area" *ngIf="catlogAndBrouchers && catlogAndBrouchers !== 'error' && catlogAndBrouchers !== 'no-data'">
           <div class="col-md-12 system_main_area_cont">
             <h3 *ngIf="pageTitle">{{pageTitle}}</h3>
             <div class="table-responsive">
@@ -20,7 +20,11 @@
             </div>
           </div>
         </div>
-        <div class="no-data-center" *ngIf="catlogAndBrouchers === undefined">No data available!</div>
+        <!-- <div class="no-data-center" *ngIf="catlogAndBrouchers === undefined">No data available!</div> -->
+
+        <div class="no-data-center" *ngIf="catlogAndBrouchers && catlogAndBrouchers === 'error'">Some Error occurred</div>
+        <div class="no-data-center" *ngIf="catlogAndBrouchers && catlogAndBrouchers === 'no-data'">No data Available</div>
+        <div class="no-data-center" *ngIf="catlogAndBrouchers === undefined">Loading...</div>
       </div>
     </div>
   </div>

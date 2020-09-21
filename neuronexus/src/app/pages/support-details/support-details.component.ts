@@ -22,8 +22,8 @@ export class SupportDetailsComponent implements OnInit {
     private sanitizer: DomSanitizer
   ) {
     this.banner = [];
-    this.supportDetailsContent = undefined;
     this.activatedRoute.params.subscribe((params) => {
+      this.supportDetailsContent = undefined;
       if (params.supportSlug !== undefined) {
       this.supportSlug = params.supportSlug;
       this.getStaticContent();
@@ -57,9 +57,10 @@ export class SupportDetailsComponent implements OnInit {
         this.supportDetailsContent = res.data[0];
         this.decodeHtml(this.supportDetailsContent.content);
       } else if (res.status === 201) {
-        this.supportDetailsContent = undefined;
+        this.supportDetailsContent = 'no-data';
       }
     }, (e) => {
+      this.supportDetailsContent = 'error';
     });
   }
   getSanitizedData(data: any) {

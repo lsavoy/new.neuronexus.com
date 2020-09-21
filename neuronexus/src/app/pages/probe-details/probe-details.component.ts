@@ -22,7 +22,7 @@ export class ProbeDetailsComponent implements OnInit {
     public dialog: MatDialog
   ) {
     this.banner = [];
-    this.probDetailsContent = undefined;
+    // this.probDetailsContent = undefined;
     this.activatedRoute.params.subscribe((params) => {
       if (params.probeSlug !== undefined) {
         this.probeSlug = params.probeSlug;
@@ -49,13 +49,15 @@ export class ProbeDetailsComponent implements OnInit {
     });
   }
   getProbDeatils(probeSlug: any) {
+    this.probDetailsContent = undefined;
     this.api.get(`probe-finder/details/${probeSlug}`).subscribe((res: any) => {
       if (res.status === 200) {
         this.probDetailsContent = res.data;
       } else if (res.status === 201) {
-        this.probDetailsContent = undefined;
+        this.probDetailsContent = 'no-data';
       }
     }, (e) => {
+      this.probDetailsContent = 'error';
     });
   }
   openImageModal(image: any) {

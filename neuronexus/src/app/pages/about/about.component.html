@@ -3,7 +3,7 @@
   <div class="system_sec common_gap">
     <div class="container">
       <div class="inner_system">
-        <div class="row system_main_area" *ngIf="aboutStaticContent !== undefined">
+        <div class="row system_main_area" *ngIf="aboutStaticContent && aboutStaticContent !== 'error' && aboutStaticContent !== 'no-data'">
           <div class="col-lg-6 system_main_area_cont" >
             <h3>{{aboutStaticContent?.title_h2}}</h3>
             <h2>{{aboutStaticContent?.title_h3}}</h2>
@@ -15,9 +15,12 @@
             </figure>
           </div>
         </div>
-        <div class="no-data-center" *ngIf="aboutStaticContent === undefined" >
+        <!-- <div class="no-data-center" *ngIf="aboutStaticContent === undefined" >
           No data available!
-        </div>
+        </div> -->
+        <div class="no-data-center" *ngIf="aboutStaticContent && aboutStaticContent === 'error'">Some Error occurred</div>
+        <div class="no-data-center" *ngIf="aboutStaticContent && aboutStaticContent === 'no-data'">No data Available</div>
+        <div class="no-data-center" *ngIf="aboutStaticContent === undefined">Loading...</div>
       </div>
     </div>
   </div>

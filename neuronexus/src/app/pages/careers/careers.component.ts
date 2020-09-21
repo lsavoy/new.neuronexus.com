@@ -39,6 +39,7 @@ export class CareersComponent implements OnInit {
     });
   }
   getStaticContent() {
+    this.careerStaticContent = undefined;
     this.api.get(`about/careers/staticinfo`).subscribe((res: any) => {
       if (res.status === 200) {
         this.careerStaticContent = res.data;
@@ -47,19 +48,22 @@ export class CareersComponent implements OnInit {
           this.banner.push(img);
         }
       } else if (res.status === 201) {
-        this.careerStaticContent = undefined;
+        this.careerStaticContent = 'no-data';
       }
     }, (e) => {
+      this.careerStaticContent = 'error';
     });
   }
   getCareersOpeningList() {
+    this.careersOpeningList = undefined;
     this.api.get(`about/careers_opening/list`).subscribe((res: any) => {
       if (res.status === 200) {
         this.careersOpeningList = res.data;
       } else if (res.status === 201) {
-        this.careersOpeningList = undefined;
+        this.careersOpeningList = 'no-data';
       }
     }, (e) => {
+      this.careersOpeningList = 'error';
     });
   }
 

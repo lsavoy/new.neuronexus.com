@@ -35,11 +35,11 @@
                   <ng-container *ngFor="let category of productListWithCategory;">
                     <li class="menu-item-has-children" *ngIf="category?.slug.toLowerCase() !== 'catalog-1a23d'"><a style="cursor: pointer;" [routerLink]="['/product-category-details', category?.slug]" >{{category?.name}}</a>
                       <ng-container *ngIf="category?.productsList?.length > 0">
-                        <ng-container *ngIf="category?.slug.toLowerCase() !== 'electrode-arrays-21b2d' && category?.slug.toLowerCase() !== 'undefined-d7e8d' && category?.slug.toLowerCase() !== 'undefined-d7e90'">
+                        <ng-container *ngIf="category?.slug.toLowerCase() !== 'electrode-arrays-21b2d' && category?.slug.toLowerCase() !== 'undefined-d7e8d' && category?.slug.toLowerCase() !== 'undefined-d7e90' && category?.slug.toLowerCase() !== 'undefined-2f5e0'">
                           <ul class="sub-menu scndsubmenu">
                             <ng-container *ngFor="let product of category?.productsList;">
                               <li>
-                                <a style="cursor: pointer;" [routerLink]="['/product-details', product?.slug]" routerLinkActive="active" attr.data-toggle="{{ isToggle ? 'collapse' : '' }}" attr.data-target="{{ isToggle ? '#mymenu' : '' }}">
+                                <a style="cursor: pointer;" [routerLink]="['/product-details', category?.slug, product?.slug]" routerLinkActive="active" attr.data-toggle="{{ isToggle ? 'collapse' : '' }}" attr.data-target="{{ isToggle ? '#mymenu' : '' }}">
                                   {{product?.name}}
                                 </a>
                               </li>
@@ -51,7 +51,7 @@
                           <ul class="sub-menu scndsubmenu">
                             <ng-container *ngFor="let product of category?.productsList;">
                               <li *ngIf="product?.slug.toLowerCase() !== 'probefinder-1b23d' && product?.slug.toLowerCase() !== 'product-videos-d7e88'">
-                                <a style="cursor: pointer;" [routerLink]="['/product-details', product?.slug]" routerLinkActive="active" attr.data-toggle="{{ isToggle ? 'collapse' : '' }}" attr.data-target="{{ isToggle ? '#mymenu' : '' }}">
+                                <a style="cursor: pointer;" [routerLink]="['/product-details', category?.slug, product?.slug]" routerLinkActive="active" attr.data-toggle="{{ isToggle ? 'collapse' : '' }}" attr.data-target="{{ isToggle ? '#mymenu' : '' }}">
                                   {{product?.name}}
                                 </a>
                               </li>
@@ -73,7 +73,7 @@
                           <ul class="sub-menu scndsubmenu">
                             <ng-container *ngFor="let product of category?.productsList;">
                               <li *ngIf="product?.slug.toLowerCase() !== 'product-videos-d7e8f'">
-                                <a style="cursor: pointer;" [routerLink]="['/product-details', product?.slug]" routerLinkActive="active" attr.data-toggle="{{ isToggle ? 'collapse' : '' }}" attr.data-target="{{ isToggle ? '#mymenu' : '' }}">
+                                <a style="cursor: pointer;" [routerLink]="['/product-details', category?.slug, product?.slug]" routerLinkActive="active" attr.data-toggle="{{ isToggle ? 'collapse' : '' }}" attr.data-target="{{ isToggle ? '#mymenu' : '' }}">
                                   {{product?.name}}
                                 </a>
                               </li>
@@ -90,7 +90,7 @@
                           <ul class="sub-menu scndsubmenu">
                             <ng-container *ngFor="let product of category?.productsList;">
                               <li *ngIf="product?.slug.toLowerCase() !== 'product-videos-d7e97'">
-                                <a style="cursor: pointer;" [routerLink]="['/product-details', product?.slug]" routerLinkActive="active" attr.data-toggle="{{ isToggle ? 'collapse' : '' }}" attr.data-target="{{ isToggle ? '#mymenu' : '' }}">
+                                <a style="cursor: pointer;" [routerLink]="['/product-details', category?.slug, product?.slug]" routerLinkActive="active" attr.data-toggle="{{ isToggle ? 'collapse' : '' }}" attr.data-target="{{ isToggle ? '#mymenu' : '' }}">
                                   {{product?.name}}
                                 </a>
                               </li>
@@ -102,6 +102,25 @@
                             </ng-container>
                           </ul>
                         </ng-container>
+
+                        <ng-container *ngIf="category?.slug.toLowerCase() === 'undefined-2f5e0'">
+                          <ul class="sub-menu scndsubmenu">
+                            <ng-container *ngFor="let product of category?.productsList;">
+                              <li *ngIf="product?.slug.toLowerCase() !== 'product-videos-d7e8c'">
+                                <a style="cursor: pointer;" [routerLink]="['/product-details', category?.slug, product?.slug]" routerLinkActive="active" attr.data-toggle="{{ isToggle ? 'collapse' : '' }}" attr.data-target="{{ isToggle ? '#mymenu' : '' }}">
+                                  {{product?.name}}
+                                </a>
+                              </li>
+                              <li *ngIf="product?.slug.toLowerCase() === 'product-videos-d7e8c'">
+                                <a [routerLink]="['/media-list', 'instrumentation']" routerLinkActive="active" attr.data-toggle="{{ isToggle ? 'collapse' : '' }}" attr.data-target="{{ isToggle ? '#mymenu' : '' }}">
+                                  {{product?.name}}
+                                </a>
+                              </li>
+                            </ng-container>
+                          </ul>
+                        </ng-container>
+
+
                       </ng-container>
                     </li>
                     <li class="menu-item-has-children" *ngIf="category?.slug.toLowerCase() === 'catalog-1a23d'">

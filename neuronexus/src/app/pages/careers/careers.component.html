@@ -4,14 +4,17 @@
   <div class="meet_sec common_gap">
     <div class="container">
       <div class="meet_inner">
-        <div class="meet_top" *ngIf="careerStaticContent !== undefined">
+        <div class="meet_top" *ngIf="careerStaticContent && careerStaticContent !== 'error' && careerStaticContent !== 'no-data'">
           <h3>{{careerStaticContent?.title}}</h3> 
           <section [innerHtml]="careerStaticContent?.content"></section>
         </div>
-        <div class="no-data-center" *ngIf="careerStaticContent === undefined">No data available!</div>
+        <!-- <div class="no-data-center" *ngIf="careerStaticContent === undefined">No data available!</div> -->
+        <div class="no-data-center" *ngIf="careerStaticContent && careerStaticContent === 'error'">Some Error occurred</div>
+        <div class="no-data-center" *ngIf="careerStaticContent && careerStaticContent === 'no-data'">No data Available</div>
+        <div class="no-data-center" *ngIf="careerStaticContent === undefined">Loading...</div>
       </div>
 
-      <ng-container *ngIf="careersOpeningList !== undefined && careersOpeningList?.length > 0">
+      <ng-container *ngIf="careersOpeningList && careersOpeningList !== 'error' && careersOpeningList !== 'no-data'">
         <p><strong>{{careersOpeningList?.length}} opening{{careersOpeningList?.length > 1 ? '(s)' : ''}} at this time</strong></p>            
         <table class="table table-bordered">
           <thead>
@@ -28,6 +31,9 @@
           </tbody>
         </table>
       </ng-container>
-      <div class="no-data-center" *ngIf="careersOpeningList === undefined || careersOpeningList?.length === 0">No data available!</div>
+      <!-- <div class="no-data-center" *ngIf="careersOpeningList === undefined || careersOpeningList?.length === 0">No data available!</div> -->
+      <div class="no-data-center" *ngIf="careersOpeningList && careersOpeningList === 'error'">Some Error occurred</div>
+        <div class="no-data-center" *ngIf="careersOpeningList && careersOpeningList === 'no-data'">No data Available</div>
+        <div class="no-data-center" *ngIf="careersOpeningList === undefined">Loading...</div>
     </div>
   </div>

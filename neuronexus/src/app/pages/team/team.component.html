@@ -39,7 +39,7 @@
   <div class="meet_sec common_gap">
     <div class="container">
       <div class="meet_inner">
-        <div class="meet_top" *ngIf="teamStaticContent !== undefined">
+        <div class="meet_top" *ngIf="teamStaticContent && teamStaticContent !== 'error' && teamStaticContent !== 'no-data'">
           <div class="row">
             <div class="col-md-10 offset-md-1">
               <h3>Meet the <span class="meet-team-tag">NeuroNexus</span> Team</h3>
@@ -56,9 +56,12 @@
             </div>
           </div>
         </div>
-        <div class="no-data-center" *ngIf="teamStaticContent === undefined">No data available!</div>
+        <!-- <div class="no-data-center" *ngIf="teamStaticContent === undefined">No data available!</div> -->
+        <div class="no-data-center" *ngIf="teamStaticContent && teamStaticContent === 'error'">Some Error occurred</div>
+        <div class="no-data-center" *ngIf="teamStaticContent && teamStaticContent === 'no-data'">No data Available</div>
+        <div class="no-data-center" *ngIf="teamStaticContent === undefined">Loading...</div>
   
-        <div class="leadership" *ngIf="leadershipList !== undefined && leadershipList?.length > 0">
+        <div class="leadership" *ngIf="leadershipList && leadershipList !== 'error' && leadershipList !== 'no-data'">
           <h3>Leadership</h3>
           <figure>
             <ul class="blocks-gallery-grid columns-3">
@@ -75,10 +78,13 @@
             </ul>
           </figure>
         </div>
-        <div class="no-data-center" *ngIf="leadershipList === undefined || leadershipList?.length === 0">No data available!</div>
+        <!-- <div class="no-data-center" *ngIf="leadershipList === undefined || leadershipList?.length === 0">No data available!</div> -->
+        <div class="no-data-center" *ngIf="leadershipList && leadershipList === 'error'">Some Error occurred</div>
+        <div class="no-data-center" *ngIf="leadershipList && leadershipList === 'no-data'">No data Available</div>
+        <div class="no-data-center" *ngIf="leadershipList === undefined">Loading...</div>
       </div>
   
-      <div class="salesGroup" *ngIf="salesList !== undefined && salesList?.length > 0">
+      <div class="salesGroup" *ngIf="salesList && salesList !== 'error' && salesList !== 'no-data'">
         <h3>Sales & Marketing Group</h3>
         <figure>
           <ul class="blocks-gallery-grid columns-5">
@@ -95,6 +101,9 @@
           </ul>
         </figure>
       </div>
-      <div class="no-data-center" *ngIf="salesList === undefined || salesList?.length === 0">No data available!</div>
+      <!-- <div class="no-data-center" *ngIf="salesList === undefined || salesList?.length === 0">No data available!</div> -->
+      <div class="no-data-center" *ngIf="salesList && salesList === 'error'">Some Error occurred</div>
+        <div class="no-data-center" *ngIf="salesList && salesList === 'no-data'">No data Available</div>
+        <div class="no-data-center" *ngIf="salesList === undefined">Loading...</div>
     </div>
   </div>

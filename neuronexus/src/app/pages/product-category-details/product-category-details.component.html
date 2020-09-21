@@ -3,18 +3,17 @@
   <div class="product_sec common_gap">
     <div class="container">
       <div class="inner_product">
-        <div class="product_head" *ngIf="categoryDeatils !== undefined">
+        <div class="product_head" *ngIf="categoryDeatils && categoryDeatils !== 'error' && categoryDeatils !== 'no-data'">
           <h3>{{categoryDeatils?.name}}</h3>
           <figure *ngIf="categoryDeatils?.image">
             <img src="{{BASE_IMAGE_URL}}category/{{categoryDeatils?.image}}" alt="">
           </figure>
           <section [innerHtml]="categoryDeatils?.description"></section>
         </div>
-        <div class="no-data-center" *ngIf="categoryDeatils === undefined">No data available!</div>
-
-        <div class="update_btn" style="margin-bottom: 20px;" *ngIf="categoryDeatils !== undefined">
-          <a class="redmore_btn" [routerLink]="['/home']" routerLinkActive="active">Back</a>
-        </div>
+        <!-- <div class="no-data-center" *ngIf="categoryDeatils === undefined">No data available!</div> -->
+        <div class="no-data-center" *ngIf="categoryDeatils && categoryDeatils === 'error'">Some Error occurred</div>
+        <div class="no-data-center" *ngIf="categoryDeatils && categoryDeatils === 'no-data'">No data Available</div>
+        <div class="no-data-center" *ngIf="categoryDeatils === undefined">Loading...</div>
 
         <div class="row product_main_area"  *ngIf="categoryDeatils?.productsList !== undefined && categoryDeatils?.productsList?.length > 0">
           <div class="col-lg-4 col-md-6 product_main_area_cont" *ngFor="let product of categoryDeatils?.productsList;">
@@ -31,4 +30,8 @@
         <div class="no-data-center" *ngIf="categoryDeatils?.productsList === undefined || categoryDeatils?.productsList?.length === 0">No products available!</div>
       </div>
     </div>
+  </div>
+
+  <div class="update_btn" style="margin-bottom: 20px;" *ngIf="categoryDeatils !== undefined">
+    <a class="redmore_btn" [routerLink]="['/home']" routerLinkActive="active">Back</a>
   </div>

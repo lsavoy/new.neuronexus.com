@@ -1,40 +1,47 @@
 <app-banner [banner]="banner"></app-banner>
 
-  <div class="information_sec common_gap">
-    <div class="container">
-      <div class="info_inner">
-        <ng-container *ngIf="contactStaticContent !== undefined">
+<div class="information_sec common_gap">
+  <div class="container">
+    <div class="info_inner">
+      <ng-container *ngIf="contactStaticContent && contactStaticContent !== 'error' && contactStaticContent !== 'no-data'">
         <h3>{{contactStaticContent?.title_h3}}</h3>
         <h2>{{contactStaticContent?.title_h2}}</h2>
-        </ng-container>
-        <div class="no-data-center" *ngIf="contactStaticContent === undefined">No data available!</div>
+      </ng-container>
+      <!-- <div class="no-data-center" *ngIf="contactStaticContent === undefined">No data available!</div> -->
+      <div class="no-data-center" *ngIf="contactStaticContent && contactStaticContent === 'error'">Some Error occurred</div>
+      <div class="no-data-center" *ngIf="contactStaticContent && contactStaticContent === 'no-data'">No data Available</div>
+      <div class="no-data-center" *ngIf="contactStaticContent === undefined">Loading...</div>
 
-        <div class="row info_main_area">
-          <div class="col-lg-8 info_main_area_cont info_left">
-            <div class="left_info_box">
-              <ng-container *ngIf="contactStaticContent !== undefined">
+      <div class="row info_main_area">
+        <div class="col-lg-8 info_main_area_cont info_left">
+          <div class="left_info_box">
+            <ng-container *ngIf="contactStaticContent && contactStaticContent !== 'error' && contactStaticContent !== 'no-data'">
               <div class="info_top">
-               <section [innerHtml]="contactStaticContent?.content"></section>
+                <section [innerHtml]="contactStaticContent?.content"></section>
               </div>
-              </ng-container>
-              <div class="no-data-center" *ngIf="contactStaticContent === undefined">No data available!</div>
-              <div class="contact_form">
-                <form #ContactForm [formGroup]="form">
-                  <div class="row">
-                    <div class="col-lg-6">
-                      <div class="form-group">
-                        <input type="text" placeholder="Name*" formControlName="name" required>
-                        <div *ngIf="form.controls.name.touched && form.controls.name.hasError('required')"
-                        class="error">
+            </ng-container>
+            <!-- <div class="no-data-center" *ngIf="contactStaticContent === undefined">No data available!</div> -->
+            <div class="no-data-center" *ngIf="contactStaticContent && contactStaticContent === 'error'">Some Error occurred
+            </div>
+            <div class="no-data-center" *ngIf="contactStaticContent && contactStaticContent === 'no-data'">No data Available
+            </div>
+            <div class="no-data-center" *ngIf="contactStaticContent === undefined">Loading...</div>
+            <div class="contact_form">
+              <form #ContactForm [formGroup]="form">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <input type="text" placeholder="Name*" formControlName="name" required>
+                      <div *ngIf="form.controls.name.touched && form.controls.name.hasError('required')" class="error">
                         Name is required
                       </div>
-                      </div>
                     </div>
-                    <div class="col-lg-6">
-                      <div class="form-group">
-                        <input type="email" placeholder="Email*" formControlName="email_id" required
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <input type="email" placeholder="Email*" formControlName="email_id" required
                         pattern="(^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-z]{2,4}$)">
-                        <div *ngIf="form.controls.email_id.touched && form.controls.email_id.hasError('required')"
+                      <div *ngIf="form.controls.email_id.touched && form.controls.email_id.hasError('required')"
                         class="error">
                         Email is required
                       </div>
@@ -42,42 +49,42 @@
                         class="error">
                         Invalid Email
                       </div>
-                      </div>
                     </div>
-                    <div class="col-lg-12">
-                      <div class="form-group">
-                        <input type="text" placeholder="Subject*" formControlName="subject" required>
-                        <div *ngIf="form.controls.subject.touched && form.controls.subject.hasError('required')"
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="form-group">
+                      <input type="text" placeholder="Subject*" formControlName="subject" required>
+                      <div *ngIf="form.controls.subject.touched && form.controls.subject.hasError('required')"
                         class="error">
                         Subject is required
                       </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="form-group">
+                      <textarea placeholder="Message*" formControlName="message" required></textarea>
+                      <div *ngIf="form.controls.message.touched && form.controls.message.hasError('required')"
+                        class="error">
+                        Message is required
                       </div>
                     </div>
-                    <div class="col-lg-12">
-                      <div class="form-group">
-                        <textarea placeholder="Message*" formControlName="message" required></textarea>
-                        <div *ngIf="form.controls.message.touched && form.controls.message.hasError('required')"
-                          class="error">
-                          Message is required
-                        </div>
-                      </div>
-                    </div>
-                    <ng-container *ngIf="settings !== undefined">
+                  </div>
+                  <ng-container *ngIf="settings !== undefined">
                     <div class="col-lg-12 submit_btn">
                       <input type="submit" value="SUBMIT" (click)="submit()">
                     </div>
                   </ng-container>
                   <div class="no-data-center" *ngIf="settings === undefined">Some error occured!</div>
-                  </div>
-                </form>
-              </div>
+                </div>
+              </form>
             </div>
           </div>
-          <ng-container *ngIf="settings !== undefined">
-          <div class="col-lg-4 info_main_area_cont right_info" >
+        </div>
+        <ng-container *ngIf="settings && settings !== 'error' && settings !== 'no-data'">
+          <div class="col-lg-4 info_main_area_cont right_info">
             <h5>{{settings?.addressTitle}}</h5>
             <address [innerHtml]="settings?.address"></address>
-            <a >View Map</a>
+            <a>View Map</a>
             <ul>
               <li><strong>Tel:</strong><a href="tel:{{settings?.phone}}">{{settings?.phone}}</a> </li>
               <li><strong>Fax:</strong><a href="tel:{{settings?.fax}}">{{settings?.fax}}</a> </li>
@@ -87,8 +94,11 @@
             <section [innerHtml]="settings?.officeOpenForm"></section>
           </div>
         </ng-container>
-        <div class="no-data-center" *ngIf="settings === undefined">No data available!</div>
-        </div>
+        <!-- <div class="no-data-center" *ngIf="settings === undefined">No data available!</div> -->
+        <div class="no-data-center" *ngIf="settings && settings === 'error'">Some Error occurred</div>
+        <div class="no-data-center" *ngIf="settings && settings === 'no-data'">No data Available</div>
+        <div class="no-data-center" *ngIf="settings === undefined">Loading...</div>
       </div>
     </div>
   </div>
+</div>

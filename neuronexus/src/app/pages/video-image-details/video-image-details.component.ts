@@ -46,13 +46,18 @@ export class VideoImageDetailsComponent implements OnInit {
     }else if(this.pageSlug === 'training'){
       api = `trainingvideos/${this.recordId}`;
       this.BASE_IMAGE_URL+= 'trainingvideos/';
+    }else if(this.pageSlug === 'instrumentation'){
+      api = `instrumentationvideos/${this.recordId}`;
+      this.BASE_IMAGE_URL+= 'instrumentationvideos/';
     }
     this.api.get(api).subscribe((res: any) => {
       if(res.status === 200){
         this.mediaDetail = res.data;
+      }else{
+        this.mediaDetail = 'no-data';
       }
     }, (error) => {
-
+      this.mediaDetail = 'error';
     })
   }
 }

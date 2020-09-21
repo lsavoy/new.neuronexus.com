@@ -22,9 +22,9 @@ export class ContactComponent implements OnInit {
     private api: ApiService,
     private formService: FormService,
   ) {
-    this.allSettings = undefined;
-    this.settings = undefined;
-    this.contactStaticContent = undefined;
+    // this.allSettings = undefined;
+    // this.settings = undefined;
+    // this.contactStaticContent = undefined;
     this.banner = [];
    }
 
@@ -34,6 +34,7 @@ export class ContactComponent implements OnInit {
     this.getAllSettings();
   }
   getStaticContent() {
+    this.contactStaticContent = undefined;
     const banner = [];
     this.api.get(`contact/staticinfo`).subscribe((res: any) => {
       if (res.status === 200) {
@@ -44,12 +45,15 @@ export class ContactComponent implements OnInit {
         this.banner = banner;
         }
       } else if (res.status === 201) {
-        this.contactStaticContent = undefined;
+        this.contactStaticContent = 'no-data';
       }
     }, (e) => {
+      this.contactStaticContent = 'error';
     });
   }
   getAllSettings() {
+    this.allSettings = undefined;
+    this.settings = undefined;
     this.api.get(`setting/all`).subscribe((res: any) => {
       if (res.status === 200) {
         this.settings = {};
@@ -76,9 +80,12 @@ export class ContactComponent implements OnInit {
           e => e.setting_slug === 'offices-are-open-from'
         ).setting_value;
       } else if (res.status === 201) {
-        this.allSettings = undefined;
+        this.allSettings = 'no-data';
+        this.settings = 'no-data';
       }
     }, (e) => {
+      this.allSettings = 'error';
+      this.settings = 'error';
     });
   }
 

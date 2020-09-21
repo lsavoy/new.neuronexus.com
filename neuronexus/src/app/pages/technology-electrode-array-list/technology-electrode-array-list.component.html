@@ -3,7 +3,7 @@
 <div class="update_sec common_gap" id="particles-js2">
     <div class="container">
       <div class="update_inner">
-      <ng-container *ngIf="electrodeArrayList !== undefined && electrodeArrayList?.length > 0">
+      <ng-container *ngIf="electrodeArrayList  && electrodeArrayList !== 'error' && electrodeArrayList !== 'no-data' && electrodeArrayList.length > 0">
         <h3 *ngIf="pageTitle">{{pageTitle}}</h3>
         <div class="row update_main_area_cont">
           <div class="col-lg-4 col-md-6  update_main_area" style="margin-top: 30px;" *ngFor="let ele of electrodeArrayList | paginate: { itemsPerPage: 9, currentPage: p }">
@@ -26,7 +26,11 @@
           <pagination-controls *ngIf="electrodeArrayList?.length > 9" (pageChange)="p = $event"></pagination-controls>
         </div>
         </ng-container>
-        <div class="no-data-center" *ngIf="electrodeArrayList === undefined || electrodeArrayList?.length === 0">No data available!</div>
+        <div class="no-data-center" *ngIf="electrodeArrayList && electrodeArrayList === 'no-data'">No data available!</div>
+        <div class="no-data-center" *ngIf="electrodeArrayList && electrodeArrayList !== 'error' && electrodeArrayList !== 'no-data' && electrodeArrayList.length === 0">No data available!</div>
+        <div class="no-data-center" *ngIf="electrodeArrayList === undefined">Loading...</div>
+        <div class="no-data-center" *ngIf="electrodeArrayList && electrodeArrayList === 'error'">Some error occurred!</div>
+
       </div>
     </div>
   </div>

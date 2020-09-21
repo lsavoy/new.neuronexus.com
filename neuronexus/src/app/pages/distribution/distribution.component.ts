@@ -17,8 +17,8 @@ export class DistributionComponent implements OnInit {
     private api: ApiService,
   ) {
     this.banner = [];
-    this.distributorsStaticContent = undefined;
-    this.distributorList = undefined;
+    // this.distributorsStaticContent = undefined;
+    // this.distributorList = undefined;
    }
 
   ngOnInit(): void {
@@ -41,6 +41,7 @@ export class DistributionComponent implements OnInit {
     });
   }
   getStaticContent() {
+    this.distributorsStaticContent = undefined;
     this.api.get(`about/distributors/staticinfo`).subscribe((res: any) => {
       if (res.status === 200) {
         this.distributorsStaticContent = res.data;
@@ -49,19 +50,22 @@ export class DistributionComponent implements OnInit {
         this.banner.push(img);
         }
       } else if (res.status === 201) {
-        this.distributorsStaticContent = undefined;
+        this.distributorsStaticContent = 'no-data';
       }
     }, (e) => {
+      this.distributorsStaticContent = 'error';
     });
   }
   getDistributorList() {
+    this.distributorList = undefined;
     this.api.get(`about/partners/list`).subscribe((res: any) => {
       if (res.status === 200) {
         this.distributorList = res.data;
       } else if (res.status === 201) {
-        this.distributorList = undefined;
+        this.distributorList = 'no-data';
       }
     }, (e) => {
+      this.distributorList = 'error';
     });
   }
 

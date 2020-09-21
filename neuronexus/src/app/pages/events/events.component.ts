@@ -21,9 +21,9 @@ export class EventsComponent implements OnInit {
     private router: Router
   ) {
     this.banner = [];
-    this.eventList = undefined;
-    this.pageTitle = undefined;
-   }
+    // this.eventList = undefined;
+    // this.pageTitle = undefined;
+  }
 
   ngOnInit(): void {
     this.getEventStaticContent().then(() => {
@@ -37,14 +37,14 @@ export class EventsComponent implements OnInit {
       this.api.get(`events/static`).toPromise().then((res: any) => {
         if (res.status === 200) {
           if (res.data.header_banner_image !== undefined || res.data.header_banner_image !== '') {
-            const img = {imagesrc: this.BASE_IMAGE_URL + 'events/' + res.data.header_banner_image,  type: 'image'};
+            const img = { imagesrc: this.BASE_IMAGE_URL + 'events/' + res.data.header_banner_image, type: 'image' };
             banner.push(img);
             this.banner = banner;
           }
         } else if (res.status === 201) {
         }
         resolve();
-        },
+      },
         (msg: any) => {
           reject(msg);
         });
@@ -52,6 +52,7 @@ export class EventsComponent implements OnInit {
     return promise;
   }
   getEventList() {
+    this.eventList = undefined;
     const promise = new Promise((resolve, reject) => {
       this.api.get(`events/list`).toPromise().then((res: any) => {
         if (res.status === 200) {
@@ -61,19 +62,20 @@ export class EventsComponent implements OnInit {
             const text = htmlToText.fromString(ev.content, {
               wordwrap: 130
             });
-            if(text.length > 200){
+            if (text.length > 200) {
               ev.longText = true;
-              ev.showFull = false
-            }else{
+              ev.showFull = false;
+            } else {
               ev.longText = false;
             }
           })
         } else if (res.status === 201) {
-          this.eventList = undefined;
+          this.eventList = 'no-data';
         }
         resolve();
-        },
+      },
         (msg: any) => {
+          this.eventList = 'error';
           reject(msg);
         });
     });
@@ -81,21 +83,21 @@ export class EventsComponent implements OnInit {
   }
   convertDesc(desc: any) {
     if (desc !== undefined) {
-    const text = htmlToText.fromString(desc, {
-      wordwrap: 130
-    });
-    return text.slice(0, 200) + '...';
+      const text = htmlToText.fromString(desc, {
+        wordwrap: 130
+      });
+      return text.slice(0, 200) + '...';
     }
   }
 
-  showLessMore(ev){
+  showLessMore(ev) {
     this.eventList.forEach(ele => {
-      if(ele._id === ev._id){
-        if(ele.longText){
+      if (ele._id === ev._id) {
+        if (ele.longText) {
           ele.showFull = !ele.showFull
         }
-      }else{
-        if(ele.longText){
+      } else {
+        if (ele.longText) {
           ele.showFull = false
         }
       }

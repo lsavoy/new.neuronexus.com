@@ -17,7 +17,6 @@ export class TechnologyElectrodeArrayDetailComponent implements OnInit {
   }
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      console.log(params)
       if(params && params.slug){
         this.getDetail(params.slug);
       }
@@ -29,9 +28,11 @@ export class TechnologyElectrodeArrayDetailComponent implements OnInit {
     this.api.get(`technology_electrode_arrays/details/${slug}`).subscribe((res: any) => {
       if(res.status === 200){
         this.techElectrode = res.data;
+      }else{
+        this.techElectrode = 'no-data'
       }
     }, (error) => {
-
+      this.techElectrode = 'error';
     })
   }
 }

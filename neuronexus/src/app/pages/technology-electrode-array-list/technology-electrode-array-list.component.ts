@@ -21,8 +21,6 @@ export class TechnologyElectrodeArrayListComponent implements OnInit {
     private router: Router
   ) {
     this.banner = [];
-    this.electrodeArrayList = undefined;
-    this.pageTitle = undefined;
    }
 
   ngOnInit(): void {
@@ -52,17 +50,20 @@ export class TechnologyElectrodeArrayListComponent implements OnInit {
     return promise;
   }
   getElectrodeArrayList() {
+    this.electrodeArrayList = undefined;
+    this.pageTitle = undefined;
     const promise = new Promise((resolve, reject) => {
       this.api.get(`technology_electrode_arrays/list`).toPromise().then((res: any) => {
         if (res.status === 200) {
           this.electrodeArrayList = res.data;
           this.pageTitle = res.page_title;
         } else if (res.status === 201) {
-          this.electrodeArrayList = undefined;
+          this.electrodeArrayList = 'no-data';
         }
         resolve();
         },
         (msg: any) => {
+          this.electrodeArrayList = 'error';
           reject(msg);
         });
     });

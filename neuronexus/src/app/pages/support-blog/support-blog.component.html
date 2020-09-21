@@ -3,7 +3,7 @@
 <div class="update_sec common_gap" id="particles-js2">
     <div class="container">
       <div class="update_inner">
-      <ng-container *ngIf="blogList !== undefined && blogList?.length > 0">
+      <ng-container *ngIf="blogList && blogList !== 'error' && blogList !== 'no-data' && blogList?.length > 0">
         <h3 *ngIf="pageTitle">{{pageTitle}}</h3>
         <div class="row update_main_area_cont" *ngFor="let blog of blogList | paginate: { itemsPerPage: 9, currentPage: p }">
           <div class="col-lg-12 col-md-12  update_main_area" style="margin-top: 30px;">
@@ -35,7 +35,10 @@
           <pagination-controls *ngIf="blogList?.length > 9" (pageChange)="p = $event"></pagination-controls>
         </div>
         </ng-container>
-        <div class="no-data-center" *ngIf="blogList === undefined || blogList?.length === 0">No data available!</div>
+        <div class="no-data-center" *ngIf="blogList && blogList !== 'error' && blogList !== 'no-data' && blogList?.length === 0">No data available!</div>
+        <div class="no-data-center" *ngIf="blogList && blogList === 'no-data'">No data available!</div>
+        <div class="no-data-center" *ngIf="blogList === undefined">Loading...</div>
+        <div class="no-data-center" *ngIf="blogList && blogList === 'error'">Some error occurred!</div>
       </div>
     </div>
   </div>

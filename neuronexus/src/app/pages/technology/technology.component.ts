@@ -10,11 +10,10 @@ import { ApiService } from 'src/app/services/api.service';
 export class TechnologyComponent implements OnInit {
   banner = [];
   BASE_IMAGE_URL = environment.BASE_IMAGE_URL;
-  technologyStaticinfo: any;
+  technologyStaticinfo: any = undefined;
   constructor(
     private api: ApiService,
   ) {
-    this.technologyStaticinfo = undefined;
     this.banner = [];
    }
 
@@ -25,6 +24,7 @@ export class TechnologyComponent implements OnInit {
   }
   getStaticContent() {
     const banner = [];
+    this.technologyStaticinfo = undefined;
     this.api.get(`technology/static`).subscribe((res: any) => {
       if (res.status === 200) {
         this.technologyStaticinfo = res.data;
@@ -34,9 +34,10 @@ export class TechnologyComponent implements OnInit {
           this.banner = banner;
         }
       } else if (res.status === 201) {
-        this.technologyStaticinfo = undefined;
+        this.technologyStaticinfo = 'no-data';
       }
     }, (e) => {
+      this.technologyStaticinfo = 'error';
     });
   }
 

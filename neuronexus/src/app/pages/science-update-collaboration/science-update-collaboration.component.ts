@@ -17,8 +17,8 @@ export class ScienceUpdateCollaborationComponent implements OnInit {
     private api: ApiService,
   ) {
     this.banner = [];
-    this.scienceUpdateCollaborationStaticinfo = undefined;
-    this.scienceUpdateCollaborationList = undefined;
+    // this.scienceUpdateCollaborationStaticinfo = undefined;
+    // this.scienceUpdateCollaborationList = undefined;
    }
 
   ngOnInit(): void {
@@ -43,6 +43,7 @@ export class ScienceUpdateCollaborationComponent implements OnInit {
     });
   }
   getStaticContent() {
+    this.scienceUpdateCollaborationStaticinfo = undefined;
     this.api.get(`about/science_update_collaboration/staticinfo`).subscribe((res: any) => {
       if (res.status === 200) {
         this.scienceUpdateCollaborationStaticinfo = res.data;
@@ -51,19 +52,22 @@ export class ScienceUpdateCollaborationComponent implements OnInit {
         this.banner.push(img);
         }
       } else if (res.status === 201) {
-        this.scienceUpdateCollaborationStaticinfo = undefined;
+        this.scienceUpdateCollaborationStaticinfo = 'no-data';
       }
     }, (e) => {
+      this.scienceUpdateCollaborationStaticinfo = 'error';
     });
   }
   getScienceUpdateCollaborationLst() {
+    this.scienceUpdateCollaborationList = undefined;
     this.api.get(`about/science_update_collaboration_tabs/list`).subscribe((res: any) => {
       if (res.status === 200) {
         this.scienceUpdateCollaborationList = res.data;
       } else if (res.status === 201) {
-        this.scienceUpdateCollaborationList = undefined;
+        this.scienceUpdateCollaborationList = 'no-data';
       }
     }, (e) => {
+      this.scienceUpdateCollaborationList = 'error';
     });
   }
 
