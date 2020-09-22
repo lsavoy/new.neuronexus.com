@@ -61,7 +61,7 @@ class ProductFeatureController {
 
             let featureUpdate = await productFeatureRepo.updateById(req.body, featureId);
             if (featureUpdate) {
-                req.flash('success', "Setting Updated Successfully");
+                req.flash('success', "Updated Successfully");
                 res.redirect(namedRouter.urlFor('product_feature.list'));
             } else {
                 res.redirect(namedRouter.urlFor('product_feature.edit', {

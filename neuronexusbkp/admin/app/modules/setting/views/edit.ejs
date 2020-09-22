@@ -42,8 +42,8 @@
                 <textarea type="text" name="setting_value" id="setting_value" class="form-control ckeditor"
                   data-validation-required-message="This field is required"><%= response.setting_data.setting_value %></textarea>
 
-                <% } else if(response.setting_data.setting_slug == 'facebook' || response.setting_data.setting_slug == 'youtube' || response.setting_data.setting_slug == 'instagram') {%>
-                <input type="text" name="setting_value" id="setting_value" class="form-control"
+                <% } else if(response.setting_data.setting_slug == 'facebook' || response.setting_data.setting_slug == 'youtube' || response.setting_data.setting_slug == 'instagram'  || response.setting_data.setting_slug == 'product-feature-jump-url') {%>
+                <input type="text" name="setting_value" id="setting_value" class="form-control required"
                   data-validation-required-message="This field is required" pattern=""
                   value="<%= response.setting_data.setting_value %>" title="Please enter url">
                 <% } else if(response.setting_data.setting_slug == 'offices-are-open-from' || response.setting_data.setting_slug == 'neuroNexus-headquarters-address') {%>

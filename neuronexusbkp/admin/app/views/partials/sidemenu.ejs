@@ -60,6 +60,54 @@
                 </li>
                 <% } %>
 
+                <% if(user.role.role == 'admin' || permission.product_feature){ %>
+
+                    <!-- Setting section start -->
+                    <li class="kt-menu__item " aria-haspopup="true">
+                        <a href="<%= generateUrl('product_feature.list') %>"
+                           class="kt-menu__link <%=(page_name == 'feature-management') ? 'active' : ''%>">
+                            <i class="fas fa-cloud"></i>
+                            <span class="kt-menu__link-text">Product Feature</span>
+                        </a>
+                    </li>
+                <% } %>
+
+                <% if(user.role.role == 'admin' || permission.image_carousel){ %>
+
+                    <!-- Setting section start -->
+                    <li class="kt-menu__item " aria-haspopup="true">
+                        <a href="<%= generateUrl('image_carousel.list') %>"
+                           class="kt-menu__link <%=(page_name == 'image-carousel-management') ? 'active' : ''%>">
+                            <i class="fas fa-image"></i>
+                            <span class="kt-menu__link-text">Image Carousel</span>
+                        </a>
+                    </li>
+                <% } %>
+
+                <% if(user.role.role == 'admin' || permission.video_carousel){ %>
+
+                    <!-- Setting section start -->
+                    <li class="kt-menu__item " aria-haspopup="true">
+                        <a href="<%= generateUrl('video_carousel.list') %>"
+                           class="kt-menu__link <%=(page_name == 'video-carousel-management') ? 'active' : ''%>">
+                            <i class="fas fa-film"></i>
+                            <span class="kt-menu__link-text">Video Carousel</span>
+                        </a>
+                    </li>
+                <% } %>
+
+                <% if(user.role.role == 'admin' || permission.top_blog){ %>
+
+                    <!-- Setting section start -->
+                    <li class="kt-menu__item " aria-haspopup="true">
+                        <a href="<%= generateUrl('top_blog.list') %>"
+                           class="kt-menu__link <%=(page_name == 'top-blog-management') ? 'active' : ''%>">
+                            <i class="fas fa-bookmark"></i>
+                            <span class="kt-menu__link-text">Blog Post</span>
+                        </a>
+                    </li>
+                <% } %>
+
                 <% if(user.role.role == 'admin' || permission.product){ %>
                 <!-- Product Categories section start -->
 

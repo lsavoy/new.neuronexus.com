@@ -60,7 +60,10 @@ module.exports = () => {
                                         (result.home_slider && req.path.indexOf('/slider') >= 0) ||
                                         (result.setting && req.path.indexOf('/setting') >= 0) ||
                                         (result.technology && (req.path.indexOf('/technology_electrode_arrays') >= 0 || req.path.indexOf('/technology_static') >= 0 || req.path.indexOf('/technology_category') >= 0)) ||
-
+                                        (result.product_feature && req.path.indexOf('/product-feature') >= 0) ||
+                                        (result.image_carousel && req.path.indexOf('/image_carousel') >= 0) ||
+                                        (result.video_carousel && req.path.indexOf('/video_carousel') >= 0) ||
+                                        (result.top_blog && req.path.indexOf('/top_blog') >= 0) ||
 
                                         (req.path.indexOf("/profile") >= 0) ||
                                         (req.path.indexOf("/change") >= 0) ||
