@@ -43,18 +43,18 @@
         <div class="row update_main_area_cont">
           <div class="col-lg-4 col-md-6  update_main_area" *ngFor="let feature of featureList">
             <div>
-              <figure class="align-center" *ngIf="feature?.image">
-                <img class="feature-image" src="{{BASE_IMAGE_URL}}feature/{{feature?.image}}" alt="">
+              <figure class="align-center" *ngIf="feature?.feature_img">
+                <img class="feature-image" src="{{BASE_IMAGE_URL}}feature/{{feature?.feature_img}}" alt="">
               </figure>
               <div class="update_cont">
-                <h3 class="feature-caption" [innerHTML]="feature?.caption"></h3>
-                <p class="feature-description">{{feature?.description}}</p>
+                <h3 class="feature-caption" [innerHTML]="feature?.feature_label"></h3>
+                <p class="feature-description" [innerHTML]="feature?.feature_description"></p>
               </div>
             </div>
           </div>
         </div>
         <div class="update_btn">
-          <a  class="redmore_btn" [routerLink]="['/science-update/science-update-list']" routerLinkActive="active">Read More</a>
+          <a target="_blank" [href]="featureJumpUrl" class="redmore_btn">Read More</a>
         </div>
       </ng-container>
       <div class="no-data-center" *ngIf="featureList === undefined || featureList?.length === 0">No data available!</div>
@@ -72,7 +72,7 @@
                                 #slickModal="slick-carousel"
                                 [config]="imageSlideConfig">
               <div ngxSlickItem *ngFor="let slide of imageSlideList" class="slide">
-                <a target="_blank" [href]="slide?.jumpUrl"><img class="carousel-img" src="{{BASE_IMAGE_URL}}imageCarousel/{{ slide.img }}" alt="" width="100%"></a>
+                <a target="_blank" [href]="slide?.jump_url"><img class="carousel-img" src="{{BASE_IMAGE_URL}}imageCarousel/{{ slide.carousel_img }}" alt="" width="100%"></a>
               </div>
             </ngx-slick-carousel>
           </div>
@@ -91,8 +91,8 @@
           <div class="col-lg-6 col-md-12">
             <div>
               <figure class="align-center">
-                <img *ngIf="post?.resourceType == 'img' && post?.resource" class="post-image" src="{{BASE_IMAGE_URL}}post/{{post?.resource}}" alt="">
-                <video *ngIf="post?.resourceType == 'viedo' && post?.resource" muted controls="controls" onloadedmetadata="this.muted = true" playsinline>
+                <img *ngIf="post?.resource_type == 'Image' && post?.resource" class="post-image" src="{{BASE_IMAGE_URL}}post/{{post?.resource}}" alt="">
+                <video *ngIf="post?.resource_type == 'Video' && post?.resource" muted controls="controls" onloadedmetadata="this.muted = true" playsinline>
                   <source src="{{BASE_IMAGE_URL}}post/{{post?.resource}}" type="video/mp4">
                 </video>
               </figure>
@@ -101,7 +101,7 @@
           <div class="col-lg-6 col-md-12 post-content">
             <p class="post-title" [innerHTML]="post?.title"></p>
             <p class="post-summary" [innerHTML]="post?.summary"></p>
-            <p><a [href]="post?.jumpUrl">more</a></p>
+            <p><a target="_blank" [href]="post?.jump_url">more</a></p>
           </div>
         </div>
       </ng-container>
