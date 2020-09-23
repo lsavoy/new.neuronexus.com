@@ -34,6 +34,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   postList: any;
   imageSlideList: any;
   imageSlideConfig: any;
+  sliderConfig: any;
   videoSlideList: any;
   videoSlideConfig: any;
   slideList: any;
@@ -81,6 +82,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
       autoplaySpeed: 5000,
       autoplay: true
     };
+    this.sliderConfig = {
+      dots: true,
+      arrows: false,
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplaySpeed: 5000,
+      autoplay: true
+    };
    }
   ngAfterViewInit(): void {
     this.particleStyle = this.eventService.particleStyle;
@@ -113,13 +123,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
     this.getAllSettingsForOfferModal().then(() => {
       this.getVideo().then(() => {
-        this.getFeatureInfo().then(() => {
-          this.getPostList().then(() => {
-            this.getImageSlideList().then(()=> {
-              this.getVideoSlideList().then(()=> {
-                this.getScienceUpdateList().then(() => {
-                  this.getKnowledgeCenterList().then(() => {
+        this.getSlide().then(() => {
+          this.getFeatureInfo().then(() => {
+            this.getPostList().then(() => {
+              this.getImageSlideList().then(() => {
+                this.getVideoSlideList().then(() => {
+                  this.getScienceUpdateList().then(() => {
+                    this.getKnowledgeCenterList().then(() => {
 
+                    })
                   })
                 })
               })

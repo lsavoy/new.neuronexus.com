@@ -791,7 +791,7 @@ img.aligncenter {
     padding: 15px;
     background: #fff;
     height: 100%;
-    line-height: 65px;
+    line-height: 75px;
     width: 264px;
 }
 
@@ -1852,7 +1852,7 @@ img.aligncenter {
 }
 
 .location br {
-  display: none;
+  // display: none;
 }
 
 .bnr_main_area_cont h4,
@@ -2556,6 +2556,9 @@ app-science-update-details {
   display: block;
   transition: opacity 0.4s ease;
   height: 24px;
+}
+.app-logo-top {
+  margin-left: 24px;
 }
 ul.slick-dots li:before {
   width: 0;

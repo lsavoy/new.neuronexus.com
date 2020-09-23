@@ -5,29 +5,28 @@
         <source src="{{video}}" type="video/mp4">
     </video>
   </figure>
-  <!--
   <div class="banner_cont">
     <div class="container">
       <div class="inner_banner">
-        <div class="row bnr_main_area">
-          <div class="col-md-6 bnr_main_area_cont" *ngIf="slideList !== undefined && slideList?.length > 0">
-            <ngx-slick-carousel class="carousel"
-              #slickModal="slick-carousel"
-              [config]="homeSlideConfig" >
-              <div ngxSlickItem *ngFor="let slide of slideList" class="slide">
-                <h1>{{ slide.text_h1 }}</h1>
-                <h3>{{ slide.text_h3 }}</h3>
-                <h4>{{ slide.text_h4 }}</h4>
-              </div>
-            </ngx-slick-carousel>
+        <ng-container *ngIf="slideList !== undefined && slideList?.length > 0">
+          <div class="row">
+            <div class="col-lg-12 col-md-24">
+              <ngx-slick-carousel class="carousel"
+                                  #slickModal="slick-carousel"
+                                  [config]="sliderConfig">
+                <div ngxSlickItem *ngFor="let slide of slideList" class="slide">
+                  <h1>{{ slide.text_h1 }}</h1>
+                  <h3>{{ slide.text_h3 }}</h3>
+                  <h4>{{ slide.text_h4 }}</h4>
+                </div>
+              </ngx-slick-carousel>
+            </div>
           </div>
-          <div class="col-md-6 bnr_main_area_cont">
-          </div>
-        </div>
+        </ng-container>
+        <div class="no-data-center" *ngIf="slideList === undefined || slideList?.length === 0">No data available!</div>
       </div>
     </div>
   </div>
-  -->
 </div>
 
 <!-- Paticle Section -->
