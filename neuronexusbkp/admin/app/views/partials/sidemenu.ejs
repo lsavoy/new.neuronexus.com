@@ -940,7 +940,17 @@
                 <% } %>
                 <!--  -->
 
+                <% if(user.role.role == 'admin' || permission.library){ %>
 
+                    <!-- Setting section start -->
+                    <li class="kt-menu__item " aria-haspopup="true">
+                        <a href="<%= generateUrl('library.list') %>"
+                           class="kt-menu__link <%=(page_name == 'library-management') ? 'active' : ''%>">
+                            <i class="fas fa-file"></i>
+                            <span class="kt-menu__link-text">Library</span>
+                        </a>
+                    </li>
+                <% } %>
 
 
             </ul>

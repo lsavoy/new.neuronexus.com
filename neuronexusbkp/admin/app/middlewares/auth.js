@@ -64,6 +64,7 @@ module.exports = () => {
                                         (result.image_carousel && req.path.indexOf('/image_carousel') >= 0) ||
                                         (result.video_carousel && req.path.indexOf('/video_carousel') >= 0) ||
                                         (result.top_blog && req.path.indexOf('/top_blog') >= 0) ||
+                                        (result.library && req.path.indexOf('/library') >= 0) ||
 
                                         (req.path.indexOf("/profile") >= 0) ||
                                         (req.path.indexOf("/change") >= 0) ||
