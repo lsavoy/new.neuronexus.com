@@ -10,7 +10,8 @@ const KnowledgeCenterSchema = new Schema({
   sub_category_id: { type: Schema.Types.ObjectId, ref: 'Category', default: null },
   status: { type: String, default: "Active", enum: ["Active", "Inactive"] },
   isDeleted: { type: Boolean, default: false, enum: [true, false] },
-  createdAt: { type: Date, default: Date.now(), }
+  createdAt: { type: Date, default: Date.now(), },
+  index: {type: Number, default: 0}
 }, { versionKey: false });
 
 

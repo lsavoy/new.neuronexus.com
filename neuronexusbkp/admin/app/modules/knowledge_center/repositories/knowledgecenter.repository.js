@@ -155,6 +155,7 @@ const KnowledgeCenterRepository = {
                         category_name: "$categorys_details.name",
                         category_slug: "$categorys_details.slug",
                         category_delete: "$categorys_details.isDeleted",
+                        index: "$index",
                     }
                 },
                 {

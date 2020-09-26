@@ -54,6 +54,12 @@
               <option value="Inactive" <%= (response.status =="Inactive")?"Selected":"" %>>Inactive</option>
             </select>
           </div>
+          <div class="col-lg-6">
+            <label>Index</label>
+            <input type="text" name="index" id="index" class="form-control required"
+                   pattern="^[0-9]*$" value="<%= response.index %>"
+                   required placeholder="Enter Index (Number)">
+          </div>
         </div>
         <div class="kt-portlet__foot">
           <div class="kt-form__actions">

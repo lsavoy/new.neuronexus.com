@@ -29,6 +29,19 @@ var KTDatatableContact = function () {
 		// columns definition
 		columns: [
 			{
+				field: 'index',
+				title: 'Index',
+				width: 50,
+				sortable: true,
+				template: function (row) {
+					if (row.index !== undefined) {
+						return row.index + '';
+					} else {
+						return '';
+					}
+				}
+			},
+			{
 				field: 'title',
 				title: 'Title',
 				width: 200,

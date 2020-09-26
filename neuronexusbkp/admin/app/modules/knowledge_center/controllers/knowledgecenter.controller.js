@@ -8,7 +8,7 @@ const namedRouter = routeLabel(router);
 const querystring = require('querystring');
 const fs = require('fs');
 const errorHandler = require('../../../errorHandler');
-
+const slug = require('slug');
 
 class knowledgeCenterController {
 
@@ -138,12 +138,12 @@ class knowledgeCenterController {
           var last5Digit = insertedId.substring( insertedId.length - 5, insertedId.length);
           var updatedSlug = `${slugValue}-${last5Digit}`;
 
-          let newprobeFinderSlugUpdate = await knowledgeCenterRepo.updateById(insertedId,{ slug: updatedSlug });
+          let newprobeFinderSlugUpdate = await knowledgeCenterRepo.updateById({ slug: updatedSlug },insertedId);
           if(newprobeFinderSlugUpdate){
             req.flash("success", "Knowledge Center Updated Successfully");
             res.redirect(namedRouter.urlFor("admin.knowledgecenter.list"));
           }
-        
+
       } else {
         res.redirect(
           namedRouter.urlFor("admin.knowledgecenter.edit", {
