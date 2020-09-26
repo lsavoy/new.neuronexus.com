@@ -37,7 +37,11 @@ export class ListComponent implements OnInit {
     const promise = new Promise((resolve, reject) => {
       this.api.get(`knowledgecenter/list`).toPromise().then((res: any) => {
         if (res.status === 200) {
-          this.knowledgeList = res.data;
+          this.knowledgeList = res.data.sort(function(a, b) {
+            const aIndex = a.index || 0;
+            const bIndex = b.index || 0;
+            return aIndex - bIndex;
+          });
           this.createCategoryList(this.knowledgeList);
         } else if (res.status === 201) {
           this.knowledgeList = undefined;
@@ -74,7 +78,11 @@ export class ListComponent implements OnInit {
       const opts = { params: new HttpParams({ fromString: `title=${this.knowledgeForm.value.knowledgeKeyword}` }) };
       this.api.get(`knowledgecenter/list`, opts.params).subscribe((res: any) => {
         if (res.status === 200) {
-          this.knowledgeList = res.data;
+          this.knowledgeList = res.data.sort(function(a, b) {
+            const aIndex = a.index || 0;
+            const bIndex = b.index || 0;
+            return aIndex - bIndex;
+          });
         } else if (res.status === 201) {
           this.knowledgeList = undefined;
         }

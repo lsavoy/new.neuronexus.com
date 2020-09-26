@@ -32,7 +32,11 @@ export class SubCategoryDetailsComponent implements OnInit {
   getKnowledgeListBySubCategoryId(subCategorySlug: any) {
     this.api.get(`knowledgecenter/subcategory/${subCategorySlug}`).subscribe((res: any) => {
       if (res.status === 200) {
-        this.subCategoryWiseKnowledgeList = res.data;
+        this.subCategoryWiseKnowledgeList = res.data.sort(function(a, b) {
+          const aIndex = a.index || 0;
+          const bIndex = b.index || 0;
+          return aIndex - bIndex;
+        });
       } else if (res.status === 201) {
         this.subCategoryWiseKnowledgeList = undefined;
       }

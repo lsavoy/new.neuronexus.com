@@ -37,7 +37,11 @@ export class CategoryDetailsComponent implements OnInit {
   getKnowledgeListByCategoryId(categorySlug: any) {
     this.api.get(`knowledgecenter/category/${categorySlug}`).subscribe((res: any) => {
       if (res.status === 200) {
-        this.categoryWiseKnowledgeList = res.data;
+        this.categoryWiseKnowledgeList = res.data.sort(function(a, b) {
+          const aIndex = a.index || 0;
+          const bIndex = b.index || 0;
+          return aIndex - bIndex;
+        });
         if (categorySlug !== undefined) {
           this.createCategoryWiseSubcategoryList(this.categoryWiseKnowledgeList, categorySlug);
         }
