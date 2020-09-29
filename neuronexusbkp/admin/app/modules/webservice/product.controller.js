@@ -2,7 +2,7 @@ const productRepo = require('product_category/repositories/category.repository')
 const probeFinderRepo = require("probe_finder/repositories/probe_finder.repository");
 
 const productController = {
-    /* 
+    /*
     // @Method: getProducts
     // @Description: Products
     */
@@ -19,7 +19,7 @@ const productController = {
         }
     },
 
-    /* 
+    /*
     // @Method: getProducts
     // @Description: Products
     */
@@ -38,7 +38,7 @@ const productController = {
         }
     },
 
-    /* 
+    /*
     // @Method: getProductStaticContents
     // @Description: Products
     */
@@ -56,7 +56,7 @@ const productController = {
         }
     },
 
-    /* 
+    /*
        // @Method: getAllProductsWithCategory
        // @Description: Products+
        */
@@ -83,7 +83,9 @@ const productController = {
                     products[i].productsList.push({ "name": productstatic.probe_finder_menu_name, "slug": "probefinder-1b23d", "static": true });
                 }
             }
-            products.push({ "name": productstatic.catelog_menu_name, "slug": "catalog-1a23d", "static": true })
+
+            const catalogImage = productstatic ? productstatic.catalog_image : '';
+            products.push({ "name": productstatic.catelog_menu_name, "slug": "catalog-1a23d", "static": true, "image":  catalogImage})
 
 
 

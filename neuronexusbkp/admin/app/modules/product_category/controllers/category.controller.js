@@ -63,6 +63,12 @@ class ProductController {
             }
             req.body.image = req.files[i].filename;
           }
+          if (req.files[i].fieldname == 'catalog_image') {
+            if (fs.existsSync('./public/uploads/product/' + about.catalog_image) && about.catalog_image) {
+              fs.unlinkSync('./public/uploads/product/' + about.catalog_image);
+            }
+            req.body.catalog_image = req.files[i].filename;
+          }
           if (req.files[i].fieldname == 'header_banner_image') {
             if (fs.existsSync('./public/uploads/product/' + about.header_banner_image) && about.header_banner_image) {
               fs.unlinkSync('./public/uploads/product/' + about.header_banner_image);
@@ -72,7 +78,7 @@ class ProductController {
 
         }
       }
-     
+
 
       let cmsIdUpdate = categoryRepo.product_static_contentsUpdateById(req.body, aboutId)
       if (cmsIdUpdate) {
@@ -106,7 +112,7 @@ class ProductController {
   async create(req, res) {
     try {
       let categoryMaster = await categoryMasterRepo.getAllByField({isDeleted:false,status:'Active'},{name:1});
-      
+
       res.render("product_category/views/add.ejs", {
         page_name: "product-management",
         page_title: "Create New Product",
@@ -216,7 +222,7 @@ class ProductController {
       req.body.d_drive_nano = dDriveNano;
       req.body.d_drive_m = dDriveM;
       req.body.d_drive_xl = dDriveXL;
-      
+
       let categoryUpdate = await categoryRepo.updateById(categoryValue._id, req.body);
       if (categoryUpdate) {
         let cateyorySlug = slug(categoryUpdate.name, { lower: true, replacement: "-" });
@@ -280,7 +286,7 @@ class ProductController {
     try {
       let categorys = await categoryRepo.getById(req.params.id);
       let categoryMaster = await categoryMasterRepo.getAllByField({isDeleted:false,status:'Active'},{name:1});
-     
+
       if (!_.isEmpty(categorys)) {
         res.render("product_category/views/edit.ejs", {
           page_name: "product-category-management",
@@ -351,7 +357,7 @@ class ProductController {
   async catalogCreate(req, res) {
     try {
       let catagory = await categoryRepo.getByFieldCatalog({isDeleted:false,status:'Active'});
-      
+
       res.render("product_category/views/catalogs_brochures.ejs", {
         page_name: "catalogs-management",
         page_title: "Create Catalogs Brochures",
@@ -405,7 +411,7 @@ class ProductController {
             namedRouter.urlFor("admin.product.catelog")
             );
         }
-  
+
       }
     } catch (e) {
       req.flash("error", e.message);

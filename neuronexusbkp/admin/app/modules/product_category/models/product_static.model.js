@@ -15,6 +15,7 @@ const Product_static_con_Schema = new Schema({
   software_product_video_page_title: { type: String, default: '' },
   instrumentation_product_video_page_title: { type: String, default: '' },
   accessories_product_video_page_title: { type: String, default: '' },
+  catalog_image: {type: String, default: ''},
   isDeleted: { type: Boolean, default: false, enum: [true, false] },
   status: { type: String, default: 'Active', enum: status },
 }, {

@@ -10,7 +10,7 @@ const request_param = multer();
 
 const Storage = multer.diskStorage({
     destination: (req, file, callback) => {
-        if (file.fieldname == 'image' || file.fieldname == 'header_banner_image') {
+        if (file.fieldname == 'image' || file.fieldname == 'header_banner_image' || file.fieldname == 'catalog_image') {
             callback(null, "./public/uploads/product");
         } else if (file.fieldname == 'brochures_file' || file.fieldname == 'catalog_file') {
             callback(null, "./public/uploads/catalogs");

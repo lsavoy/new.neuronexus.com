@@ -46,11 +46,27 @@ export class ProductComponent implements OnInit {
       this.productStaticContent = 'error';
     });
   }
+  // getProductList() {
+  //   this.productList = undefined;
+  //   this.api.get(`product/list`).subscribe((res: any) => {
+  //     if (res.status === 200 && res.data.length > 0) {
+  //       this.productList = res.data;
+  //     } else if (res.status === 201) {
+  //       this.productList = 'no-data';
+  //     }
+  //   }, (e) => {
+  //     this.productList = 'error';
+  //   });
+  // }
   getProductList() {
     this.productList = undefined;
-    this.api.get(`product/list`).subscribe((res: any) => {
+    this.api.get(`product/list/category`).subscribe((res: any) => {
       if (res.status === 200 && res.data.length > 0) {
-        this.productList = res.data;
+        this.productList = res.data.sort(function(a, b) {
+          const aSort = a.order || 9999;
+          const bSort = b.order || 9999;
+          return aSort - bSort;
+        });
       } else if (res.status === 201) {
         this.productList = 'no-data';
       }
