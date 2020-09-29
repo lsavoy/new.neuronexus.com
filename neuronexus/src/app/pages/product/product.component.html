@@ -17,11 +17,12 @@
           <div class="col-lg-4 col-md-6 product_main_area_cont" *ngFor="let product of productList;">
             <div class="product_box">
               <figure *ngIf="product?.image">
-                <img src="{{BASE_IMAGE_URL}}product/{{product?.image}}" alt="">
+                <img *ngIf="product.name=='Catalog'" src="{{BASE_IMAGE_URL}}product/{{product?.image}}" alt="">
+                <img *ngIf="product.name!='Catalog'" src="{{BASE_IMAGE_URL}}category/{{product?.image}}" alt="">
               </figure>
               <div class="product_cont" >
                 <section class="inner" [innerHtml]="product?.short_content"></section>
-                <h4  style="cursor: pointer;" (click)="routeToDeatils(product?._id,product?.slug)"> <a>{{product?.name}}</a> </h4>
+                <h4  style="cursor: pointer;" (click)="routeToDeatils(product?.slug)"> <a>{{product?.name}}</a> </h4>
               </div>
             </div>
           </div>

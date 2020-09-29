@@ -74,8 +74,10 @@ export class ProductComponent implements OnInit {
       this.productList = 'error';
     });
   }
-  routeToDeatils(productId: any, productSlug: any) {
-    this.router.navigate(['/product-details', 'product', productSlug]);
+  // routeToDeatils(productId: any, productSlug: any) {
+  //   this.router.navigate(['/product-details', 'product', productSlug]);
+  // }
+  routeToDeatils(productSlug: any) {
+    this.router.navigate(['/product-category-details', productSlug]);
   }
-
 }
