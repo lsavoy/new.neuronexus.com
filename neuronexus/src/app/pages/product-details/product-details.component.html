@@ -18,6 +18,20 @@
         <div class="no-data-center" *ngIf="productDetailsContent && productDetailsContent === 'error'">Some Error occurred</div>
         <div class="no-data-center" *ngIf="productDetailsContent && productDetailsContent === 'no-data'">No data Available</div>
         <div class="no-data-center" *ngIf="productDetailsContent === undefined">Loading...</div>
+
+        <div class="row product_main_area"  *ngIf="childrenProducts !== undefined && childrenProducts?.length > 0">
+          <div class="col-lg-4 col-md-6 product_main_area_cont level4-product" *ngFor="let product of childrenProducts;">
+            <div class="product_box">
+              <figure *ngIf="product?.image">
+                <img src="{{BASE_IMAGE_URL}}product/{{product?.image}}" alt="">
+              </figure>
+              <div class="product_cont" >
+                <section class="inner" [innerHtml]="product?.short_content"></section>
+                <h4  style="cursor: pointer;" (click)="routeToDeatils(product?.slug)"> <a>{{product?.name}}</a> </h4>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -25,7 +39,7 @@
 
   <div class="university_sec">
     <div class="container">
-      
+
       <div class="inner_university" *ngIf="productDetailsContent && productDetailsContent !== 'error' && productDetailsContent !== 'no-data'">
         <ng-container *ngIf="productDetailsContent?.section2_content !== ''">
          <section [innerHtml]="productDetailsContent?.section2_content"></section>
@@ -120,10 +134,10 @@
       <div class="no-data-center" *ngIf="productDetailsContent && productDetailsContent === 'error'">Some Error occurred</div>
         <div class="no-data-center" *ngIf="productDetailsContent && productDetailsContent === 'no-data'">No data Available</div>
         <div class="no-data-center" *ngIf="productDetailsContent === undefined">Loading...</div>
-    </div>
+      </div>
   </div>
 
   <div class="update_btn" style="margin-bottom: 20px;" *ngIf="productDetailsContent && productDetailsContent !== 'error' && productDetailsContent !== 'no-data'">
     <a class="redmore_btn" (click)="routeBackToCategory()" style="cursor: pointer;">Back</a>
   </div>
-  
+

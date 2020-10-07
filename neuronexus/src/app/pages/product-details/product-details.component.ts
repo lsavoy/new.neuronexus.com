@@ -13,7 +13,10 @@ export class ProductDetailsComponent implements OnInit {
   productDetailsContent: any;
   BASE_IMAGE_URL = environment.BASE_IMAGE_URL;
   productSlug: any;
+  productId: any;
   fromCategory: any;
+  childrenProducts: [];
+  level4ProductFlag: boolean;
 
   constructor(
     private api: ApiService,
@@ -26,7 +29,11 @@ export class ProductDetailsComponent implements OnInit {
       if (params.productSlug !== undefined) {
         this.productSlug = params.productSlug;
         this.getStaticContent();
-        this.getProductDeatils(this.productSlug);
+        if (window.location.href.lastIndexOf('/level4-product-details/') != -1) {
+          this.getLevel4ProductDeatils(this.productSlug);
+        } else {
+          this.getProductDeatils(this.productSlug);
+        }
       }
       if (params.categorySlug) {
         this.fromCategory = params.categorySlug;
@@ -53,9 +60,33 @@ export class ProductDetailsComponent implements OnInit {
     }, (e) => {
     });
   }
+  getChildrenProducts() {
+    const banner = [];
+    this.api.get(`/product-level4/children/` + this.productId).subscribe((res: any) => {
+      if (res.status === 200) {
+        this.childrenProducts = res.data;
+      } else if (res.status === 201) {
+      }
+    }, (e) => {
+    });
+  }
   getProductDeatils(productSlug: any) {
     this.productDetailsContent = undefined;
     this.api.get(`product/${productSlug}`).subscribe((res: any) => {
+      if (res.status === 200) {
+        this.productDetailsContent = res.data;
+        this.productId = res.data._id;
+        this.getChildrenProducts();
+      } else if (res.status === 201) {
+        this.productDetailsContent = 'no-data';
+      }
+    }, (e) => {
+      this.productDetailsContent = 'error';
+    });
+  }
+  getLevel4ProductDeatils(productSlug: any) {
+    this.productDetailsContent = undefined;
+    this.api.get(`product-level4/${productSlug}`).subscribe((res: any) => {
       if (res.status === 200) {
         this.productDetailsContent = res.data;
       } else if (res.status === 201) {
@@ -72,6 +103,10 @@ export class ProductDetailsComponent implements OnInit {
     } else {
       this.router.navigate(['/product-category-details', this.fromCategory]);
     }
+  }
+
+  routeToDeatils(productSlug: any) {
+    this.router.navigate(['/level4-product-details', this.fromCategory, productSlug]);
   }
 
 }

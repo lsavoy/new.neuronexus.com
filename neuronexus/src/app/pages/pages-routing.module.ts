@@ -58,6 +58,10 @@ const routes: Routes = [
     component: ProductDetailsComponent
   },
   {
+    path: 'level4-product-details/:categorySlug/:productSlug',
+    component: ProductDetailsComponent
+  },
+  {
     path: 'probe-details/:probeSlug',
     component: ProbeDetailsComponent
   },
