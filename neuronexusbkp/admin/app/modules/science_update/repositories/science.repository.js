@@ -269,7 +269,7 @@ const scienceRepository = {
                 {
                     $match: conditions
                 },
-
+                { $sort: { createdAt: -1 } }
             ]);
 
             return aggregate;
